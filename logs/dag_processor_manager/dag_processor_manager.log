@@ -1,0 +1,183 @@
+[2025-10-22T14:02:20.831+0000] {manager.py:483} INFO - Processing files using up to 2 processes at a time 
+[2025-10-22T14:02:20.831+0000] {manager.py:484} INFO - Process each file at most once every 30 seconds
+[2025-10-22T14:02:20.831+0000] {manager.py:485} INFO - Checking for new files in /home/airflow/airflow/dags every 300 seconds
+[2025-10-22T14:02:20.831+0000] {manager.py:821} INFO - Searching for files in /home/airflow/airflow/dags
+[2025-10-22T14:02:20.832+0000] {manager.py:824} INFO - There are 0 files in /home/airflow/airflow/dags
+[2025-10-22T14:07:21.421+0000] {manager.py:821} INFO - Searching for files in /home/airflow/airflow/dags
+[2025-10-22T14:07:21.422+0000] {manager.py:824} INFO - There are 0 files in /home/airflow/airflow/dags
+[2025-10-22T14:12:22.093+0000] {manager.py:821} INFO - Searching for files in /home/airflow/airflow/dags
+[2025-10-22T14:12:22.094+0000] {manager.py:824} INFO - There are 0 files in /home/airflow/airflow/dags
+[2025-10-22T14:17:22.645+0000] {manager.py:821} INFO - Searching for files in /home/airflow/airflow/dags
+[2025-10-22T14:17:22.646+0000] {manager.py:824} INFO - There are 0 files in /home/airflow/airflow/dags
+[2025-10-22T14:22:23.230+0000] {manager.py:821} INFO - Searching for files in /home/airflow/airflow/dags
+[2025-10-22T14:22:23.230+0000] {manager.py:824} INFO - There are 0 files in /home/airflow/airflow/dags
+[2025-10-22T14:27:23.818+0000] {manager.py:821} INFO - Searching for files in /home/airflow/airflow/dags
+[2025-10-22T14:27:23.819+0000] {manager.py:824} INFO - There are 0 files in /home/airflow/airflow/dags
+[2025-10-22T14:32:24.417+0000] {manager.py:821} INFO - Searching for files in /home/airflow/airflow/dags
+[2025-10-22T14:32:24.418+0000] {manager.py:824} INFO - There are 0 files in /home/airflow/airflow/dags
+[2025-10-22T14:37:24.952+0000] {manager.py:821} INFO - Searching for files in /home/airflow/airflow/dags
+[2025-10-22T14:37:24.953+0000] {manager.py:824} INFO - There are 0 files in /home/airflow/airflow/dags
+[2025-10-22T14:42:25.516+0000] {manager.py:821} INFO - Searching for files in /home/airflow/airflow/dags
+[2025-10-22T14:42:25.517+0000] {manager.py:824} INFO - There are 0 files in /home/airflow/airflow/dags
+[2025-10-22T14:47:26.108+0000] {manager.py:821} INFO - Searching for files in /home/airflow/airflow/dags
+[2025-10-22T14:47:26.109+0000] {manager.py:824} INFO - There are 0 files in /home/airflow/airflow/dags
+[2025-10-22T14:52:26.683+0000] {manager.py:821} INFO - Searching for files in /home/airflow/airflow/dags
+[2025-10-22T14:52:26.683+0000] {manager.py:824} INFO - There are 0 files in /home/airflow/airflow/dags
+[2025-10-22T14:57:27.184+0000] {manager.py:821} INFO - Searching for files in /home/airflow/airflow/dags
+[2025-10-22T14:57:27.185+0000] {manager.py:824} INFO - There are 0 files in /home/airflow/airflow/dags
+[2025-10-22T15:02:27.739+0000] {manager.py:821} INFO - Searching for files in /home/airflow/airflow/dags
+[2025-10-22T15:02:27.740+0000] {manager.py:824} INFO - There are 0 files in /home/airflow/airflow/dags
+[2025-10-22T15:07:28.313+0000] {manager.py:821} INFO - Searching for files in /home/airflow/airflow/dags
+[2025-10-22T15:07:28.314+0000] {manager.py:824} INFO - There are 0 files in /home/airflow/airflow/dags
+[2025-10-22T15:12:28.944+0000] {manager.py:821} INFO - Searching for files in /home/airflow/airflow/dags
+[2025-10-22T15:12:28.944+0000] {manager.py:824} INFO - There are 0 files in /home/airflow/airflow/dags
+[2025-10-22T15:17:29.230+0000] {manager.py:821} INFO - Searching for files in /home/airflow/airflow/dags
+[2025-10-22T15:17:29.232+0000] {manager.py:824} INFO - There are 0 files in /home/airflow/airflow/dags
+[2025-10-22T15:22:29.722+0000] {manager.py:821} INFO - Searching for files in /home/airflow/airflow/dags
+[2025-10-22T15:22:29.723+0000] {manager.py:824} INFO - There are 0 files in /home/airflow/airflow/dags
+[2025-10-22T15:27:30.250+0000] {manager.py:821} INFO - Searching for files in /home/airflow/airflow/dags
+[2025-10-22T15:27:30.250+0000] {manager.py:824} INFO - There are 0 files in /home/airflow/airflow/dags
+[2025-10-22T15:32:30.793+0000] {manager.py:821} INFO - Searching for files in /home/airflow/airflow/dags
+[2025-10-22T15:32:30.794+0000] {manager.py:824} INFO - There are 0 files in /home/airflow/airflow/dags
+[2025-10-22T15:37:31.346+0000] {manager.py:821} INFO - Searching for files in /home/airflow/airflow/dags
+[2025-10-22T15:37:31.349+0000] {manager.py:824} INFO - There are 0 files in /home/airflow/airflow/dags
+[2025-10-22T15:42:31.853+0000] {manager.py:821} INFO - Searching for files in /home/airflow/airflow/dags
+[2025-10-22T15:42:31.853+0000] {manager.py:824} INFO - There are 0 files in /home/airflow/airflow/dags
+[2025-10-22T15:47:32.418+0000] {manager.py:821} INFO - Searching for files in /home/airflow/airflow/dags
+[2025-10-22T15:47:32.420+0000] {manager.py:824} INFO - There are 0 files in /home/airflow/airflow/dags
+[2025-10-22T15:52:33.004+0000] {manager.py:821} INFO - Searching for files in /home/airflow/airflow/dags
+[2025-10-22T15:52:33.005+0000] {manager.py:824} INFO - There are 0 files in /home/airflow/airflow/dags
+[2025-10-22T15:57:33.537+0000] {manager.py:821} INFO - Searching for files in /home/airflow/airflow/dags
+[2025-10-22T15:57:33.537+0000] {manager.py:824} INFO - There are 0 files in /home/airflow/airflow/dags
+[2025-10-22T16:02:34.229+0000] {manager.py:821} INFO - Searching for files in /home/airflow/airflow/dags
+[2025-10-22T16:02:34.230+0000] {manager.py:824} INFO - There are 0 files in /home/airflow/airflow/dags
+[2025-10-22T16:07:34.775+0000] {manager.py:821} INFO - Searching for files in /home/airflow/airflow/dags
+[2025-10-22T16:07:34.776+0000] {manager.py:824} INFO - There are 0 files in /home/airflow/airflow/dags
+[2025-10-22T16:12:35.286+0000] {manager.py:821} INFO - Searching for files in /home/airflow/airflow/dags
+[2025-10-22T16:12:35.287+0000] {manager.py:824} INFO - There are 0 files in /home/airflow/airflow/dags
+[2025-10-22T16:17:35.945+0000] {manager.py:821} INFO - Searching for files in /home/airflow/airflow/dags
+[2025-10-22T16:17:35.946+0000] {manager.py:824} INFO - There are 0 files in /home/airflow/airflow/dags
+[2025-10-22T16:22:36.537+0000] {manager.py:821} INFO - Searching for files in /home/airflow/airflow/dags
+[2025-10-22T16:22:36.537+0000] {manager.py:824} INFO - There are 0 files in /home/airflow/airflow/dags
+[2025-10-22T16:27:37.115+0000] {manager.py:821} INFO - Searching for files in /home/airflow/airflow/dags
+[2025-10-22T16:27:37.116+0000] {manager.py:824} INFO - There are 0 files in /home/airflow/airflow/dags
+[2025-10-22T16:32:37.733+0000] {manager.py:821} INFO - Searching for files in /home/airflow/airflow/dags
+[2025-10-22T16:32:37.733+0000] {manager.py:824} INFO - There are 0 files in /home/airflow/airflow/dags
+[2025-10-22T16:37:38.352+0000] {manager.py:821} INFO - Searching for files in /home/airflow/airflow/dags
+[2025-10-22T16:37:38.354+0000] {manager.py:824} INFO - There are 0 files in /home/airflow/airflow/dags
+[2025-10-22T16:42:38.937+0000] {manager.py:821} INFO - Searching for files in /home/airflow/airflow/dags
+[2025-10-22T16:42:38.938+0000] {manager.py:824} INFO - There are 0 files in /home/airflow/airflow/dags
+[2025-10-22T16:47:39.565+0000] {manager.py:821} INFO - Searching for files in /home/airflow/airflow/dags
+[2025-10-22T16:47:39.566+0000] {manager.py:824} INFO - There are 0 files in /home/airflow/airflow/dags
+[2025-10-22T16:52:40.155+0000] {manager.py:821} INFO - Searching for files in /home/airflow/airflow/dags
+[2025-10-22T16:52:40.156+0000] {manager.py:824} INFO - There are 0 files in /home/airflow/airflow/dags
+[2025-10-22T16:57:40.817+0000] {manager.py:821} INFO - Searching for files in /home/airflow/airflow/dags
+[2025-10-22T16:57:40.818+0000] {manager.py:824} INFO - There are 0 files in /home/airflow/airflow/dags
+[2025-10-22T17:02:40.826+0000] {manager.py:821} INFO - Searching for files in /home/airflow/airflow/dags
+[2025-10-22T17:02:40.827+0000] {manager.py:824} INFO - There are 0 files in /home/airflow/airflow/dags
+[2025-10-22T17:07:41.672+0000] {manager.py:821} INFO - Searching for files in /home/airflow/airflow/dags
+[2025-10-22T17:07:41.672+0000] {manager.py:824} INFO - There are 0 files in /home/airflow/airflow/dags
+[2025-10-22T17:12:42.411+0000] {manager.py:821} INFO - Searching for files in /home/airflow/airflow/dags
+[2025-10-22T17:12:42.412+0000] {manager.py:824} INFO - There are 0 files in /home/airflow/airflow/dags
+[2025-10-22T17:17:43.255+0000] {manager.py:821} INFO - Searching for files in /home/airflow/airflow/dags
+[2025-10-22T17:17:43.256+0000] {manager.py:824} INFO - There are 0 files in /home/airflow/airflow/dags
+[2025-10-22T17:22:44.075+0000] {manager.py:821} INFO - Searching for files in /home/airflow/airflow/dags
+[2025-10-22T17:22:44.075+0000] {manager.py:824} INFO - There are 0 files in /home/airflow/airflow/dags
+[2025-10-22T17:27:44.866+0000] {manager.py:821} INFO - Searching for files in /home/airflow/airflow/dags
+[2025-10-22T17:27:44.867+0000] {manager.py:824} INFO - There are 0 files in /home/airflow/airflow/dags
+[2025-10-22T17:32:45.613+0000] {manager.py:821} INFO - Searching for files in /home/airflow/airflow/dags
+[2025-10-22T17:32:45.614+0000] {manager.py:824} INFO - There are 0 files in /home/airflow/airflow/dags
+[2025-10-22T17:37:46.327+0000] {manager.py:821} INFO - Searching for files in /home/airflow/airflow/dags
+[2025-10-22T17:37:46.327+0000] {manager.py:824} INFO - There are 0 files in /home/airflow/airflow/dags
+[2025-10-22T17:42:46.965+0000] {manager.py:821} INFO - Searching for files in /home/airflow/airflow/dags
+[2025-10-22T17:42:46.967+0000] {manager.py:824} INFO - There are 0 files in /home/airflow/airflow/dags
+[2025-10-22T17:47:47.746+0000] {manager.py:821} INFO - Searching for files in /home/airflow/airflow/dags
+[2025-10-22T17:47:47.747+0000] {manager.py:824} INFO - There are 0 files in /home/airflow/airflow/dags
+[2025-10-22T17:52:48.437+0000] {manager.py:821} INFO - Searching for files in /home/airflow/airflow/dags
+[2025-10-22T17:52:48.438+0000] {manager.py:824} INFO - There are 0 files in /home/airflow/airflow/dags
+[2025-10-22T17:57:48.983+0000] {manager.py:821} INFO - Searching for files in /home/airflow/airflow/dags
+[2025-10-22T17:57:48.984+0000] {manager.py:824} INFO - There are 0 files in /home/airflow/airflow/dags
+[2025-10-22T18:02:49.659+0000] {manager.py:821} INFO - Searching for files in /home/airflow/airflow/dags
+[2025-10-22T18:02:49.660+0000] {manager.py:824} INFO - There are 0 files in /home/airflow/airflow/dags
+[2025-10-22T18:07:50.189+0000] {manager.py:821} INFO - Searching for files in /home/airflow/airflow/dags
+[2025-10-22T18:07:50.191+0000] {manager.py:824} INFO - There are 0 files in /home/airflow/airflow/dags
+[2025-10-22T18:12:50.677+0000] {manager.py:821} INFO - Searching for files in /home/airflow/airflow/dags
+[2025-10-22T18:12:50.677+0000] {manager.py:824} INFO - There are 0 files in /home/airflow/airflow/dags
+[2025-10-22T18:17:51.213+0000] {manager.py:821} INFO - Searching for files in /home/airflow/airflow/dags
+[2025-10-22T18:17:51.214+0000] {manager.py:824} INFO - There are 0 files in /home/airflow/airflow/dags
+[2025-10-22T18:22:51.733+0000] {manager.py:821} INFO - Searching for files in /home/airflow/airflow/dags
+[2025-10-22T18:22:51.734+0000] {manager.py:824} INFO - There are 0 files in /home/airflow/airflow/dags
+[2025-10-22T18:27:52.303+0000] {manager.py:821} INFO - Searching for files in /home/airflow/airflow/dags
+[2025-10-22T18:27:52.304+0000] {manager.py:824} INFO - There are 0 files in /home/airflow/airflow/dags
+[2025-10-22T18:32:52.819+0000] {manager.py:821} INFO - Searching for files in /home/airflow/airflow/dags
+[2025-10-22T18:32:52.820+0000] {manager.py:824} INFO - There are 0 files in /home/airflow/airflow/dags
+[2025-10-22T18:37:53.412+0000] {manager.py:821} INFO - Searching for files in /home/airflow/airflow/dags
+[2025-10-22T18:37:53.412+0000] {manager.py:824} INFO - There are 0 files in /home/airflow/airflow/dags
+[2025-10-22T18:42:54.033+0000] {manager.py:821} INFO - Searching for files in /home/airflow/airflow/dags
+[2025-10-22T18:42:54.034+0000] {manager.py:824} INFO - There are 0 files in /home/airflow/airflow/dags
+[2025-10-22T18:47:54.633+0000] {manager.py:821} INFO - Searching for files in /home/airflow/airflow/dags
+[2025-10-22T18:47:54.634+0000] {manager.py:824} INFO - There are 0 files in /home/airflow/airflow/dags
+[2025-10-22T18:52:55.174+0000] {manager.py:821} INFO - Searching for files in /home/airflow/airflow/dags
+[2025-10-22T18:52:55.175+0000] {manager.py:824} INFO - There are 0 files in /home/airflow/airflow/dags
+[2025-10-22T18:57:55.685+0000] {manager.py:821} INFO - Searching for files in /home/airflow/airflow/dags
+[2025-10-22T18:57:55.686+0000] {manager.py:824} INFO - There are 0 files in /home/airflow/airflow/dags
+[2025-10-22T19:02:56.340+0000] {manager.py:821} INFO - Searching for files in /home/airflow/airflow/dags
+[2025-10-22T19:02:56.340+0000] {manager.py:824} INFO - There are 0 files in /home/airflow/airflow/dags
+[2025-10-22T19:07:56.866+0000] {manager.py:821} INFO - Searching for files in /home/airflow/airflow/dags
+[2025-10-22T19:07:56.866+0000] {manager.py:824} INFO - There are 0 files in /home/airflow/airflow/dags
+[2025-10-22T19:12:57.386+0000] {manager.py:821} INFO - Searching for files in /home/airflow/airflow/dags
+[2025-10-22T19:12:57.388+0000] {manager.py:824} INFO - There are 0 files in /home/airflow/airflow/dags
+[2025-10-22T19:17:57.902+0000] {manager.py:821} INFO - Searching for files in /home/airflow/airflow/dags
+[2025-10-22T19:17:57.902+0000] {manager.py:824} INFO - There are 0 files in /home/airflow/airflow/dags
+[2025-10-22T19:22:58.424+0000] {manager.py:821} INFO - Searching for files in /home/airflow/airflow/dags
+[2025-10-22T19:22:58.425+0000] {manager.py:824} INFO - There are 0 files in /home/airflow/airflow/dags
+[2025-10-22T19:27:59.026+0000] {manager.py:821} INFO - Searching for files in /home/airflow/airflow/dags
+[2025-10-22T19:27:59.027+0000] {manager.py:824} INFO - There are 0 files in /home/airflow/airflow/dags
+[2025-10-22T19:32:59.892+0000] {manager.py:821} INFO - Searching for files in /home/airflow/airflow/dags
+[2025-10-22T19:32:59.895+0000] {manager.py:824} INFO - There are 0 files in /home/airflow/airflow/dags
+[2025-10-22T19:38:00.694+0000] {manager.py:821} INFO - Searching for files in /home/airflow/airflow/dags
+[2025-10-22T19:38:00.695+0000] {manager.py:824} INFO - There are 0 files in /home/airflow/airflow/dags
+[2025-10-22T19:43:01.333+0000] {manager.py:821} INFO - Searching for files in /home/airflow/airflow/dags
+[2025-10-22T19:43:01.334+0000] {manager.py:824} INFO - There are 0 files in /home/airflow/airflow/dags
+[2025-10-22T19:48:01.829+0000] {manager.py:821} INFO - Searching for files in /home/airflow/airflow/dags
+[2025-10-22T19:48:01.830+0000] {manager.py:824} INFO - There are 0 files in /home/airflow/airflow/dags
+[2025-10-22T19:53:02.412+0000] {manager.py:821} INFO - Searching for files in /home/airflow/airflow/dags
+[2025-10-22T19:53:02.413+0000] {manager.py:824} INFO - There are 0 files in /home/airflow/airflow/dags
+[2025-10-22T19:58:02.973+0000] {manager.py:821} INFO - Searching for files in /home/airflow/airflow/dags
+[2025-10-22T19:58:02.974+0000] {manager.py:824} INFO - There are 0 files in /home/airflow/airflow/dags
+[2025-10-22T20:03:03.581+0000] {manager.py:821} INFO - Searching for files in /home/airflow/airflow/dags
+[2025-10-22T20:03:03.583+0000] {manager.py:824} INFO - There are 0 files in /home/airflow/airflow/dags
+[2025-10-22T20:08:04.125+0000] {manager.py:821} INFO - Searching for files in /home/airflow/airflow/dags
+[2025-10-22T20:08:04.126+0000] {manager.py:824} INFO - There are 0 files in /home/airflow/airflow/dags
+[2025-10-22T20:13:04.604+0000] {manager.py:821} INFO - Searching for files in /home/airflow/airflow/dags
+[2025-10-22T20:13:04.605+0000] {manager.py:824} INFO - There are 0 files in /home/airflow/airflow/dags
+[2025-10-22T20:18:05.257+0000] {manager.py:821} INFO - Searching for files in /home/airflow/airflow/dags
+[2025-10-22T20:18:05.258+0000] {manager.py:824} INFO - There are 0 files in /home/airflow/airflow/dags
+[2025-10-22T20:23:05.832+0000] {manager.py:821} INFO - Searching for files in /home/airflow/airflow/dags
+[2025-10-22T20:23:05.832+0000] {manager.py:824} INFO - There are 0 files in /home/airflow/airflow/dags
+[2025-10-22T20:28:06.398+0000] {manager.py:821} INFO - Searching for files in /home/airflow/airflow/dags
+[2025-10-22T20:28:06.399+0000] {manager.py:824} INFO - There are 0 files in /home/airflow/airflow/dags
+[2025-10-22T20:33:06.946+0000] {manager.py:821} INFO - Searching for files in /home/airflow/airflow/dags
+[2025-10-22T20:33:06.946+0000] {manager.py:824} INFO - There are 0 files in /home/airflow/airflow/dags
+[2025-10-22T20:38:07.480+0000] {manager.py:821} INFO - Searching for files in /home/airflow/airflow/dags
+[2025-10-22T20:38:07.481+0000] {manager.py:824} INFO - There are 0 files in /home/airflow/airflow/dags
+[2025-10-22T20:43:08.075+0000] {manager.py:821} INFO - Searching for files in /home/airflow/airflow/dags
+[2025-10-22T20:43:08.077+0000] {manager.py:824} INFO - There are 0 files in /home/airflow/airflow/dags
+[2025-10-22T20:48:08.726+0000] {manager.py:821} INFO - Searching for files in /home/airflow/airflow/dags
+[2025-10-22T20:48:08.729+0000] {manager.py:824} INFO - There are 0 files in /home/airflow/airflow/dags
+[2025-10-22T20:53:09.361+0000] {manager.py:821} INFO - Searching for files in /home/airflow/airflow/dags
+[2025-10-22T20:53:09.362+0000] {manager.py:824} INFO - There are 0 files in /home/airflow/airflow/dags
+[2025-10-22T20:58:09.954+0000] {manager.py:821} INFO - Searching for files in /home/airflow/airflow/dags
+[2025-10-22T20:58:09.954+0000] {manager.py:824} INFO - There are 0 files in /home/airflow/airflow/dags
+[2025-10-22T21:03:10.625+0000] {manager.py:821} INFO - Searching for files in /home/airflow/airflow/dags
+[2025-10-22T21:03:10.626+0000] {manager.py:824} INFO - There are 0 files in /home/airflow/airflow/dags
+[2025-10-22T21:08:11.205+0000] {manager.py:821} INFO - Searching for files in /home/airflow/airflow/dags
+[2025-10-22T21:08:11.206+0000] {manager.py:824} INFO - There are 0 files in /home/airflow/airflow/dags
+[2025-10-22T21:13:11.788+0000] {manager.py:821} INFO - Searching for files in /home/airflow/airflow/dags
+[2025-10-22T21:13:11.789+0000] {manager.py:824} INFO - There are 0 files in /home/airflow/airflow/dags
+[2025-10-22T21:18:12.367+0000] {manager.py:821} INFO - Searching for files in /home/airflow/airflow/dags
+[2025-10-22T21:18:12.368+0000] {manager.py:824} INFO - There are 0 files in /home/airflow/airflow/dags
+[2025-10-22T21:23:12.892+0000] {manager.py:821} INFO - Searching for files in /home/airflow/airflow/dags
+[2025-10-22T21:23:12.893+0000] {manager.py:824} INFO - There are 0 files in /home/airflow/airflow/dags
+[2025-10-22T21:28:13.394+0000] {manager.py:821} INFO - Searching for files in /home/airflow/airflow/dags
+[2025-10-22T21:28:13.395+0000] {manager.py:824} INFO - There are 0 files in /home/airflow/airflow/dags
