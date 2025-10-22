@@ -181,3 +181,5 @@
 [2025-10-22T21:23:12.893+0000] {manager.py:824} INFO - There are 0 files in /home/airflow/airflow/dags
 [2025-10-22T21:28:13.394+0000] {manager.py:821} INFO - Searching for files in /home/airflow/airflow/dags
 [2025-10-22T21:28:13.395+0000] {manager.py:824} INFO - There are 0 files in /home/airflow/airflow/dags
+[2025-10-22T21:33:13.931+0000] {manager.py:821} INFO - Searching for files in /home/airflow/airflow/dags
+[2025-10-22T21:33:13.932+0000] {manager.py:824} INFO - There are 0 files in /home/airflow/airflow/dags
