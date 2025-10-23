@@ -503,3 +503,10 @@
 [2025-10-23T06:14:41.776+0000] {logging_mixin.py:190} INFO - [2025-10-23T06:14:41.776+0000] {dag.py:3239} INFO - Sync 1 DAGs
 [2025-10-23T06:14:41.789+0000] {logging_mixin.py:190} INFO - [2025-10-23T06:14:41.789+0000] {dag.py:4180} INFO - Setting next_dagrun for test_ondemand_worker to None, run_after=None
 [2025-10-23T06:14:41.820+0000] {processor.py:208} INFO - Processing /home/airflow/airflow/dags/test_ondemand_worker.py took 0.321 seconds
+[2025-10-23T06:29:50.494+0000] {processor.py:186} INFO - Started process (PID=49396) to work on /home/airflow/airflow/dags/test_ondemand_worker.py
+[2025-10-23T06:29:50.495+0000] {processor.py:914} INFO - Processing file /home/airflow/airflow/dags/test_ondemand_worker.py for tasks to queue
+[2025-10-23T06:29:50.497+0000] {logging_mixin.py:190} INFO - [2025-10-23T06:29:50.497+0000] {dagbag.py:588} INFO - Filling up the DagBag from /home/airflow/airflow/dags/test_ondemand_worker.py
+[2025-10-23T06:29:50.720+0000] {processor.py:925} INFO - DAG(s) 'test_ondemand_worker' retrieved from /home/airflow/airflow/dags/test_ondemand_worker.py
+[2025-10-23T06:29:50.755+0000] {logging_mixin.py:190} INFO - [2025-10-23T06:29:50.755+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-10-23T06:29:50.768+0000] {logging_mixin.py:190} INFO - [2025-10-23T06:29:50.768+0000] {dag.py:4180} INFO - Setting next_dagrun for test_ondemand_worker to None, run_after=None
+[2025-10-23T06:29:50.788+0000] {processor.py:208} INFO - Processing /home/airflow/airflow/dags/test_ondemand_worker.py took 0.302 seconds
