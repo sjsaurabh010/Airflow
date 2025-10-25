@@ -1,0 +1,24 @@
+[2025-10-25T05:11:42.954+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-10-25T05:11:42.979+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: example_dag_with_workers.start manual__2025-10-25T05:11:34+00:00 [queued]>
+[2025-10-25T05:11:42.989+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: example_dag_with_workers.start manual__2025-10-25T05:11:34+00:00 [queued]>
+[2025-10-25T05:11:42.989+0000] {taskinstance.py:2865} INFO - Starting attempt 1 of 1
+[2025-10-25T05:11:43.005+0000] {taskinstance.py:2888} INFO - Executing <Task(PythonOperator): start> on 2025-10-25 05:11:34+00:00
+[2025-10-25T05:11:43.011+0000] {warnings.py:110} WARNING - /home/airflow/airflow-env/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py:70: DeprecationWarning: This process (pid=128745) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2025-10-25T05:11:43.012+0000] {standard_task_runner.py:72} INFO - Started process 128754 to run task
+[2025-10-25T05:11:43.014+0000] {standard_task_runner.py:104} INFO - Running: ['airflow', 'tasks', 'run', 'example_dag_with_workers', 'start', 'manual__2025-10-25T05:11:34+00:00', '--job-id', '124', '--raw', '--subdir', 'DAGS_FOLDER/example_dag_with_workers.py', '--cfg-path', '/tmp/tmpn5jfvdpz']
+[2025-10-25T05:11:43.015+0000] {standard_task_runner.py:105} INFO - Job 124: Subtask start
+[2025-10-25T05:11:43.078+0000] {task_command.py:467} INFO - Running <TaskInstance: example_dag_with_workers.start manual__2025-10-25T05:11:34+00:00 [running]> on host masterdimpal-1
+[2025-10-25T05:11:43.201+0000] {taskinstance.py:3131} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='example_dag_with_workers' AIRFLOW_CTX_TASK_ID='start' AIRFLOW_CTX_EXECUTION_DATE='2025-10-25T05:11:34+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-10-25T05:11:34+00:00'
+[2025-10-25T05:11:43.201+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-10-25T05:11:43.223+0000] {logging_mixin.py:190} INFO - ================================================================================
+[2025-10-25T05:11:43.224+0000] {logging_mixin.py:190} INFO - 🚀 Starting example DAG with remote workers
+[2025-10-25T05:11:43.224+0000] {logging_mixin.py:190} INFO - ================================================================================
+[2025-10-25T05:11:43.224+0000] {logging_mixin.py:190} INFO - Worker priority: ['worker-1']
+[2025-10-25T05:11:43.224+0000] {python.py:240} INFO - Done. Returned value was: {'status': 'started'}
+[2025-10-25T05:11:43.254+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-10-25T05:11:43.255+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=example_dag_with_workers, task_id=start, run_id=manual__2025-10-25T05:11:34+00:00, execution_date=20251025T051134, start_date=20251025T051142, end_date=20251025T051143
+[2025-10-25T05:11:43.311+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-10-25T05:11:43.345+0000] {taskinstance.py:3900} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2025-10-25T05:11:43.347+0000] {local_task_job_runner.py:245} INFO - ::endgroup::

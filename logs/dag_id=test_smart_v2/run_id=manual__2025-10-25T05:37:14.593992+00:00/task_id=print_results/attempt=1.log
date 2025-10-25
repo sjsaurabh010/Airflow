@@ -1,0 +1,40 @@
+[2025-10-25T05:37:24.085+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-10-25T05:37:24.110+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: test_smart_v2.print_results manual__2025-10-25T05:37:14.593992+00:00 [queued]>
+[2025-10-25T05:37:24.119+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: test_smart_v2.print_results manual__2025-10-25T05:37:14.593992+00:00 [queued]>
+[2025-10-25T05:37:24.119+0000] {taskinstance.py:2865} INFO - Starting attempt 1 of 1
+[2025-10-25T05:37:24.131+0000] {taskinstance.py:2888} INFO - Executing <Task(PythonOperator): print_results> on 2025-10-25 05:37:14.593992+00:00
+[2025-10-25T05:37:24.138+0000] {warnings.py:110} WARNING - /home/airflow/airflow-env/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py:70: DeprecationWarning: This process (pid=130162) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2025-10-25T05:37:24.139+0000] {standard_task_runner.py:72} INFO - Started process 130173 to run task
+[2025-10-25T05:37:24.140+0000] {standard_task_runner.py:104} INFO - Running: ['airflow', 'tasks', 'run', 'test_smart_v2', 'print_results', 'manual__2025-10-25T05:37:14.593992+00:00', '--job-id', '131', '--raw', '--subdir', 'DAGS_FOLDER/test_smart_v2.py', '--cfg-path', '/tmp/tmpousxrgb5']
+[2025-10-25T05:37:24.143+0000] {standard_task_runner.py:105} INFO - Job 131: Subtask print_results
+[2025-10-25T05:37:24.203+0000] {task_command.py:467} INFO - Running <TaskInstance: test_smart_v2.print_results manual__2025-10-25T05:37:14.593992+00:00 [running]> on host masterdimpal-1
+[2025-10-25T05:37:24.307+0000] {taskinstance.py:3131} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='test_smart_v2' AIRFLOW_CTX_TASK_ID='print_results' AIRFLOW_CTX_EXECUTION_DATE='2025-10-25T05:37:14.593992+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-10-25T05:37:14.593992+00:00'
+[2025-10-25T05:37:24.307+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-10-25T05:37:24.327+0000] {logging_mixin.py:190} INFO - ============================================================
+[2025-10-25T05:37:24.328+0000] {logging_mixin.py:190} INFO - 📊 TEST RESULTS
+[2025-10-25T05:37:24.328+0000] {logging_mixin.py:190} INFO - ============================================================
+[2025-10-25T05:37:24.345+0000] {logging_mixin.py:190} INFO - 
+✅ test_simple_command:
+[2025-10-25T05:37:24.346+0000] {logging_mixin.py:190} INFO -    Worker: worker-1
+[2025-10-25T05:37:24.346+0000] {logging_mixin.py:190} INFO -    Exit code: 0
+[2025-10-25T05:37:24.362+0000] {logging_mixin.py:190} INFO - 
+✅ test_directory_structure:
+[2025-10-25T05:37:24.363+0000] {logging_mixin.py:190} INFO -    Worker: worker-1
+[2025-10-25T05:37:24.363+0000] {logging_mixin.py:190} INFO -    Exit code: 0
+[2025-10-25T05:37:24.375+0000] {logging_mixin.py:190} INFO - 
+✅ test_singularity:
+[2025-10-25T05:37:24.376+0000] {logging_mixin.py:190} INFO -    Worker: worker-1
+[2025-10-25T05:37:24.376+0000] {logging_mixin.py:190} INFO -    Exit code: 0
+[2025-10-25T05:37:24.393+0000] {logging_mixin.py:190} INFO - 
+✅ test_python_in_singularity:
+[2025-10-25T05:37:24.394+0000] {logging_mixin.py:190} INFO -    Worker: worker-1
+[2025-10-25T05:37:24.394+0000] {logging_mixin.py:190} INFO -    Exit code: 0
+[2025-10-25T05:37:24.394+0000] {logging_mixin.py:190} INFO - ============================================================
+[2025-10-25T05:37:24.394+0000] {python.py:240} INFO - Done. Returned value was: None
+[2025-10-25T05:37:24.412+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-10-25T05:37:24.412+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=test_smart_v2, task_id=print_results, run_id=manual__2025-10-25T05:37:14.593992+00:00, execution_date=20251025T053714, start_date=20251025T053724, end_date=20251025T053724
+[2025-10-25T05:37:24.438+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-10-25T05:37:24.469+0000] {taskinstance.py:3900} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-10-25T05:37:24.471+0000] {local_task_job_runner.py:245} INFO - ::endgroup::

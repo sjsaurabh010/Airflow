@@ -1,234 +1,307 @@
-[2025-10-22T14:02:20.756+0000] {executor_loader.py:254} INFO - Loaded executor: CeleryExecutor
-[2025-10-22T14:02:20.788+0000] {scheduler_job_runner.py:935} INFO - Starting the scheduler
-[2025-10-22T14:02:20.788+0000] {scheduler_job_runner.py:942} INFO - Processing each file at most -1 times
-[2025-10-22T14:02:20.793+0000] {manager.py:174} INFO - Launched DagFileProcessorManager with pid: 14217
-[2025-10-22T14:02:20.795+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-22T14:02:20.799+0000] {settings.py:63} INFO - Configured default timezone UTC
-[2025-10-22T14:07:20.863+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-22T14:12:20.906+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-22T14:17:20.947+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-22T14:22:20.991+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-22T14:27:21.033+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-22T14:32:21.088+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-22T14:37:21.125+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-22T14:42:21.167+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-22T14:47:21.205+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-22T14:52:21.244+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-22T14:57:21.276+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-22T15:02:21.327+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-22T15:07:21.367+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-22T15:12:21.412+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-22T15:17:21.453+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-22T15:22:21.493+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-22T15:27:21.535+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-22T15:32:21.583+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-22T15:37:21.629+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-22T15:42:21.673+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-22T15:47:21.719+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-22T15:52:21.763+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-22T15:57:21.804+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-22T16:02:21.861+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-22T16:07:21.896+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-22T16:12:21.936+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-22T16:17:21.970+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-22T16:22:22.007+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-22T16:27:22.042+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-22T16:32:22.082+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-22T16:37:22.127+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-22T16:42:22.168+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-22T16:47:22.225+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-22T16:52:22.271+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-22T16:57:22.320+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-22T17:02:22.381+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-22T17:07:22.428+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-22T17:12:22.480+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-22T17:17:22.532+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-22T17:22:22.579+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-22T17:27:22.623+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-22T17:32:22.672+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-22T17:37:22.720+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-22T17:42:22.761+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-22T17:47:22.804+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-22T17:52:22.844+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-22T17:57:22.886+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-22T18:02:22.936+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-22T18:07:22.973+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-22T18:12:23.013+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-22T18:17:23.066+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-22T18:22:23.106+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-22T18:27:23.147+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-22T18:32:23.202+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-22T18:37:23.240+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-22T18:42:23.283+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-22T18:47:23.328+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-22T18:52:23.369+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-22T18:57:23.411+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-22T19:02:23.467+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-22T19:07:23.511+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-22T19:12:23.552+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-22T19:17:23.592+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-22T19:22:23.631+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-22T19:27:23.647+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-22T19:32:23.709+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-22T19:37:23.743+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-22T19:42:23.787+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-22T19:47:23.834+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-22T19:52:23.878+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-22T19:57:23.934+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-22T20:02:23.996+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-22T20:07:24.043+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-22T20:12:24.082+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-22T20:17:24.125+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-22T20:22:24.171+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-22T20:27:24.224+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-22T20:32:24.258+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-22T20:37:24.301+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-22T20:42:24.354+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-22T20:47:24.403+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-22T20:52:24.447+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-22T20:57:24.497+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-22T21:02:24.553+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-22T21:07:24.583+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-22T21:12:24.629+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-22T21:17:24.667+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-22T21:22:24.710+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-22T21:27:24.751+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-22T21:32:24.802+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-22T21:37:24.847+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-22T21:42:24.886+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-22T21:47:24.930+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-22T21:52:24.971+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-22T21:57:25.008+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-22T22:02:25.059+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-22T22:07:25.092+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-22T22:12:25.130+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-22T22:17:25.164+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-22T22:22:25.196+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-22T22:27:25.231+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-22T22:32:25.281+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-22T22:37:25.316+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-22T22:42:25.348+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-22T22:47:25.381+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-22T22:52:25.415+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-22T22:57:25.451+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-22T23:02:25.508+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-22T23:07:25.544+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-22T23:12:25.582+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-22T23:17:25.629+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-22T23:22:25.663+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-22T23:27:25.699+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-22T23:32:25.751+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-22T23:37:25.786+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-22T23:42:25.818+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-22T23:47:25.850+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-22T23:52:25.884+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-22T23:57:25.928+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-23T00:02:25.990+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-23T00:07:26.040+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-23T00:12:26.097+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-23T00:17:26.147+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-23T00:22:26.197+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-23T00:27:26.234+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-23T00:32:26.295+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-23T00:37:26.331+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-23T00:42:26.371+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-23T00:47:26.406+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-23T00:52:26.441+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-23T00:57:26.476+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-23T01:02:26.535+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-23T01:07:26.569+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-23T01:12:26.611+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-23T01:17:26.649+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-23T01:22:26.702+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-23T01:27:26.756+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-23T01:32:26.791+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-23T01:37:26.828+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-23T01:42:26.861+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-23T01:47:26.899+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-23T01:52:26.937+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-23T01:57:26.975+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-23T02:02:27.037+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-23T02:07:27.074+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-23T02:12:27.111+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-23T02:17:27.152+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-23T02:22:27.200+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-23T02:27:27.246+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-23T02:32:27.296+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-23T02:37:27.338+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-23T02:42:27.379+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-23T02:47:27.436+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-23T02:52:27.479+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-23T02:57:27.522+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-23T03:02:27.569+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-23T03:07:27.609+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-23T03:12:27.646+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-23T03:17:27.686+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-23T03:22:27.736+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-23T03:27:27.778+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-23T03:32:27.831+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-23T03:37:27.870+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-23T03:42:27.910+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-23T03:47:27.949+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-23T03:52:27.989+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-23T03:57:28.006+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-23T04:02:28.042+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-23T04:07:28.074+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-23T04:12:28.119+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-23T04:17:28.161+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-23T04:22:28.205+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-23T04:27:28.246+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-23T04:32:28.282+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-23T04:37:28.315+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-23T04:42:28.352+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-23T04:47:28.394+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-23T04:52:28.436+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-23T04:57:28.474+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-23T05:02:28.515+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-23T05:07:28.549+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-23T05:12:28.582+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-23T05:17:28.617+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-23T05:22:28.652+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-23T05:27:28.683+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-23T05:32:28.748+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-23T05:37:28.785+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-23T05:40:31.966+0000] {scheduler_job_runner.py:423} INFO - 1 tasks up for execution:
-	<TaskInstance: test_ondemand_worker.start_remote_worker manual__2025-10-23T05:40:31.792195+00:00 [scheduled]>
-[2025-10-23T05:40:31.967+0000] {scheduler_job_runner.py:495} INFO - DAG test_ondemand_worker has 0/16 running and queued tasks
-[2025-10-23T05:40:31.967+0000] {scheduler_job_runner.py:634} INFO - Setting the following tasks to queued state:
-	<TaskInstance: test_ondemand_worker.start_remote_worker manual__2025-10-23T05:40:31.792195+00:00 [scheduled]>
-[2025-10-23T05:40:31.970+0000] {scheduler_job_runner.py:736} INFO - Trying to enqueue tasks: [<TaskInstance: test_ondemand_worker.start_remote_worker manual__2025-10-23T05:40:31.792195+00:00 [scheduled]>] for executor: CeleryExecutor(parallelism=32)
-[2025-10-23T05:40:31.971+0000] {scheduler_job_runner.py:680} INFO - Sending TaskInstanceKey(dag_id='test_ondemand_worker', task_id='start_remote_worker', run_id='manual__2025-10-23T05:40:31.792195+00:00', try_number=1, map_index=-1) to CeleryExecutor with priority 4 and queue default
-[2025-10-23T05:40:31.971+0000] {base_executor.py:168} INFO - Adding to queue: ['airflow', 'tasks', 'run', 'test_ondemand_worker', 'start_remote_worker', 'manual__2025-10-23T05:40:31.792195+00:00', '--local', '--subdir', 'DAGS_FOLDER/test_ondemand_worker.py']
-[2025-10-23T05:40:32.112+0000] {scheduler_job_runner.py:764} INFO - Received executor event with state queued for task instance TaskInstanceKey(dag_id='test_ondemand_worker', task_id='start_remote_worker', run_id='manual__2025-10-23T05:40:31.792195+00:00', try_number=1, map_index=-1)
-[2025-10-23T05:40:32.122+0000] {scheduler_job_runner.py:791} INFO - Setting external_id for <TaskInstance: test_ondemand_worker.start_remote_worker manual__2025-10-23T05:40:31.792195+00:00 [queued]> to ce8a2be8-54aa-4243-a863-7e5569cf427e
-[2025-10-23T05:42:28.860+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-23T05:47:28.950+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-23T05:50:38.979+0000] {scheduler_job_runner.py:1795} WARNING - Marking task instance <TaskInstance: test_ondemand_worker.start_remote_worker manual__2025-10-23T05:40:31.792195+00:00 [queued]> stuck in queued as failed. If the task instance has available retries, it will be retried.
-[2025-10-23T05:50:40.031+0000] {scheduler_job_runner.py:764} INFO - Received executor event with state failed for task instance TaskInstanceKey(dag_id='test_ondemand_worker', task_id='start_remote_worker', run_id='manual__2025-10-23T05:40:31.792195+00:00', try_number=1, map_index=-1)
-[2025-10-23T05:50:40.037+0000] {scheduler_job_runner.py:801} INFO - TaskInstance Finished: dag_id=test_ondemand_worker, task_id=start_remote_worker, run_id=manual__2025-10-23T05:40:31.792195+00:00, map_index=-1, run_start_date=None, run_end_date=None, run_duration=None, state=queued, executor=CeleryExecutor(parallelism=32), executor_state=failed, try_number=1, max_tries=0, job_id=None, pool=default_pool, queue=default, priority_weight=4, operator=RemoteWorkerStartOperator, queued_dttm=2025-10-23 05:40:31.968620+00:00, queued_by_job_id=1, pid=None
-[2025-10-23T05:50:40.038+0000] {scheduler_job_runner.py:907} ERROR - Executor CeleryExecutor(parallelism=32) reported that the task instance <TaskInstance: test_ondemand_worker.start_remote_worker manual__2025-10-23T05:40:31.792195+00:00 [queued]> finished with state failed, but the task instance's state attribute is queued. Learn more: https://airflow.apache.org/docs/apache-airflow/stable/troubleshooting.html#task-state-changed-externally
-[2025-10-23T05:50:40.044+0000] {taskinstance.py:3312} ERROR - Executor CeleryExecutor(parallelism=32) reported that the task instance <TaskInstance: test_ondemand_worker.start_remote_worker manual__2025-10-23T05:40:31.792195+00:00 [queued]> finished with state failed, but the task instance's state attribute is queued. Learn more: https://airflow.apache.org/docs/apache-airflow/stable/troubleshooting.html#task-state-changed-externally
-[2025-10-23T05:50:40.055+0000] {taskinstance.py:1225} INFO - Marking task as FAILED. dag_id=test_ondemand_worker, task_id=start_remote_worker, run_id=manual__2025-10-23T05:40:31.792195+00:00, execution_date=20251023T054031, start_date=, end_date=20251023T055040
-[2025-10-23T05:50:42.711+0000] {scheduler_job_runner.py:423} INFO - 1 tasks up for execution:
-	<TaskInstance: test_ondemand_worker.stop_remote_worker manual__2025-10-23T05:40:31.792195+00:00 [scheduled]>
-[2025-10-23T05:50:42.712+0000] {scheduler_job_runner.py:495} INFO - DAG test_ondemand_worker has 0/16 running and queued tasks
-[2025-10-23T05:50:42.712+0000] {scheduler_job_runner.py:634} INFO - Setting the following tasks to queued state:
-	<TaskInstance: test_ondemand_worker.stop_remote_worker manual__2025-10-23T05:40:31.792195+00:00 [scheduled]>
-[2025-10-23T05:50:42.714+0000] {scheduler_job_runner.py:736} INFO - Trying to enqueue tasks: [<TaskInstance: test_ondemand_worker.stop_remote_worker manual__2025-10-23T05:40:31.792195+00:00 [scheduled]>] for executor: CeleryExecutor(parallelism=32)
-[2025-10-23T05:50:42.716+0000] {scheduler_job_runner.py:680} INFO - Sending TaskInstanceKey(dag_id='test_ondemand_worker', task_id='stop_remote_worker', run_id='manual__2025-10-23T05:40:31.792195+00:00', try_number=1, map_index=-1) to CeleryExecutor with priority 1 and queue default
-[2025-10-23T05:50:42.716+0000] {base_executor.py:168} INFO - Adding to queue: ['airflow', 'tasks', 'run', 'test_ondemand_worker', 'stop_remote_worker', 'manual__2025-10-23T05:40:31.792195+00:00', '--local', '--subdir', 'DAGS_FOLDER/test_ondemand_worker.py']
-[2025-10-23T05:50:42.783+0000] {scheduler_job_runner.py:764} INFO - Received executor event with state queued for task instance TaskInstanceKey(dag_id='test_ondemand_worker', task_id='stop_remote_worker', run_id='manual__2025-10-23T05:40:31.792195+00:00', try_number=1, map_index=-1)
-[2025-10-23T05:50:42.789+0000] {scheduler_job_runner.py:791} INFO - Setting external_id for <TaskInstance: test_ondemand_worker.stop_remote_worker manual__2025-10-23T05:40:31.792195+00:00 [queued]> to e8a5662a-c474-4099-858b-993867b94750
-[2025-10-23T05:52:29.013+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-23T05:57:29.079+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-23T06:02:29.163+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-23T06:02:39.404+0000] {scheduler_job_runner.py:1795} WARNING - Marking task instance <TaskInstance: test_ondemand_worker.stop_remote_worker manual__2025-10-23T05:40:31.792195+00:00 [queued]> stuck in queued as failed. If the task instance has available retries, it will be retried.
-[2025-10-23T06:02:40.437+0000] {scheduler_job_runner.py:764} INFO - Received executor event with state failed for task instance TaskInstanceKey(dag_id='test_ondemand_worker', task_id='stop_remote_worker', run_id='manual__2025-10-23T05:40:31.792195+00:00', try_number=1, map_index=-1)
-[2025-10-23T06:02:40.441+0000] {scheduler_job_runner.py:801} INFO - TaskInstance Finished: dag_id=test_ondemand_worker, task_id=stop_remote_worker, run_id=manual__2025-10-23T05:40:31.792195+00:00, map_index=-1, run_start_date=None, run_end_date=None, run_duration=None, state=queued, executor=CeleryExecutor(parallelism=32), executor_state=failed, try_number=1, max_tries=0, job_id=None, pool=default_pool, queue=default, priority_weight=1, operator=RemoteWorkerStopOperator, queued_dttm=2025-10-23 05:50:42.713114+00:00, queued_by_job_id=1, pid=None
-[2025-10-23T06:02:40.442+0000] {scheduler_job_runner.py:907} ERROR - Executor CeleryExecutor(parallelism=32) reported that the task instance <TaskInstance: test_ondemand_worker.stop_remote_worker manual__2025-10-23T05:40:31.792195+00:00 [queued]> finished with state failed, but the task instance's state attribute is queued. Learn more: https://airflow.apache.org/docs/apache-airflow/stable/troubleshooting.html#task-state-changed-externally
-[2025-10-23T06:02:40.446+0000] {taskinstance.py:3312} ERROR - Executor CeleryExecutor(parallelism=32) reported that the task instance <TaskInstance: test_ondemand_worker.stop_remote_worker manual__2025-10-23T05:40:31.792195+00:00 [queued]> finished with state failed, but the task instance's state attribute is queued. Learn more: https://airflow.apache.org/docs/apache-airflow/stable/troubleshooting.html#task-state-changed-externally
-[2025-10-23T06:02:40.452+0000] {taskinstance.py:1225} INFO - Marking task as FAILED. dag_id=test_ondemand_worker, task_id=stop_remote_worker, run_id=manual__2025-10-23T05:40:31.792195+00:00, execution_date=20251023T054031, start_date=, end_date=20251023T060240
-[2025-10-23T06:02:41.154+0000] {dagrun.py:823} ERROR - Marking run <DagRun test_ondemand_worker @ 2025-10-23 05:40:31.792195+00:00: manual__2025-10-23T05:40:31.792195+00:00, state:running, queued_at: 2025-10-23 05:40:31.829679+00:00. externally triggered: True> failed
-[2025-10-23T06:02:41.155+0000] {dagrun.py:905} INFO - DagRun Finished: dag_id=test_ondemand_worker, execution_date=2025-10-23 05:40:31.792195+00:00, run_id=manual__2025-10-23T05:40:31.792195+00:00, run_start_date=2025-10-23 05:40:31.915413+00:00, run_end_date=2025-10-23 06:02:41.154937+00:00, run_duration=1329.239524, state=failed, external_trigger=True, run_type=manual, data_interval_start=2025-10-23 05:40:31.792195+00:00, data_interval_end=2025-10-23 05:40:31.792195+00:00, dag_hash=929e78c82e47dfdab76aa5816e4d7647
-[2025-10-23T06:07:29.196+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
-[2025-10-23T06:12:29.236+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
+[2025-10-25T05:10:54.738+0000] {executor_loader.py:254} INFO - Loaded executor: CeleryExecutor
+[2025-10-25T05:10:54.762+0000] {scheduler_job_runner.py:935} INFO - Starting the scheduler
+[2025-10-25T05:10:54.762+0000] {scheduler_job_runner.py:942} INFO - Processing each file at most -1 times
+[2025-10-25T05:10:54.767+0000] {manager.py:174} INFO - Launched DagFileProcessorManager with pid: 128609
+[2025-10-25T05:10:54.768+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
+[2025-10-25T05:10:54.774+0000] {settings.py:63} INFO - Configured default timezone UTC
+[2025-10-25T05:10:54.867+0000] {celery_executor.py:433} INFO - Adopted the following 1 tasks from a dead executor
+	<TaskInstance: example_dag_with_workers.remote_task_1 manual__2025-10-25T05:09:52+00:00 [running]> in state STARTED
+[2025-10-25T05:11:42.472+0000] {scheduler_job_runner.py:423} INFO - 1 tasks up for execution:
+	<TaskInstance: example_dag_with_workers.start manual__2025-10-25T05:11:34+00:00 [scheduled]>
+[2025-10-25T05:11:42.473+0000] {scheduler_job_runner.py:495} INFO - DAG example_dag_with_workers has 1/16 running and queued tasks
+[2025-10-25T05:11:42.473+0000] {scheduler_job_runner.py:634} INFO - Setting the following tasks to queued state:
+	<TaskInstance: example_dag_with_workers.start manual__2025-10-25T05:11:34+00:00 [scheduled]>
+[2025-10-25T05:11:42.476+0000] {scheduler_job_runner.py:736} INFO - Trying to enqueue tasks: [<TaskInstance: example_dag_with_workers.start manual__2025-10-25T05:11:34+00:00 [scheduled]>] for executor: CeleryExecutor(parallelism=32)
+[2025-10-25T05:11:42.477+0000] {scheduler_job_runner.py:680} INFO - Sending TaskInstanceKey(dag_id='example_dag_with_workers', task_id='start', run_id='manual__2025-10-25T05:11:34+00:00', try_number=1, map_index=-1) to CeleryExecutor with priority 5 and queue default
+[2025-10-25T05:11:42.477+0000] {base_executor.py:168} INFO - Adding to queue: ['airflow', 'tasks', 'run', 'example_dag_with_workers', 'start', 'manual__2025-10-25T05:11:34+00:00', '--local', '--subdir', 'DAGS_FOLDER/example_dag_with_workers.py']
+[2025-10-25T05:11:42.595+0000] {scheduler_job_runner.py:764} INFO - Received executor event with state queued for task instance TaskInstanceKey(dag_id='example_dag_with_workers', task_id='start', run_id='manual__2025-10-25T05:11:34+00:00', try_number=1, map_index=-1)
+[2025-10-25T05:11:42.604+0000] {scheduler_job_runner.py:791} INFO - Setting external_id for <TaskInstance: example_dag_with_workers.start manual__2025-10-25T05:11:34+00:00 [queued]> to ec01235a-3828-4640-a2ea-5117c45b3158
+[2025-10-25T05:11:43.718+0000] {scheduler_job_runner.py:423} INFO - 1 tasks up for execution:
+	<TaskInstance: example_dag_with_workers.remote_task_1 manual__2025-10-25T05:11:34+00:00 [scheduled]>
+[2025-10-25T05:11:43.719+0000] {scheduler_job_runner.py:495} INFO - DAG example_dag_with_workers has 1/16 running and queued tasks
+[2025-10-25T05:11:43.719+0000] {scheduler_job_runner.py:634} INFO - Setting the following tasks to queued state:
+	<TaskInstance: example_dag_with_workers.remote_task_1 manual__2025-10-25T05:11:34+00:00 [scheduled]>
+[2025-10-25T05:11:43.721+0000] {scheduler_job_runner.py:736} INFO - Trying to enqueue tasks: [<TaskInstance: example_dag_with_workers.remote_task_1 manual__2025-10-25T05:11:34+00:00 [scheduled]>] for executor: CeleryExecutor(parallelism=32)
+[2025-10-25T05:11:43.721+0000] {scheduler_job_runner.py:680} INFO - Sending TaskInstanceKey(dag_id='example_dag_with_workers', task_id='remote_task_1', run_id='manual__2025-10-25T05:11:34+00:00', try_number=1, map_index=-1) to CeleryExecutor with priority 4 and queue default
+[2025-10-25T05:11:43.721+0000] {base_executor.py:168} INFO - Adding to queue: ['airflow', 'tasks', 'run', 'example_dag_with_workers', 'remote_task_1', 'manual__2025-10-25T05:11:34+00:00', '--local', '--subdir', 'DAGS_FOLDER/example_dag_with_workers.py']
+[2025-10-25T05:11:43.767+0000] {scheduler_job_runner.py:764} INFO - Received executor event with state queued for task instance TaskInstanceKey(dag_id='example_dag_with_workers', task_id='remote_task_1', run_id='manual__2025-10-25T05:11:34+00:00', try_number=1, map_index=-1)
+[2025-10-25T05:11:43.767+0000] {scheduler_job_runner.py:764} INFO - Received executor event with state success for task instance TaskInstanceKey(dag_id='example_dag_with_workers', task_id='start', run_id='manual__2025-10-25T05:11:34+00:00', try_number=1, map_index=-1)
+[2025-10-25T05:11:43.772+0000] {scheduler_job_runner.py:791} INFO - Setting external_id for <TaskInstance: example_dag_with_workers.remote_task_1 manual__2025-10-25T05:11:34+00:00 [queued]> to ad2eef0b-2b7b-4a18-9fe5-f6156987065c
+[2025-10-25T05:11:43.773+0000] {scheduler_job_runner.py:801} INFO - TaskInstance Finished: dag_id=example_dag_with_workers, task_id=start, run_id=manual__2025-10-25T05:11:34+00:00, map_index=-1, run_start_date=2025-10-25 05:11:42.980119+00:00, run_end_date=2025-10-25 05:11:43.255051+00:00, run_duration=0.274932, state=success, executor=CeleryExecutor(parallelism=32), executor_state=success, try_number=1, max_tries=0, job_id=124, pool=default_pool, queue=default, priority_weight=5, operator=PythonOperator, queued_dttm=2025-10-25 05:11:42.474608+00:00, queued_by_job_id=123, pid=128754
+[2025-10-25T05:15:02.346+0000] {scheduler_job_runner.py:764} INFO - Received executor event with state success for task instance TaskInstanceKey(dag_id='example_dag_with_workers', task_id='remote_task_1', run_id='manual__2025-10-25T05:09:52+00:00', try_number=1, map_index=-1)
+[2025-10-25T05:15:02.352+0000] {scheduler_job_runner.py:801} INFO - TaskInstance Finished: dag_id=example_dag_with_workers, task_id=remote_task_1, run_id=manual__2025-10-25T05:09:52+00:00, map_index=-1, run_start_date=2025-10-25 05:09:59.823947+00:00, run_end_date=2025-10-25 05:15:01.543909+00:00, run_duration=301.719962, state=failed, executor=CeleryExecutor(parallelism=32), executor_state=success, try_number=1, max_tries=0, job_id=122, pool=default_pool, queue=default, priority_weight=4, operator=SmartRemoteWorkerOperator, queued_dttm=2025-10-25 05:09:59.474537+00:00, queued_by_job_id=123, pid=128441
+[2025-10-25T05:15:04.172+0000] {dagrun.py:823} ERROR - Marking run <DagRun example_dag_with_workers @ 2025-10-25 05:09:52+00:00: manual__2025-10-25T05:09:52+00:00, state:running, queued_at: 2025-10-25 05:09:56.745460+00:00. externally triggered: True> failed
+[2025-10-25T05:15:04.173+0000] {dagrun.py:905} INFO - DagRun Finished: dag_id=example_dag_with_workers, execution_date=2025-10-25 05:09:52+00:00, run_id=manual__2025-10-25T05:09:52+00:00, run_start_date=2025-10-25 05:09:57.487826+00:00, run_end_date=2025-10-25 05:15:04.173740+00:00, run_duration=306.685914, state=failed, external_trigger=True, run_type=manual, data_interval_start=2025-10-25 05:09:52+00:00, data_interval_end=2025-10-25 05:09:52+00:00, dag_hash=00f83e27c80c43b17eb9c896bc1f93da
+[2025-10-25T05:15:54.932+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
+[2025-10-25T05:16:46.575+0000] {scheduler_job_runner.py:764} INFO - Received executor event with state success for task instance TaskInstanceKey(dag_id='example_dag_with_workers', task_id='remote_task_1', run_id='manual__2025-10-25T05:11:34+00:00', try_number=1, map_index=-1)
+[2025-10-25T05:16:46.580+0000] {scheduler_job_runner.py:801} INFO - TaskInstance Finished: dag_id=example_dag_with_workers, task_id=remote_task_1, run_id=manual__2025-10-25T05:11:34+00:00, map_index=-1, run_start_date=2025-10-25 05:11:44.082060+00:00, run_end_date=2025-10-25 05:16:45.736576+00:00, run_duration=301.654516, state=failed, executor=CeleryExecutor(parallelism=32), executor_state=success, try_number=1, max_tries=0, job_id=125, pool=default_pool, queue=default, priority_weight=4, operator=SmartRemoteWorkerOperator, queued_dttm=2025-10-25 05:11:43.719839+00:00, queued_by_job_id=123, pid=128779
+[2025-10-25T05:16:48.382+0000] {dagrun.py:823} ERROR - Marking run <DagRun example_dag_with_workers @ 2025-10-25 05:11:34+00:00: manual__2025-10-25T05:11:34+00:00, state:running, queued_at: 2025-10-25 05:11:41.601380+00:00. externally triggered: True> failed
+[2025-10-25T05:16:48.383+0000] {dagrun.py:905} INFO - DagRun Finished: dag_id=example_dag_with_workers, execution_date=2025-10-25 05:11:34+00:00, run_id=manual__2025-10-25T05:11:34+00:00, run_start_date=2025-10-25 05:11:42.435060+00:00, run_end_date=2025-10-25 05:16:48.383465+00:00, run_duration=305.948405, state=failed, external_trigger=True, run_type=manual, data_interval_start=2025-10-25 05:11:34+00:00, data_interval_end=2025-10-25 05:11:34+00:00, dag_hash=00f83e27c80c43b17eb9c896bc1f93da
+[2025-10-25T05:20:54.971+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
+[2025-10-25T05:25:55.005+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
+[2025-10-25T05:30:55.043+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
+[2025-10-25T05:35:55.076+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
+[2025-10-25T05:37:16.180+0000] {scheduler_job_runner.py:423} INFO - 1 tasks up for execution:
+	<TaskInstance: test_smart_v2.print_info manual__2025-10-25T05:37:14.593992+00:00 [scheduled]>
+[2025-10-25T05:37:16.180+0000] {scheduler_job_runner.py:495} INFO - DAG test_smart_v2 has 0/16 running and queued tasks
+[2025-10-25T05:37:16.181+0000] {scheduler_job_runner.py:634} INFO - Setting the following tasks to queued state:
+	<TaskInstance: test_smart_v2.print_info manual__2025-10-25T05:37:14.593992+00:00 [scheduled]>
+[2025-10-25T05:37:16.183+0000] {scheduler_job_runner.py:736} INFO - Trying to enqueue tasks: [<TaskInstance: test_smart_v2.print_info manual__2025-10-25T05:37:14.593992+00:00 [scheduled]>] for executor: CeleryExecutor(parallelism=32)
+[2025-10-25T05:37:16.183+0000] {scheduler_job_runner.py:680} INFO - Sending TaskInstanceKey(dag_id='test_smart_v2', task_id='print_info', run_id='manual__2025-10-25T05:37:14.593992+00:00', try_number=1, map_index=-1) to CeleryExecutor with priority 7 and queue default
+[2025-10-25T05:37:16.183+0000] {base_executor.py:168} INFO - Adding to queue: ['airflow', 'tasks', 'run', 'test_smart_v2', 'print_info', 'manual__2025-10-25T05:37:14.593992+00:00', '--local', '--subdir', 'DAGS_FOLDER/test_smart_v2.py']
+[2025-10-25T05:37:16.232+0000] {scheduler_job_runner.py:764} INFO - Received executor event with state queued for task instance TaskInstanceKey(dag_id='test_smart_v2', task_id='print_info', run_id='manual__2025-10-25T05:37:14.593992+00:00', try_number=1, map_index=-1)
+[2025-10-25T05:37:16.239+0000] {scheduler_job_runner.py:791} INFO - Setting external_id for <TaskInstance: test_smart_v2.print_info manual__2025-10-25T05:37:14.593992+00:00 [queued]> to cdeed9db-b17d-43ee-9952-d0d868cdb9fc
+[2025-10-25T05:37:17.352+0000] {scheduler_job_runner.py:423} INFO - 1 tasks up for execution:
+	<TaskInstance: test_smart_v2.test_simple_command manual__2025-10-25T05:37:14.593992+00:00 [scheduled]>
+[2025-10-25T05:37:17.353+0000] {scheduler_job_runner.py:495} INFO - DAG test_smart_v2 has 0/16 running and queued tasks
+[2025-10-25T05:37:17.353+0000] {scheduler_job_runner.py:634} INFO - Setting the following tasks to queued state:
+	<TaskInstance: test_smart_v2.test_simple_command manual__2025-10-25T05:37:14.593992+00:00 [scheduled]>
+[2025-10-25T05:37:17.355+0000] {scheduler_job_runner.py:736} INFO - Trying to enqueue tasks: [<TaskInstance: test_smart_v2.test_simple_command manual__2025-10-25T05:37:14.593992+00:00 [scheduled]>] for executor: CeleryExecutor(parallelism=32)
+[2025-10-25T05:37:17.356+0000] {scheduler_job_runner.py:680} INFO - Sending TaskInstanceKey(dag_id='test_smart_v2', task_id='test_simple_command', run_id='manual__2025-10-25T05:37:14.593992+00:00', try_number=1, map_index=-1) to CeleryExecutor with priority 6 and queue default
+[2025-10-25T05:37:17.356+0000] {base_executor.py:168} INFO - Adding to queue: ['airflow', 'tasks', 'run', 'test_smart_v2', 'test_simple_command', 'manual__2025-10-25T05:37:14.593992+00:00', '--local', '--subdir', 'DAGS_FOLDER/test_smart_v2.py']
+[2025-10-25T05:37:17.414+0000] {scheduler_job_runner.py:764} INFO - Received executor event with state queued for task instance TaskInstanceKey(dag_id='test_smart_v2', task_id='test_simple_command', run_id='manual__2025-10-25T05:37:14.593992+00:00', try_number=1, map_index=-1)
+[2025-10-25T05:37:17.414+0000] {scheduler_job_runner.py:764} INFO - Received executor event with state success for task instance TaskInstanceKey(dag_id='test_smart_v2', task_id='print_info', run_id='manual__2025-10-25T05:37:14.593992+00:00', try_number=1, map_index=-1)
+[2025-10-25T05:37:17.419+0000] {scheduler_job_runner.py:791} INFO - Setting external_id for <TaskInstance: test_smart_v2.test_simple_command manual__2025-10-25T05:37:14.593992+00:00 [queued]> to b47d949b-1bf8-4ecf-b020-b820595d0977
+[2025-10-25T05:37:17.419+0000] {scheduler_job_runner.py:801} INFO - TaskInstance Finished: dag_id=test_smart_v2, task_id=print_info, run_id=manual__2025-10-25T05:37:14.593992+00:00, map_index=-1, run_start_date=2025-10-25 05:37:16.545590+00:00, run_end_date=2025-10-25 05:37:16.764324+00:00, run_duration=0.218734, state=success, executor=CeleryExecutor(parallelism=32), executor_state=success, try_number=1, max_tries=0, job_id=126, pool=default_pool, queue=default, priority_weight=7, operator=PythonOperator, queued_dttm=2025-10-25 05:37:16.181538+00:00, queued_by_job_id=123, pid=130025
+[2025-10-25T05:37:19.122+0000] {scheduler_job_runner.py:423} INFO - 1 tasks up for execution:
+	<TaskInstance: test_smart_v2.test_directory_structure manual__2025-10-25T05:37:14.593992+00:00 [scheduled]>
+[2025-10-25T05:37:19.122+0000] {scheduler_job_runner.py:495} INFO - DAG test_smart_v2 has 0/16 running and queued tasks
+[2025-10-25T05:37:19.123+0000] {scheduler_job_runner.py:634} INFO - Setting the following tasks to queued state:
+	<TaskInstance: test_smart_v2.test_directory_structure manual__2025-10-25T05:37:14.593992+00:00 [scheduled]>
+[2025-10-25T05:37:19.124+0000] {scheduler_job_runner.py:736} INFO - Trying to enqueue tasks: [<TaskInstance: test_smart_v2.test_directory_structure manual__2025-10-25T05:37:14.593992+00:00 [scheduled]>] for executor: CeleryExecutor(parallelism=32)
+[2025-10-25T05:37:19.124+0000] {scheduler_job_runner.py:680} INFO - Sending TaskInstanceKey(dag_id='test_smart_v2', task_id='test_directory_structure', run_id='manual__2025-10-25T05:37:14.593992+00:00', try_number=1, map_index=-1) to CeleryExecutor with priority 5 and queue default
+[2025-10-25T05:37:19.125+0000] {base_executor.py:168} INFO - Adding to queue: ['airflow', 'tasks', 'run', 'test_smart_v2', 'test_directory_structure', 'manual__2025-10-25T05:37:14.593992+00:00', '--local', '--subdir', 'DAGS_FOLDER/test_smart_v2.py']
+[2025-10-25T05:37:19.192+0000] {scheduler_job_runner.py:764} INFO - Received executor event with state queued for task instance TaskInstanceKey(dag_id='test_smart_v2', task_id='test_directory_structure', run_id='manual__2025-10-25T05:37:14.593992+00:00', try_number=1, map_index=-1)
+[2025-10-25T05:37:19.194+0000] {scheduler_job_runner.py:764} INFO - Received executor event with state success for task instance TaskInstanceKey(dag_id='test_smart_v2', task_id='test_simple_command', run_id='manual__2025-10-25T05:37:14.593992+00:00', try_number=1, map_index=-1)
+[2025-10-25T05:37:19.202+0000] {scheduler_job_runner.py:791} INFO - Setting external_id for <TaskInstance: test_smart_v2.test_directory_structure manual__2025-10-25T05:37:14.593992+00:00 [queued]> to 0d067395-e16f-4599-8bfe-3b9c911f1a6c
+[2025-10-25T05:37:19.203+0000] {scheduler_job_runner.py:801} INFO - TaskInstance Finished: dag_id=test_smart_v2, task_id=test_simple_command, run_id=manual__2025-10-25T05:37:14.593992+00:00, map_index=-1, run_start_date=2025-10-25 05:37:17.728774+00:00, run_end_date=2025-10-25 05:37:18.615567+00:00, run_duration=0.886793, state=success, executor=CeleryExecutor(parallelism=32), executor_state=success, try_number=1, max_tries=0, job_id=127, pool=default_pool, queue=default, priority_weight=6, operator=SmartRemoteWorkerOperatorV2, queued_dttm=2025-10-25 05:37:17.353882+00:00, queued_by_job_id=123, pid=130049
+[2025-10-25T05:37:20.320+0000] {scheduler_job_runner.py:423} INFO - 1 tasks up for execution:
+	<TaskInstance: test_smart_v2.test_singularity manual__2025-10-25T05:37:14.593992+00:00 [scheduled]>
+[2025-10-25T05:37:20.321+0000] {scheduler_job_runner.py:495} INFO - DAG test_smart_v2 has 0/16 running and queued tasks
+[2025-10-25T05:37:20.321+0000] {scheduler_job_runner.py:634} INFO - Setting the following tasks to queued state:
+	<TaskInstance: test_smart_v2.test_singularity manual__2025-10-25T05:37:14.593992+00:00 [scheduled]>
+[2025-10-25T05:37:20.324+0000] {scheduler_job_runner.py:736} INFO - Trying to enqueue tasks: [<TaskInstance: test_smart_v2.test_singularity manual__2025-10-25T05:37:14.593992+00:00 [scheduled]>] for executor: CeleryExecutor(parallelism=32)
+[2025-10-25T05:37:20.325+0000] {scheduler_job_runner.py:680} INFO - Sending TaskInstanceKey(dag_id='test_smart_v2', task_id='test_singularity', run_id='manual__2025-10-25T05:37:14.593992+00:00', try_number=1, map_index=-1) to CeleryExecutor with priority 4 and queue default
+[2025-10-25T05:37:20.325+0000] {base_executor.py:168} INFO - Adding to queue: ['airflow', 'tasks', 'run', 'test_smart_v2', 'test_singularity', 'manual__2025-10-25T05:37:14.593992+00:00', '--local', '--subdir', 'DAGS_FOLDER/test_smart_v2.py']
+[2025-10-25T05:37:20.373+0000] {scheduler_job_runner.py:764} INFO - Received executor event with state queued for task instance TaskInstanceKey(dag_id='test_smart_v2', task_id='test_singularity', run_id='manual__2025-10-25T05:37:14.593992+00:00', try_number=1, map_index=-1)
+[2025-10-25T05:37:20.373+0000] {scheduler_job_runner.py:764} INFO - Received executor event with state success for task instance TaskInstanceKey(dag_id='test_smart_v2', task_id='test_directory_structure', run_id='manual__2025-10-25T05:37:14.593992+00:00', try_number=1, map_index=-1)
+[2025-10-25T05:37:20.382+0000] {scheduler_job_runner.py:791} INFO - Setting external_id for <TaskInstance: test_smart_v2.test_singularity manual__2025-10-25T05:37:14.593992+00:00 [queued]> to d8a6e849-f94c-411a-a755-c109d5ba2ba0
+[2025-10-25T05:37:20.383+0000] {scheduler_job_runner.py:801} INFO - TaskInstance Finished: dag_id=test_smart_v2, task_id=test_directory_structure, run_id=manual__2025-10-25T05:37:14.593992+00:00, map_index=-1, run_start_date=2025-10-25 05:37:19.490272+00:00, run_end_date=2025-10-25 05:37:20.087844+00:00, run_duration=0.597572, state=success, executor=CeleryExecutor(parallelism=32), executor_state=success, try_number=1, max_tries=0, job_id=128, pool=default_pool, queue=default, priority_weight=5, operator=SmartRemoteWorkerOperatorV2, queued_dttm=2025-10-25 05:37:19.123389+00:00, queued_by_job_id=123, pid=130082
+[2025-10-25T05:37:21.494+0000] {scheduler_job_runner.py:423} INFO - 1 tasks up for execution:
+	<TaskInstance: test_smart_v2.test_python_in_singularity manual__2025-10-25T05:37:14.593992+00:00 [scheduled]>
+[2025-10-25T05:37:21.495+0000] {scheduler_job_runner.py:495} INFO - DAG test_smart_v2 has 0/16 running and queued tasks
+[2025-10-25T05:37:21.495+0000] {scheduler_job_runner.py:634} INFO - Setting the following tasks to queued state:
+	<TaskInstance: test_smart_v2.test_python_in_singularity manual__2025-10-25T05:37:14.593992+00:00 [scheduled]>
+[2025-10-25T05:37:21.497+0000] {scheduler_job_runner.py:736} INFO - Trying to enqueue tasks: [<TaskInstance: test_smart_v2.test_python_in_singularity manual__2025-10-25T05:37:14.593992+00:00 [scheduled]>] for executor: CeleryExecutor(parallelism=32)
+[2025-10-25T05:37:21.498+0000] {scheduler_job_runner.py:680} INFO - Sending TaskInstanceKey(dag_id='test_smart_v2', task_id='test_python_in_singularity', run_id='manual__2025-10-25T05:37:14.593992+00:00', try_number=1, map_index=-1) to CeleryExecutor with priority 3 and queue default
+[2025-10-25T05:37:21.498+0000] {base_executor.py:168} INFO - Adding to queue: ['airflow', 'tasks', 'run', 'test_smart_v2', 'test_python_in_singularity', 'manual__2025-10-25T05:37:14.593992+00:00', '--local', '--subdir', 'DAGS_FOLDER/test_smart_v2.py']
+[2025-10-25T05:37:21.545+0000] {scheduler_job_runner.py:764} INFO - Received executor event with state queued for task instance TaskInstanceKey(dag_id='test_smart_v2', task_id='test_python_in_singularity', run_id='manual__2025-10-25T05:37:14.593992+00:00', try_number=1, map_index=-1)
+[2025-10-25T05:37:21.546+0000] {scheduler_job_runner.py:764} INFO - Received executor event with state success for task instance TaskInstanceKey(dag_id='test_smart_v2', task_id='test_singularity', run_id='manual__2025-10-25T05:37:14.593992+00:00', try_number=1, map_index=-1)
+[2025-10-25T05:37:21.551+0000] {scheduler_job_runner.py:791} INFO - Setting external_id for <TaskInstance: test_smart_v2.test_python_in_singularity manual__2025-10-25T05:37:14.593992+00:00 [queued]> to 52b56e4a-416c-46df-bc79-4ba9c7988de2
+[2025-10-25T05:37:21.552+0000] {scheduler_job_runner.py:801} INFO - TaskInstance Finished: dag_id=test_smart_v2, task_id=test_singularity, run_id=manual__2025-10-25T05:37:14.593992+00:00, map_index=-1, run_start_date=2025-10-25 05:37:20.730091+00:00, run_end_date=2025-10-25 05:37:21.342817+00:00, run_duration=0.612726, state=success, executor=CeleryExecutor(parallelism=32), executor_state=success, try_number=1, max_tries=0, job_id=129, pool=default_pool, queue=default, priority_weight=4, operator=SmartRemoteWorkerOperatorV2, queued_dttm=2025-10-25 05:37:20.322095+00:00, queued_by_job_id=123, pid=130112
+[2025-10-25T05:37:23.738+0000] {scheduler_job_runner.py:423} INFO - 1 tasks up for execution:
+	<TaskInstance: test_smart_v2.print_results manual__2025-10-25T05:37:14.593992+00:00 [scheduled]>
+[2025-10-25T05:37:23.738+0000] {scheduler_job_runner.py:495} INFO - DAG test_smart_v2 has 0/16 running and queued tasks
+[2025-10-25T05:37:23.738+0000] {scheduler_job_runner.py:634} INFO - Setting the following tasks to queued state:
+	<TaskInstance: test_smart_v2.print_results manual__2025-10-25T05:37:14.593992+00:00 [scheduled]>
+[2025-10-25T05:37:23.740+0000] {scheduler_job_runner.py:736} INFO - Trying to enqueue tasks: [<TaskInstance: test_smart_v2.print_results manual__2025-10-25T05:37:14.593992+00:00 [scheduled]>] for executor: CeleryExecutor(parallelism=32)
+[2025-10-25T05:37:23.740+0000] {scheduler_job_runner.py:680} INFO - Sending TaskInstanceKey(dag_id='test_smart_v2', task_id='print_results', run_id='manual__2025-10-25T05:37:14.593992+00:00', try_number=1, map_index=-1) to CeleryExecutor with priority 2 and queue default
+[2025-10-25T05:37:23.741+0000] {base_executor.py:168} INFO - Adding to queue: ['airflow', 'tasks', 'run', 'test_smart_v2', 'print_results', 'manual__2025-10-25T05:37:14.593992+00:00', '--local', '--subdir', 'DAGS_FOLDER/test_smart_v2.py']
+[2025-10-25T05:37:23.799+0000] {scheduler_job_runner.py:764} INFO - Received executor event with state queued for task instance TaskInstanceKey(dag_id='test_smart_v2', task_id='print_results', run_id='manual__2025-10-25T05:37:14.593992+00:00', try_number=1, map_index=-1)
+[2025-10-25T05:37:23.799+0000] {scheduler_job_runner.py:764} INFO - Received executor event with state success for task instance TaskInstanceKey(dag_id='test_smart_v2', task_id='test_python_in_singularity', run_id='manual__2025-10-25T05:37:14.593992+00:00', try_number=1, map_index=-1)
+[2025-10-25T05:37:23.805+0000] {scheduler_job_runner.py:791} INFO - Setting external_id for <TaskInstance: test_smart_v2.print_results manual__2025-10-25T05:37:14.593992+00:00 [queued]> to 9053ce2f-4b94-40e1-bd1e-adfd18bc0234
+[2025-10-25T05:37:23.806+0000] {scheduler_job_runner.py:801} INFO - TaskInstance Finished: dag_id=test_smart_v2, task_id=test_python_in_singularity, run_id=manual__2025-10-25T05:37:14.593992+00:00, map_index=-1, run_start_date=2025-10-25 05:37:21.853734+00:00, run_end_date=2025-10-25 05:37:22.593994+00:00, run_duration=0.74026, state=success, executor=CeleryExecutor(parallelism=32), executor_state=success, try_number=1, max_tries=0, job_id=130, pool=default_pool, queue=default, priority_weight=3, operator=SmartRemoteWorkerOperatorV2, queued_dttm=2025-10-25 05:37:21.496214+00:00, queued_by_job_id=123, pid=130142
+[2025-10-25T05:37:25.372+0000] {scheduler_job_runner.py:764} INFO - Received executor event with state success for task instance TaskInstanceKey(dag_id='test_smart_v2', task_id='print_results', run_id='manual__2025-10-25T05:37:14.593992+00:00', try_number=1, map_index=-1)
+[2025-10-25T05:37:25.376+0000] {scheduler_job_runner.py:801} INFO - TaskInstance Finished: dag_id=test_smart_v2, task_id=print_results, run_id=manual__2025-10-25T05:37:14.593992+00:00, map_index=-1, run_start_date=2025-10-25 05:37:24.110985+00:00, run_end_date=2025-10-25 05:37:24.412591+00:00, run_duration=0.301606, state=success, executor=CeleryExecutor(parallelism=32), executor_state=success, try_number=1, max_tries=0, job_id=131, pool=default_pool, queue=default, priority_weight=2, operator=PythonOperator, queued_dttm=2025-10-25 05:37:23.739167+00:00, queued_by_job_id=123, pid=130173
+[2025-10-25T05:37:26.409+0000] {dagrun.py:854} INFO - Marking run <DagRun test_smart_v2 @ 2025-10-25 05:37:14.593992+00:00: manual__2025-10-25T05:37:14.593992+00:00, state:running, queued_at: 2025-10-25 05:37:14.610702+00:00. externally triggered: True> successful
+[2025-10-25T05:37:26.409+0000] {dagrun.py:905} INFO - DagRun Finished: dag_id=test_smart_v2, execution_date=2025-10-25 05:37:14.593992+00:00, run_id=manual__2025-10-25T05:37:14.593992+00:00, run_start_date=2025-10-25 05:37:15.109082+00:00, run_end_date=2025-10-25 05:37:26.409926+00:00, run_duration=11.300844, state=success, external_trigger=True, run_type=manual, data_interval_start=2025-10-25 05:37:14.593992+00:00, data_interval_end=2025-10-25 05:37:14.593992+00:00, dag_hash=12a70d192902c8bcd79ab10402abf2a7
+[2025-10-25T05:40:55.121+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
+[2025-10-25T05:45:55.152+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
+[2025-10-25T05:50:55.184+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
+[2025-10-25T05:55:55.216+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
+[2025-10-25T06:00:55.247+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
+[2025-10-25T06:05:55.302+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
+[2025-10-25T06:10:55.355+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
+[2025-10-25T06:15:55.396+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
+[2025-10-25T06:20:55.431+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
+[2025-10-25T06:25:55.467+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
+[2025-10-25T06:30:55.505+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
+[2025-10-25T06:32:44.523+0000] {scheduler_job_runner.py:423} INFO - 1 tasks up for execution:
+	<TaskInstance: full_integration_test.print_banner manual__2025-10-25T06:32:43.058270+00:00 [scheduled]>
+[2025-10-25T06:32:44.524+0000] {scheduler_job_runner.py:495} INFO - DAG full_integration_test has 0/16 running and queued tasks
+[2025-10-25T06:32:44.524+0000] {scheduler_job_runner.py:634} INFO - Setting the following tasks to queued state:
+	<TaskInstance: full_integration_test.print_banner manual__2025-10-25T06:32:43.058270+00:00 [scheduled]>
+[2025-10-25T06:32:44.526+0000] {scheduler_job_runner.py:736} INFO - Trying to enqueue tasks: [<TaskInstance: full_integration_test.print_banner manual__2025-10-25T06:32:43.058270+00:00 [scheduled]>] for executor: CeleryExecutor(parallelism=32)
+[2025-10-25T06:32:44.526+0000] {scheduler_job_runner.py:680} INFO - Sending TaskInstanceKey(dag_id='full_integration_test', task_id='print_banner', run_id='manual__2025-10-25T06:32:43.058270+00:00', try_number=1, map_index=-1) to CeleryExecutor with priority 9 and queue default
+[2025-10-25T06:32:44.526+0000] {base_executor.py:168} INFO - Adding to queue: ['airflow', 'tasks', 'run', 'full_integration_test', 'print_banner', 'manual__2025-10-25T06:32:43.058270+00:00', '--local', '--subdir', 'DAGS_FOLDER/full_integration_test.py']
+[2025-10-25T06:32:44.586+0000] {scheduler_job_runner.py:764} INFO - Received executor event with state queued for task instance TaskInstanceKey(dag_id='full_integration_test', task_id='print_banner', run_id='manual__2025-10-25T06:32:43.058270+00:00', try_number=1, map_index=-1)
+[2025-10-25T06:32:44.592+0000] {scheduler_job_runner.py:791} INFO - Setting external_id for <TaskInstance: full_integration_test.print_banner manual__2025-10-25T06:32:43.058270+00:00 [queued]> to 11c96181-378c-460d-b610-852c58f4d6e7
+[2025-10-25T06:32:45.702+0000] {scheduler_job_runner.py:423} INFO - 1 tasks up for execution:
+	<TaskInstance: full_integration_test.get_connection_info manual__2025-10-25T06:32:43.058270+00:00 [scheduled]>
+[2025-10-25T06:32:45.702+0000] {scheduler_job_runner.py:495} INFO - DAG full_integration_test has 0/16 running and queued tasks
+[2025-10-25T06:32:45.703+0000] {scheduler_job_runner.py:634} INFO - Setting the following tasks to queued state:
+	<TaskInstance: full_integration_test.get_connection_info manual__2025-10-25T06:32:43.058270+00:00 [scheduled]>
+[2025-10-25T06:32:45.704+0000] {scheduler_job_runner.py:736} INFO - Trying to enqueue tasks: [<TaskInstance: full_integration_test.get_connection_info manual__2025-10-25T06:32:43.058270+00:00 [scheduled]>] for executor: CeleryExecutor(parallelism=32)
+[2025-10-25T06:32:45.705+0000] {scheduler_job_runner.py:680} INFO - Sending TaskInstanceKey(dag_id='full_integration_test', task_id='get_connection_info', run_id='manual__2025-10-25T06:32:43.058270+00:00', try_number=1, map_index=-1) to CeleryExecutor with priority 8 and queue default
+[2025-10-25T06:32:45.705+0000] {base_executor.py:168} INFO - Adding to queue: ['airflow', 'tasks', 'run', 'full_integration_test', 'get_connection_info', 'manual__2025-10-25T06:32:43.058270+00:00', '--local', '--subdir', 'DAGS_FOLDER/full_integration_test.py']
+[2025-10-25T06:32:45.779+0000] {scheduler_job_runner.py:764} INFO - Received executor event with state queued for task instance TaskInstanceKey(dag_id='full_integration_test', task_id='get_connection_info', run_id='manual__2025-10-25T06:32:43.058270+00:00', try_number=1, map_index=-1)
+[2025-10-25T06:32:45.779+0000] {scheduler_job_runner.py:764} INFO - Received executor event with state success for task instance TaskInstanceKey(dag_id='full_integration_test', task_id='print_banner', run_id='manual__2025-10-25T06:32:43.058270+00:00', try_number=1, map_index=-1)
+[2025-10-25T06:32:45.786+0000] {scheduler_job_runner.py:791} INFO - Setting external_id for <TaskInstance: full_integration_test.get_connection_info manual__2025-10-25T06:32:43.058270+00:00 [queued]> to bd97cd87-720a-4d17-ac70-95f5ef27fe49
+[2025-10-25T06:32:45.786+0000] {scheduler_job_runner.py:801} INFO - TaskInstance Finished: dag_id=full_integration_test, task_id=print_banner, run_id=manual__2025-10-25T06:32:43.058270+00:00, map_index=-1, run_start_date=2025-10-25 06:32:44.931552+00:00, run_end_date=2025-10-25 06:32:45.176050+00:00, run_duration=0.244498, state=success, executor=CeleryExecutor(parallelism=32), executor_state=success, try_number=1, max_tries=1, job_id=132, pool=default_pool, queue=default, priority_weight=9, operator=PythonOperator, queued_dttm=2025-10-25 06:32:44.524889+00:00, queued_by_job_id=123, pid=131732
+[2025-10-25T06:32:46.876+0000] {scheduler_job_runner.py:423} INFO - 1 tasks up for execution:
+	<TaskInstance: full_integration_test.test_ssh_connection manual__2025-10-25T06:32:43.058270+00:00 [scheduled]>
+[2025-10-25T06:32:46.876+0000] {scheduler_job_runner.py:495} INFO - DAG full_integration_test has 0/16 running and queued tasks
+[2025-10-25T06:32:46.877+0000] {scheduler_job_runner.py:634} INFO - Setting the following tasks to queued state:
+	<TaskInstance: full_integration_test.test_ssh_connection manual__2025-10-25T06:32:43.058270+00:00 [scheduled]>
+[2025-10-25T06:32:46.878+0000] {scheduler_job_runner.py:736} INFO - Trying to enqueue tasks: [<TaskInstance: full_integration_test.test_ssh_connection manual__2025-10-25T06:32:43.058270+00:00 [scheduled]>] for executor: CeleryExecutor(parallelism=32)
+[2025-10-25T06:32:46.879+0000] {scheduler_job_runner.py:680} INFO - Sending TaskInstanceKey(dag_id='full_integration_test', task_id='test_ssh_connection', run_id='manual__2025-10-25T06:32:43.058270+00:00', try_number=1, map_index=-1) to CeleryExecutor with priority 7 and queue default
+[2025-10-25T06:32:46.879+0000] {base_executor.py:168} INFO - Adding to queue: ['airflow', 'tasks', 'run', 'full_integration_test', 'test_ssh_connection', 'manual__2025-10-25T06:32:43.058270+00:00', '--local', '--subdir', 'DAGS_FOLDER/full_integration_test.py']
+[2025-10-25T06:32:46.937+0000] {scheduler_job_runner.py:764} INFO - Received executor event with state queued for task instance TaskInstanceKey(dag_id='full_integration_test', task_id='test_ssh_connection', run_id='manual__2025-10-25T06:32:43.058270+00:00', try_number=1, map_index=-1)
+[2025-10-25T06:32:46.938+0000] {scheduler_job_runner.py:764} INFO - Received executor event with state success for task instance TaskInstanceKey(dag_id='full_integration_test', task_id='get_connection_info', run_id='manual__2025-10-25T06:32:43.058270+00:00', try_number=1, map_index=-1)
+[2025-10-25T06:32:46.943+0000] {scheduler_job_runner.py:791} INFO - Setting external_id for <TaskInstance: full_integration_test.test_ssh_connection manual__2025-10-25T06:32:43.058270+00:00 [queued]> to 318d6896-a1aa-4151-b435-1c896af8653e
+[2025-10-25T06:32:46.944+0000] {scheduler_job_runner.py:801} INFO - TaskInstance Finished: dag_id=full_integration_test, task_id=get_connection_info, run_id=manual__2025-10-25T06:32:43.058270+00:00, map_index=-1, run_start_date=2025-10-25 06:32:46.097961+00:00, run_end_date=2025-10-25 06:32:46.349574+00:00, run_duration=0.251613, state=success, executor=CeleryExecutor(parallelism=32), executor_state=success, try_number=1, max_tries=1, job_id=133, pool=default_pool, queue=default, priority_weight=8, operator=PythonOperator, queued_dttm=2025-10-25 06:32:45.703593+00:00, queued_by_job_id=123, pid=131756
+[2025-10-25T06:32:48.528+0000] {scheduler_job_runner.py:423} INFO - 1 tasks up for execution:
+	<TaskInstance: full_integration_test.test_basic_execution manual__2025-10-25T06:32:43.058270+00:00 [scheduled]>
+[2025-10-25T06:32:48.528+0000] {scheduler_job_runner.py:495} INFO - DAG full_integration_test has 0/16 running and queued tasks
+[2025-10-25T06:32:48.529+0000] {scheduler_job_runner.py:634} INFO - Setting the following tasks to queued state:
+	<TaskInstance: full_integration_test.test_basic_execution manual__2025-10-25T06:32:43.058270+00:00 [scheduled]>
+[2025-10-25T06:32:48.531+0000] {scheduler_job_runner.py:736} INFO - Trying to enqueue tasks: [<TaskInstance: full_integration_test.test_basic_execution manual__2025-10-25T06:32:43.058270+00:00 [scheduled]>] for executor: CeleryExecutor(parallelism=32)
+[2025-10-25T06:32:48.531+0000] {scheduler_job_runner.py:680} INFO - Sending TaskInstanceKey(dag_id='full_integration_test', task_id='test_basic_execution', run_id='manual__2025-10-25T06:32:43.058270+00:00', try_number=1, map_index=-1) to CeleryExecutor with priority 6 and queue default
+[2025-10-25T06:32:48.532+0000] {base_executor.py:168} INFO - Adding to queue: ['airflow', 'tasks', 'run', 'full_integration_test', 'test_basic_execution', 'manual__2025-10-25T06:32:43.058270+00:00', '--local', '--subdir', 'DAGS_FOLDER/full_integration_test.py']
+[2025-10-25T06:32:48.580+0000] {scheduler_job_runner.py:764} INFO - Received executor event with state queued for task instance TaskInstanceKey(dag_id='full_integration_test', task_id='test_basic_execution', run_id='manual__2025-10-25T06:32:43.058270+00:00', try_number=1, map_index=-1)
+[2025-10-25T06:32:48.581+0000] {scheduler_job_runner.py:764} INFO - Received executor event with state success for task instance TaskInstanceKey(dag_id='full_integration_test', task_id='test_ssh_connection', run_id='manual__2025-10-25T06:32:43.058270+00:00', try_number=1, map_index=-1)
+[2025-10-25T06:32:48.585+0000] {scheduler_job_runner.py:791} INFO - Setting external_id for <TaskInstance: full_integration_test.test_basic_execution manual__2025-10-25T06:32:43.058270+00:00 [queued]> to 3091e8dd-1994-4620-9531-3e06d3ce0317
+[2025-10-25T06:32:48.586+0000] {scheduler_job_runner.py:801} INFO - TaskInstance Finished: dag_id=full_integration_test, task_id=test_ssh_connection, run_id=manual__2025-10-25T06:32:43.058270+00:00, map_index=-1, run_start_date=2025-10-25 06:32:47.225845+00:00, run_end_date=2025-10-25 06:32:48.165165+00:00, run_duration=0.93932, state=success, executor=CeleryExecutor(parallelism=32), executor_state=success, try_number=1, max_tries=1, job_id=134, pool=default_pool, queue=default, priority_weight=7, operator=SmartRemoteWorkerOperatorV2, queued_dttm=2025-10-25 06:32:46.877698+00:00, queued_by_job_id=123, pid=131782
+[2025-10-25T06:32:49.707+0000] {scheduler_job_runner.py:423} INFO - 1 tasks up for execution:
+	<TaskInstance: full_integration_test.test_complex_task manual__2025-10-25T06:32:43.058270+00:00 [scheduled]>
+[2025-10-25T06:32:49.708+0000] {scheduler_job_runner.py:495} INFO - DAG full_integration_test has 0/16 running and queued tasks
+[2025-10-25T06:32:49.708+0000] {scheduler_job_runner.py:634} INFO - Setting the following tasks to queued state:
+	<TaskInstance: full_integration_test.test_complex_task manual__2025-10-25T06:32:43.058270+00:00 [scheduled]>
+[2025-10-25T06:32:49.713+0000] {scheduler_job_runner.py:736} INFO - Trying to enqueue tasks: [<TaskInstance: full_integration_test.test_complex_task manual__2025-10-25T06:32:43.058270+00:00 [scheduled]>] for executor: CeleryExecutor(parallelism=32)
+[2025-10-25T06:32:49.713+0000] {scheduler_job_runner.py:680} INFO - Sending TaskInstanceKey(dag_id='full_integration_test', task_id='test_complex_task', run_id='manual__2025-10-25T06:32:43.058270+00:00', try_number=1, map_index=-1) to CeleryExecutor with priority 5 and queue default
+[2025-10-25T06:32:49.714+0000] {base_executor.py:168} INFO - Adding to queue: ['airflow', 'tasks', 'run', 'full_integration_test', 'test_complex_task', 'manual__2025-10-25T06:32:43.058270+00:00', '--local', '--subdir', 'DAGS_FOLDER/full_integration_test.py']
+[2025-10-25T06:32:49.781+0000] {scheduler_job_runner.py:764} INFO - Received executor event with state queued for task instance TaskInstanceKey(dag_id='full_integration_test', task_id='test_complex_task', run_id='manual__2025-10-25T06:32:43.058270+00:00', try_number=1, map_index=-1)
+[2025-10-25T06:32:49.782+0000] {scheduler_job_runner.py:764} INFO - Received executor event with state success for task instance TaskInstanceKey(dag_id='full_integration_test', task_id='test_basic_execution', run_id='manual__2025-10-25T06:32:43.058270+00:00', try_number=1, map_index=-1)
+[2025-10-25T06:32:49.791+0000] {scheduler_job_runner.py:791} INFO - Setting external_id for <TaskInstance: full_integration_test.test_complex_task manual__2025-10-25T06:32:43.058270+00:00 [queued]> to cc129cc7-0a34-4ef9-a836-845d6c399cec
+[2025-10-25T06:32:49.792+0000] {scheduler_job_runner.py:801} INFO - TaskInstance Finished: dag_id=full_integration_test, task_id=test_basic_execution, run_id=manual__2025-10-25T06:32:43.058270+00:00, map_index=-1, run_start_date=2025-10-25 06:32:48.878063+00:00, run_end_date=2025-10-25 06:32:49.574771+00:00, run_duration=0.696708, state=success, executor=CeleryExecutor(parallelism=32), executor_state=success, try_number=1, max_tries=1, job_id=135, pool=default_pool, queue=default, priority_weight=6, operator=SmartRemoteWorkerOperatorV2, queued_dttm=2025-10-25 06:32:48.529816+00:00, queued_by_job_id=123, pid=131813
+[2025-10-25T06:35:55.573+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
+[2025-10-25T06:37:51.730+0000] {scheduler_job_runner.py:764} INFO - Received executor event with state success for task instance TaskInstanceKey(dag_id='full_integration_test', task_id='test_complex_task', run_id='manual__2025-10-25T06:32:43.058270+00:00', try_number=1, map_index=-1)
+[2025-10-25T06:37:51.735+0000] {scheduler_job_runner.py:801} INFO - TaskInstance Finished: dag_id=full_integration_test, task_id=test_complex_task, run_id=manual__2025-10-25T06:32:43.058270+00:00, map_index=-1, run_start_date=2025-10-25 06:32:50.136768+00:00, run_end_date=2025-10-25 06:37:51.142807+00:00, run_duration=301.006039, state=up_for_retry, executor=CeleryExecutor(parallelism=32), executor_state=success, try_number=1, max_tries=1, job_id=136, pool=default_pool, queue=default, priority_weight=5, operator=SmartRemoteWorkerOperatorV2, queued_dttm=2025-10-25 06:32:49.708966+00:00, queued_by_job_id=123, pid=131843
+[2025-10-25T06:38:51.180+0000] {scheduler_job_runner.py:423} INFO - 1 tasks up for execution:
+	<TaskInstance: full_integration_test.test_complex_task manual__2025-10-25T06:32:43.058270+00:00 [scheduled]>
+[2025-10-25T06:38:51.180+0000] {scheduler_job_runner.py:495} INFO - DAG full_integration_test has 0/16 running and queued tasks
+[2025-10-25T06:38:51.180+0000] {scheduler_job_runner.py:634} INFO - Setting the following tasks to queued state:
+	<TaskInstance: full_integration_test.test_complex_task manual__2025-10-25T06:32:43.058270+00:00 [scheduled]>
+[2025-10-25T06:38:51.183+0000] {scheduler_job_runner.py:736} INFO - Trying to enqueue tasks: [<TaskInstance: full_integration_test.test_complex_task manual__2025-10-25T06:32:43.058270+00:00 [scheduled]>] for executor: CeleryExecutor(parallelism=32)
+[2025-10-25T06:38:51.183+0000] {scheduler_job_runner.py:680} INFO - Sending TaskInstanceKey(dag_id='full_integration_test', task_id='test_complex_task', run_id='manual__2025-10-25T06:32:43.058270+00:00', try_number=2, map_index=-1) to CeleryExecutor with priority 5 and queue default
+[2025-10-25T06:38:51.184+0000] {base_executor.py:168} INFO - Adding to queue: ['airflow', 'tasks', 'run', 'full_integration_test', 'test_complex_task', 'manual__2025-10-25T06:32:43.058270+00:00', '--local', '--subdir', 'DAGS_FOLDER/full_integration_test.py']
+[2025-10-25T06:38:51.244+0000] {scheduler_job_runner.py:764} INFO - Received executor event with state queued for task instance TaskInstanceKey(dag_id='full_integration_test', task_id='test_complex_task', run_id='manual__2025-10-25T06:32:43.058270+00:00', try_number=2, map_index=-1)
+[2025-10-25T06:38:51.252+0000] {scheduler_job_runner.py:791} INFO - Setting external_id for <TaskInstance: full_integration_test.test_complex_task manual__2025-10-25T06:32:43.058270+00:00 [queued]> to f2e6adf8-0443-4c0c-a436-7d97618eb00c
+[2025-10-25T06:40:55.590+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
+[2025-10-25T06:43:53.880+0000] {scheduler_job_runner.py:764} INFO - Received executor event with state success for task instance TaskInstanceKey(dag_id='full_integration_test', task_id='test_complex_task', run_id='manual__2025-10-25T06:32:43.058270+00:00', try_number=2, map_index=-1)
+[2025-10-25T06:43:53.884+0000] {scheduler_job_runner.py:801} INFO - TaskInstance Finished: dag_id=full_integration_test, task_id=test_complex_task, run_id=manual__2025-10-25T06:32:43.058270+00:00, map_index=-1, run_start_date=2025-10-25 06:38:51.553664+00:00, run_end_date=2025-10-25 06:43:52.865358+00:00, run_duration=301.311694, state=failed, executor=CeleryExecutor(parallelism=32), executor_state=success, try_number=2, max_tries=1, job_id=137, pool=default_pool, queue=default, priority_weight=5, operator=SmartRemoteWorkerOperatorV2, queued_dttm=2025-10-25 06:38:51.181593+00:00, queued_by_job_id=123, pid=132487
+[2025-10-25T06:43:55.950+0000] {dagrun.py:823} ERROR - Marking run <DagRun full_integration_test @ 2025-10-25 06:32:43.058270+00:00: manual__2025-10-25T06:32:43.058270+00:00, state:running, queued_at: 2025-10-25 06:32:43.073430+00:00. externally triggered: True> failed
+[2025-10-25T06:43:55.950+0000] {dagrun.py:905} INFO - DagRun Finished: dag_id=full_integration_test, execution_date=2025-10-25 06:32:43.058270+00:00, run_id=manual__2025-10-25T06:32:43.058270+00:00, run_start_date=2025-10-25 06:32:43.456471+00:00, run_end_date=2025-10-25 06:43:55.950648+00:00, run_duration=672.494177, state=failed, external_trigger=True, run_type=manual, data_interval_start=2025-10-25 06:32:43.058270+00:00, data_interval_end=2025-10-25 06:32:43.058270+00:00, dag_hash=91342a19b5ad9d09c36ee8434bf3def1
+[2025-10-25T06:45:55.621+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
+[2025-10-25T06:47:51.194+0000] {manager.py:537} INFO - DAG full_integration_test is missing and will be deactivated.
+[2025-10-25T06:47:51.199+0000] {manager.py:549} INFO - Deactivated 1 DAGs which are no longer present in file.
+[2025-10-25T06:47:51.203+0000] {manager.py:553} INFO - Deleted DAG full_integration_test in serialized_dag table
+[2025-10-25T06:50:30.691+0000] {scheduler_job_runner.py:423} INFO - 1 tasks up for execution:
+	<TaskInstance: full_integration_test.print_banner manual__2025-10-25T06:50:29.396716+00:00 [scheduled]>
+[2025-10-25T06:50:30.691+0000] {scheduler_job_runner.py:495} INFO - DAG full_integration_test has 0/16 running and queued tasks
+[2025-10-25T06:50:30.692+0000] {scheduler_job_runner.py:634} INFO - Setting the following tasks to queued state:
+	<TaskInstance: full_integration_test.print_banner manual__2025-10-25T06:50:29.396716+00:00 [scheduled]>
+[2025-10-25T06:50:30.694+0000] {scheduler_job_runner.py:736} INFO - Trying to enqueue tasks: [<TaskInstance: full_integration_test.print_banner manual__2025-10-25T06:50:29.396716+00:00 [scheduled]>] for executor: CeleryExecutor(parallelism=32)
+[2025-10-25T06:50:30.694+0000] {scheduler_job_runner.py:680} INFO - Sending TaskInstanceKey(dag_id='full_integration_test', task_id='print_banner', run_id='manual__2025-10-25T06:50:29.396716+00:00', try_number=1, map_index=-1) to CeleryExecutor with priority 9 and queue default
+[2025-10-25T06:50:30.695+0000] {base_executor.py:168} INFO - Adding to queue: ['airflow', 'tasks', 'run', 'full_integration_test', 'print_banner', 'manual__2025-10-25T06:50:29.396716+00:00', '--local', '--subdir', 'DAGS_FOLDER/full_integration_test.py']
+[2025-10-25T06:50:30.753+0000] {scheduler_job_runner.py:764} INFO - Received executor event with state queued for task instance TaskInstanceKey(dag_id='full_integration_test', task_id='print_banner', run_id='manual__2025-10-25T06:50:29.396716+00:00', try_number=1, map_index=-1)
+[2025-10-25T06:50:30.758+0000] {scheduler_job_runner.py:791} INFO - Setting external_id for <TaskInstance: full_integration_test.print_banner manual__2025-10-25T06:50:29.396716+00:00 [queued]> to 2acc9d8b-1601-4ef1-bc91-2d968de38bfd
+[2025-10-25T06:50:31.846+0000] {scheduler_job_runner.py:423} INFO - 1 tasks up for execution:
+	<TaskInstance: full_integration_test.get_connection_info manual__2025-10-25T06:50:29.396716+00:00 [scheduled]>
+[2025-10-25T06:50:31.847+0000] {scheduler_job_runner.py:495} INFO - DAG full_integration_test has 0/16 running and queued tasks
+[2025-10-25T06:50:31.847+0000] {scheduler_job_runner.py:634} INFO - Setting the following tasks to queued state:
+	<TaskInstance: full_integration_test.get_connection_info manual__2025-10-25T06:50:29.396716+00:00 [scheduled]>
+[2025-10-25T06:50:31.849+0000] {scheduler_job_runner.py:736} INFO - Trying to enqueue tasks: [<TaskInstance: full_integration_test.get_connection_info manual__2025-10-25T06:50:29.396716+00:00 [scheduled]>] for executor: CeleryExecutor(parallelism=32)
+[2025-10-25T06:50:31.849+0000] {scheduler_job_runner.py:680} INFO - Sending TaskInstanceKey(dag_id='full_integration_test', task_id='get_connection_info', run_id='manual__2025-10-25T06:50:29.396716+00:00', try_number=1, map_index=-1) to CeleryExecutor with priority 8 and queue default
+[2025-10-25T06:50:31.849+0000] {base_executor.py:168} INFO - Adding to queue: ['airflow', 'tasks', 'run', 'full_integration_test', 'get_connection_info', 'manual__2025-10-25T06:50:29.396716+00:00', '--local', '--subdir', 'DAGS_FOLDER/full_integration_test.py']
+[2025-10-25T06:50:31.908+0000] {scheduler_job_runner.py:764} INFO - Received executor event with state queued for task instance TaskInstanceKey(dag_id='full_integration_test', task_id='get_connection_info', run_id='manual__2025-10-25T06:50:29.396716+00:00', try_number=1, map_index=-1)
+[2025-10-25T06:50:31.908+0000] {scheduler_job_runner.py:764} INFO - Received executor event with state success for task instance TaskInstanceKey(dag_id='full_integration_test', task_id='print_banner', run_id='manual__2025-10-25T06:50:29.396716+00:00', try_number=1, map_index=-1)
+[2025-10-25T06:50:31.914+0000] {scheduler_job_runner.py:801} INFO - TaskInstance Finished: dag_id=full_integration_test, task_id=print_banner, run_id=manual__2025-10-25T06:50:29.396716+00:00, map_index=-1, run_start_date=2025-10-25 06:50:31.085390+00:00, run_end_date=2025-10-25 06:50:31.320457+00:00, run_duration=0.235067, state=success, executor=CeleryExecutor(parallelism=32), executor_state=success, try_number=1, max_tries=1, job_id=138, pool=default_pool, queue=default, priority_weight=9, operator=PythonOperator, queued_dttm=2025-10-25 06:50:30.692634+00:00, queued_by_job_id=123, pid=133371
+[2025-10-25T06:50:31.915+0000] {scheduler_job_runner.py:791} INFO - Setting external_id for <TaskInstance: full_integration_test.get_connection_info manual__2025-10-25T06:50:29.396716+00:00 [queued]> to 306adfce-b79c-40b8-9660-7958dc7a3eaf
+[2025-10-25T06:50:33.008+0000] {scheduler_job_runner.py:423} INFO - 1 tasks up for execution:
+	<TaskInstance: full_integration_test.test_ssh_connection manual__2025-10-25T06:50:29.396716+00:00 [scheduled]>
+[2025-10-25T06:50:33.008+0000] {scheduler_job_runner.py:495} INFO - DAG full_integration_test has 0/16 running and queued tasks
+[2025-10-25T06:50:33.008+0000] {scheduler_job_runner.py:634} INFO - Setting the following tasks to queued state:
+	<TaskInstance: full_integration_test.test_ssh_connection manual__2025-10-25T06:50:29.396716+00:00 [scheduled]>
+[2025-10-25T06:50:33.010+0000] {scheduler_job_runner.py:736} INFO - Trying to enqueue tasks: [<TaskInstance: full_integration_test.test_ssh_connection manual__2025-10-25T06:50:29.396716+00:00 [scheduled]>] for executor: CeleryExecutor(parallelism=32)
+[2025-10-25T06:50:33.010+0000] {scheduler_job_runner.py:680} INFO - Sending TaskInstanceKey(dag_id='full_integration_test', task_id='test_ssh_connection', run_id='manual__2025-10-25T06:50:29.396716+00:00', try_number=1, map_index=-1) to CeleryExecutor with priority 7 and queue default
+[2025-10-25T06:50:33.011+0000] {base_executor.py:168} INFO - Adding to queue: ['airflow', 'tasks', 'run', 'full_integration_test', 'test_ssh_connection', 'manual__2025-10-25T06:50:29.396716+00:00', '--local', '--subdir', 'DAGS_FOLDER/full_integration_test.py']
+[2025-10-25T06:50:33.060+0000] {scheduler_job_runner.py:764} INFO - Received executor event with state queued for task instance TaskInstanceKey(dag_id='full_integration_test', task_id='test_ssh_connection', run_id='manual__2025-10-25T06:50:29.396716+00:00', try_number=1, map_index=-1)
+[2025-10-25T06:50:33.061+0000] {scheduler_job_runner.py:764} INFO - Received executor event with state success for task instance TaskInstanceKey(dag_id='full_integration_test', task_id='get_connection_info', run_id='manual__2025-10-25T06:50:29.396716+00:00', try_number=1, map_index=-1)
+[2025-10-25T06:50:33.067+0000] {scheduler_job_runner.py:801} INFO - TaskInstance Finished: dag_id=full_integration_test, task_id=get_connection_info, run_id=manual__2025-10-25T06:50:29.396716+00:00, map_index=-1, run_start_date=2025-10-25 06:50:32.224956+00:00, run_end_date=2025-10-25 06:50:32.481984+00:00, run_duration=0.257028, state=success, executor=CeleryExecutor(parallelism=32), executor_state=success, try_number=1, max_tries=1, job_id=139, pool=default_pool, queue=default, priority_weight=8, operator=PythonOperator, queued_dttm=2025-10-25 06:50:31.847965+00:00, queued_by_job_id=123, pid=133395
+[2025-10-25T06:50:33.068+0000] {scheduler_job_runner.py:791} INFO - Setting external_id for <TaskInstance: full_integration_test.test_ssh_connection manual__2025-10-25T06:50:29.396716+00:00 [queued]> to 6d2f7ab8-3ea9-4a97-8f89-b8f258917ad0
+[2025-10-25T06:50:34.683+0000] {scheduler_job_runner.py:423} INFO - 1 tasks up for execution:
+	<TaskInstance: full_integration_test.test_basic_execution manual__2025-10-25T06:50:29.396716+00:00 [scheduled]>
+[2025-10-25T06:50:34.684+0000] {scheduler_job_runner.py:495} INFO - DAG full_integration_test has 0/16 running and queued tasks
+[2025-10-25T06:50:34.684+0000] {scheduler_job_runner.py:634} INFO - Setting the following tasks to queued state:
+	<TaskInstance: full_integration_test.test_basic_execution manual__2025-10-25T06:50:29.396716+00:00 [scheduled]>
+[2025-10-25T06:50:34.686+0000] {scheduler_job_runner.py:736} INFO - Trying to enqueue tasks: [<TaskInstance: full_integration_test.test_basic_execution manual__2025-10-25T06:50:29.396716+00:00 [scheduled]>] for executor: CeleryExecutor(parallelism=32)
+[2025-10-25T06:50:34.686+0000] {scheduler_job_runner.py:680} INFO - Sending TaskInstanceKey(dag_id='full_integration_test', task_id='test_basic_execution', run_id='manual__2025-10-25T06:50:29.396716+00:00', try_number=1, map_index=-1) to CeleryExecutor with priority 6 and queue default
+[2025-10-25T06:50:34.686+0000] {base_executor.py:168} INFO - Adding to queue: ['airflow', 'tasks', 'run', 'full_integration_test', 'test_basic_execution', 'manual__2025-10-25T06:50:29.396716+00:00', '--local', '--subdir', 'DAGS_FOLDER/full_integration_test.py']
+[2025-10-25T06:50:34.741+0000] {scheduler_job_runner.py:764} INFO - Received executor event with state queued for task instance TaskInstanceKey(dag_id='full_integration_test', task_id='test_basic_execution', run_id='manual__2025-10-25T06:50:29.396716+00:00', try_number=1, map_index=-1)
+[2025-10-25T06:50:34.741+0000] {scheduler_job_runner.py:764} INFO - Received executor event with state success for task instance TaskInstanceKey(dag_id='full_integration_test', task_id='test_ssh_connection', run_id='manual__2025-10-25T06:50:29.396716+00:00', try_number=1, map_index=-1)
+[2025-10-25T06:50:34.746+0000] {scheduler_job_runner.py:801} INFO - TaskInstance Finished: dag_id=full_integration_test, task_id=test_ssh_connection, run_id=manual__2025-10-25T06:50:29.396716+00:00, map_index=-1, run_start_date=2025-10-25 06:50:33.359503+00:00, run_end_date=2025-10-25 06:50:34.304735+00:00, run_duration=0.945232, state=success, executor=CeleryExecutor(parallelism=32), executor_state=success, try_number=1, max_tries=1, job_id=140, pool=default_pool, queue=default, priority_weight=7, operator=SmartRemoteWorkerOperatorV2, queued_dttm=2025-10-25 06:50:33.009226+00:00, queued_by_job_id=123, pid=133421
+[2025-10-25T06:50:34.747+0000] {scheduler_job_runner.py:791} INFO - Setting external_id for <TaskInstance: full_integration_test.test_basic_execution manual__2025-10-25T06:50:29.396716+00:00 [queued]> to 0ed91494-ca6b-47e8-813b-1083674deeb6
+[2025-10-25T06:50:35.858+0000] {scheduler_job_runner.py:423} INFO - 1 tasks up for execution:
+	<TaskInstance: full_integration_test.test_complex_task manual__2025-10-25T06:50:29.396716+00:00 [scheduled]>
+[2025-10-25T06:50:35.858+0000] {scheduler_job_runner.py:495} INFO - DAG full_integration_test has 0/16 running and queued tasks
+[2025-10-25T06:50:35.859+0000] {scheduler_job_runner.py:634} INFO - Setting the following tasks to queued state:
+	<TaskInstance: full_integration_test.test_complex_task manual__2025-10-25T06:50:29.396716+00:00 [scheduled]>
+[2025-10-25T06:50:35.861+0000] {scheduler_job_runner.py:736} INFO - Trying to enqueue tasks: [<TaskInstance: full_integration_test.test_complex_task manual__2025-10-25T06:50:29.396716+00:00 [scheduled]>] for executor: CeleryExecutor(parallelism=32)
+[2025-10-25T06:50:35.861+0000] {scheduler_job_runner.py:680} INFO - Sending TaskInstanceKey(dag_id='full_integration_test', task_id='test_complex_task', run_id='manual__2025-10-25T06:50:29.396716+00:00', try_number=1, map_index=-1) to CeleryExecutor with priority 5 and queue default
+[2025-10-25T06:50:35.862+0000] {base_executor.py:168} INFO - Adding to queue: ['airflow', 'tasks', 'run', 'full_integration_test', 'test_complex_task', 'manual__2025-10-25T06:50:29.396716+00:00', '--local', '--subdir', 'DAGS_FOLDER/full_integration_test.py']
+[2025-10-25T06:50:35.923+0000] {scheduler_job_runner.py:764} INFO - Received executor event with state queued for task instance TaskInstanceKey(dag_id='full_integration_test', task_id='test_complex_task', run_id='manual__2025-10-25T06:50:29.396716+00:00', try_number=1, map_index=-1)
+[2025-10-25T06:50:35.923+0000] {scheduler_job_runner.py:764} INFO - Received executor event with state success for task instance TaskInstanceKey(dag_id='full_integration_test', task_id='test_basic_execution', run_id='manual__2025-10-25T06:50:29.396716+00:00', try_number=1, map_index=-1)
+[2025-10-25T06:50:35.929+0000] {scheduler_job_runner.py:791} INFO - Setting external_id for <TaskInstance: full_integration_test.test_complex_task manual__2025-10-25T06:50:29.396716+00:00 [queued]> to fe28932c-c287-4397-95c1-96d74f9742e3
+[2025-10-25T06:50:35.930+0000] {scheduler_job_runner.py:801} INFO - TaskInstance Finished: dag_id=full_integration_test, task_id=test_basic_execution, run_id=manual__2025-10-25T06:50:29.396716+00:00, map_index=-1, run_start_date=2025-10-25 06:50:35.033900+00:00, run_end_date=2025-10-25 06:50:35.715556+00:00, run_duration=0.681656, state=success, executor=CeleryExecutor(parallelism=32), executor_state=success, try_number=1, max_tries=1, job_id=141, pool=default_pool, queue=default, priority_weight=6, operator=SmartRemoteWorkerOperatorV2, queued_dttm=2025-10-25 06:50:34.685090+00:00, queued_by_job_id=123, pid=133452
+[2025-10-25T06:50:41.909+0000] {scheduler_job_runner.py:423} INFO - 1 tasks up for execution:
+	<TaskInstance: full_integration_test.test_singularity_execution manual__2025-10-25T06:50:29.396716+00:00 [scheduled]>
+[2025-10-25T06:50:41.910+0000] {scheduler_job_runner.py:495} INFO - DAG full_integration_test has 0/16 running and queued tasks
+[2025-10-25T06:50:41.910+0000] {scheduler_job_runner.py:634} INFO - Setting the following tasks to queued state:
+	<TaskInstance: full_integration_test.test_singularity_execution manual__2025-10-25T06:50:29.396716+00:00 [scheduled]>
+[2025-10-25T06:50:41.912+0000] {scheduler_job_runner.py:736} INFO - Trying to enqueue tasks: [<TaskInstance: full_integration_test.test_singularity_execution manual__2025-10-25T06:50:29.396716+00:00 [scheduled]>] for executor: CeleryExecutor(parallelism=32)
+[2025-10-25T06:50:41.913+0000] {scheduler_job_runner.py:680} INFO - Sending TaskInstanceKey(dag_id='full_integration_test', task_id='test_singularity_execution', run_id='manual__2025-10-25T06:50:29.396716+00:00', try_number=1, map_index=-1) to CeleryExecutor with priority 4 and queue default
+[2025-10-25T06:50:41.913+0000] {base_executor.py:168} INFO - Adding to queue: ['airflow', 'tasks', 'run', 'full_integration_test', 'test_singularity_execution', 'manual__2025-10-25T06:50:29.396716+00:00', '--local', '--subdir', 'DAGS_FOLDER/full_integration_test.py']
+[2025-10-25T06:50:41.963+0000] {scheduler_job_runner.py:764} INFO - Received executor event with state queued for task instance TaskInstanceKey(dag_id='full_integration_test', task_id='test_singularity_execution', run_id='manual__2025-10-25T06:50:29.396716+00:00', try_number=1, map_index=-1)
+[2025-10-25T06:50:41.963+0000] {scheduler_job_runner.py:764} INFO - Received executor event with state success for task instance TaskInstanceKey(dag_id='full_integration_test', task_id='test_complex_task', run_id='manual__2025-10-25T06:50:29.396716+00:00', try_number=1, map_index=-1)
+[2025-10-25T06:50:41.970+0000] {scheduler_job_runner.py:791} INFO - Setting external_id for <TaskInstance: full_integration_test.test_singularity_execution manual__2025-10-25T06:50:29.396716+00:00 [queued]> to ae892f18-b628-489e-bd1e-4c6c01ccccfe
+[2025-10-25T06:50:41.970+0000] {scheduler_job_runner.py:801} INFO - TaskInstance Finished: dag_id=full_integration_test, task_id=test_complex_task, run_id=manual__2025-10-25T06:50:29.396716+00:00, map_index=-1, run_start_date=2025-10-25 06:50:36.235409+00:00, run_end_date=2025-10-25 06:50:41.396873+00:00, run_duration=5.161464, state=success, executor=CeleryExecutor(parallelism=32), executor_state=success, try_number=1, max_tries=1, job_id=142, pool=default_pool, queue=default, priority_weight=5, operator=SmartRemoteWorkerOperatorV2, queued_dttm=2025-10-25 06:50:35.859968+00:00, queued_by_job_id=123, pid=133483
+[2025-10-25T06:50:43.080+0000] {scheduler_job_runner.py:423} INFO - 1 tasks up for execution:
+	<TaskInstance: full_integration_test.collect_results manual__2025-10-25T06:50:29.396716+00:00 [scheduled]>
+[2025-10-25T06:50:43.080+0000] {scheduler_job_runner.py:495} INFO - DAG full_integration_test has 0/16 running and queued tasks
+[2025-10-25T06:50:43.080+0000] {scheduler_job_runner.py:634} INFO - Setting the following tasks to queued state:
+	<TaskInstance: full_integration_test.collect_results manual__2025-10-25T06:50:29.396716+00:00 [scheduled]>
+[2025-10-25T06:50:43.082+0000] {scheduler_job_runner.py:736} INFO - Trying to enqueue tasks: [<TaskInstance: full_integration_test.collect_results manual__2025-10-25T06:50:29.396716+00:00 [scheduled]>] for executor: CeleryExecutor(parallelism=32)
+[2025-10-25T06:50:43.083+0000] {scheduler_job_runner.py:680} INFO - Sending TaskInstanceKey(dag_id='full_integration_test', task_id='collect_results', run_id='manual__2025-10-25T06:50:29.396716+00:00', try_number=1, map_index=-1) to CeleryExecutor with priority 3 and queue default
+[2025-10-25T06:50:43.083+0000] {base_executor.py:168} INFO - Adding to queue: ['airflow', 'tasks', 'run', 'full_integration_test', 'collect_results', 'manual__2025-10-25T06:50:29.396716+00:00', '--local', '--subdir', 'DAGS_FOLDER/full_integration_test.py']
+[2025-10-25T06:50:43.140+0000] {scheduler_job_runner.py:764} INFO - Received executor event with state queued for task instance TaskInstanceKey(dag_id='full_integration_test', task_id='collect_results', run_id='manual__2025-10-25T06:50:29.396716+00:00', try_number=1, map_index=-1)
+[2025-10-25T06:50:43.141+0000] {scheduler_job_runner.py:764} INFO - Received executor event with state success for task instance TaskInstanceKey(dag_id='full_integration_test', task_id='test_singularity_execution', run_id='manual__2025-10-25T06:50:29.396716+00:00', try_number=1, map_index=-1)
+[2025-10-25T06:50:43.148+0000] {scheduler_job_runner.py:791} INFO - Setting external_id for <TaskInstance: full_integration_test.collect_results manual__2025-10-25T06:50:29.396716+00:00 [queued]> to b9eaeed1-a56b-42c5-9531-6758de94eb1e
+[2025-10-25T06:50:43.149+0000] {scheduler_job_runner.py:801} INFO - TaskInstance Finished: dag_id=full_integration_test, task_id=test_singularity_execution, run_id=manual__2025-10-25T06:50:29.396716+00:00, map_index=-1, run_start_date=2025-10-25 06:50:42.284173+00:00, run_end_date=2025-10-25 06:50:42.903888+00:00, run_duration=0.619715, state=success, executor=CeleryExecutor(parallelism=32), executor_state=success, try_number=1, max_tries=1, job_id=143, pool=default_pool, queue=default, priority_weight=4, operator=SmartRemoteWorkerOperatorV2, queued_dttm=2025-10-25 06:50:41.911209+00:00, queued_by_job_id=123, pid=133524
+[2025-10-25T06:50:44.248+0000] {scheduler_job_runner.py:423} INFO - 1 tasks up for execution:
+	<TaskInstance: full_integration_test.cleanup manual__2025-10-25T06:50:29.396716+00:00 [scheduled]>
+[2025-10-25T06:50:44.249+0000] {scheduler_job_runner.py:495} INFO - DAG full_integration_test has 0/16 running and queued tasks
+[2025-10-25T06:50:44.249+0000] {scheduler_job_runner.py:634} INFO - Setting the following tasks to queued state:
+	<TaskInstance: full_integration_test.cleanup manual__2025-10-25T06:50:29.396716+00:00 [scheduled]>
+[2025-10-25T06:50:44.250+0000] {scheduler_job_runner.py:736} INFO - Trying to enqueue tasks: [<TaskInstance: full_integration_test.cleanup manual__2025-10-25T06:50:29.396716+00:00 [scheduled]>] for executor: CeleryExecutor(parallelism=32)
+[2025-10-25T06:50:44.251+0000] {scheduler_job_runner.py:680} INFO - Sending TaskInstanceKey(dag_id='full_integration_test', task_id='cleanup', run_id='manual__2025-10-25T06:50:29.396716+00:00', try_number=1, map_index=-1) to CeleryExecutor with priority 2 and queue default
+[2025-10-25T06:50:44.251+0000] {base_executor.py:168} INFO - Adding to queue: ['airflow', 'tasks', 'run', 'full_integration_test', 'cleanup', 'manual__2025-10-25T06:50:29.396716+00:00', '--local', '--subdir', 'DAGS_FOLDER/full_integration_test.py']
+[2025-10-25T06:50:44.305+0000] {scheduler_job_runner.py:764} INFO - Received executor event with state queued for task instance TaskInstanceKey(dag_id='full_integration_test', task_id='cleanup', run_id='manual__2025-10-25T06:50:29.396716+00:00', try_number=1, map_index=-1)
+[2025-10-25T06:50:44.305+0000] {scheduler_job_runner.py:764} INFO - Received executor event with state success for task instance TaskInstanceKey(dag_id='full_integration_test', task_id='collect_results', run_id='manual__2025-10-25T06:50:29.396716+00:00', try_number=1, map_index=-1)
+[2025-10-25T06:50:44.309+0000] {scheduler_job_runner.py:801} INFO - TaskInstance Finished: dag_id=full_integration_test, task_id=collect_results, run_id=manual__2025-10-25T06:50:29.396716+00:00, map_index=-1, run_start_date=2025-10-25 06:50:43.453428+00:00, run_end_date=2025-10-25 06:50:43.731320+00:00, run_duration=0.277892, state=success, executor=CeleryExecutor(parallelism=32), executor_state=success, try_number=1, max_tries=1, job_id=144, pool=default_pool, queue=default, priority_weight=3, operator=PythonOperator, queued_dttm=2025-10-25 06:50:43.081340+00:00, queued_by_job_id=123, pid=133554
+[2025-10-25T06:50:44.310+0000] {scheduler_job_runner.py:791} INFO - Setting external_id for <TaskInstance: full_integration_test.cleanup manual__2025-10-25T06:50:29.396716+00:00 [queued]> to 63edd043-032c-4a93-bab7-ba1e8cb066ab
+[2025-10-25T06:50:45.913+0000] {dagrun.py:854} INFO - Marking run <DagRun full_integration_test @ 2025-10-25 06:50:29.396716+00:00: manual__2025-10-25T06:50:29.396716+00:00, state:running, queued_at: 2025-10-25 06:50:29.410413+00:00. externally triggered: True> successful
+[2025-10-25T06:50:45.914+0000] {dagrun.py:905} INFO - DagRun Finished: dag_id=full_integration_test, execution_date=2025-10-25 06:50:29.396716+00:00, run_id=manual__2025-10-25T06:50:29.396716+00:00, run_start_date=2025-10-25 06:50:29.618342+00:00, run_end_date=2025-10-25 06:50:45.914094+00:00, run_duration=16.295752, state=success, external_trigger=True, run_type=manual, data_interval_start=2025-10-25 06:50:29.396716+00:00, data_interval_end=2025-10-25 06:50:29.396716+00:00, dag_hash=87853b6119145617d57e51f8fc06a555
+[2025-10-25T06:50:45.940+0000] {scheduler_job_runner.py:764} INFO - Received executor event with state success for task instance TaskInstanceKey(dag_id='full_integration_test', task_id='cleanup', run_id='manual__2025-10-25T06:50:29.396716+00:00', try_number=1, map_index=-1)
+[2025-10-25T06:50:45.946+0000] {scheduler_job_runner.py:801} INFO - TaskInstance Finished: dag_id=full_integration_test, task_id=cleanup, run_id=manual__2025-10-25T06:50:29.396716+00:00, map_index=-1, run_start_date=2025-10-25 06:50:44.590660+00:00, run_end_date=2025-10-25 06:50:44.793839+00:00, run_duration=0.203179, state=success, executor=CeleryExecutor(parallelism=32), executor_state=success, try_number=1, max_tries=1, job_id=145, pool=default_pool, queue=default, priority_weight=2, operator=PythonOperator, queued_dttm=2025-10-25 06:50:44.249686+00:00, queued_by_job_id=123, pid=133582
+[2025-10-25T06:50:55.653+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs

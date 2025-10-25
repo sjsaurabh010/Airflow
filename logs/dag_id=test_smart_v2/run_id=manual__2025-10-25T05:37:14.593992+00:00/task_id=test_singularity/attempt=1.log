@@ -1,0 +1,122 @@
+[2025-10-25T05:37:20.705+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-10-25T05:37:20.729+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: test_smart_v2.test_singularity manual__2025-10-25T05:37:14.593992+00:00 [queued]>
+[2025-10-25T05:37:20.738+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: test_smart_v2.test_singularity manual__2025-10-25T05:37:14.593992+00:00 [queued]>
+[2025-10-25T05:37:20.739+0000] {taskinstance.py:2865} INFO - Starting attempt 1 of 1
+[2025-10-25T05:37:20.751+0000] {taskinstance.py:2888} INFO - Executing <Task(SmartRemoteWorkerOperatorV2): test_singularity> on 2025-10-25 05:37:14.593992+00:00
+[2025-10-25T05:37:20.756+0000] {warnings.py:110} WARNING - /home/airflow/airflow-env/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py:70: DeprecationWarning: This process (pid=130101) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2025-10-25T05:37:20.757+0000] {standard_task_runner.py:72} INFO - Started process 130112 to run task
+[2025-10-25T05:37:20.758+0000] {standard_task_runner.py:104} INFO - Running: ['airflow', 'tasks', 'run', 'test_smart_v2', 'test_singularity', 'manual__2025-10-25T05:37:14.593992+00:00', '--job-id', '129', '--raw', '--subdir', 'DAGS_FOLDER/test_smart_v2.py', '--cfg-path', '/tmp/tmp7m3tdl_y']
+[2025-10-25T05:37:20.762+0000] {standard_task_runner.py:105} INFO - Job 129: Subtask test_singularity
+[2025-10-25T05:37:20.822+0000] {task_command.py:467} INFO - Running <TaskInstance: test_smart_v2.test_singularity manual__2025-10-25T05:37:14.593992+00:00 [running]> on host masterdimpal-1
+[2025-10-25T05:37:20.908+0000] {taskinstance.py:3131} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='test_smart_v2' AIRFLOW_CTX_TASK_ID='test_singularity' AIRFLOW_CTX_EXECUTION_DATE='2025-10-25T05:37:14.593992+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-10-25T05:37:14.593992+00:00'
+[2025-10-25T05:37:20.909+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-10-25T05:37:20.920+0000] {smart_remote_worker_v2.py:254} INFO - ================================================================================
+[2025-10-25T05:37:20.920+0000] {smart_remote_worker_v2.py:255} INFO - 🚀 Smart Remote Worker Operator V2 - Starting
+[2025-10-25T05:37:20.921+0000] {smart_remote_worker_v2.py:256} INFO - ================================================================================
+[2025-10-25T05:37:20.933+0000] {smart_remote_worker_v2.py:57} INFO - 📋 Loaded 1 workers from registry
+[2025-10-25T05:37:20.933+0000] {smart_remote_worker_v2.py:264} INFO - 📋 Selected 1 worker(s)
+[2025-10-25T05:37:20.933+0000] {smart_remote_worker_v2.py:266} INFO -    - worker-1 (priority: 1, host: 45.151.155.74)
+[2025-10-25T05:37:20.933+0000] {smart_remote_worker_v2.py:272} INFO - ================================================================================
+[2025-10-25T05:37:20.934+0000] {smart_remote_worker_v2.py:273} INFO - 🎯 ATTEMPT 1/1: Trying worker 'worker-1'
+[2025-10-25T05:37:20.934+0000] {smart_remote_worker_v2.py:274} INFO - ================================================================================
+[2025-10-25T05:37:20.934+0000] {smart_remote_worker_v2.py:194} INFO - 🎯 Executing on worker: worker-1
+[2025-10-25T05:37:20.934+0000] {smart_remote_worker_v2.py:195} INFO -    Host: 45.151.155.74
+[2025-10-25T05:37:20.934+0000] {smart_remote_worker_v2.py:196} INFO -    AIRFLOW_HOME: /home/airflow/airflow-worker
+[2025-10-25T05:37:20.946+0000] {smart_remote_worker_v2.py:125} INFO - ✅ Using existing SSH connection: worker_worker-1
+[2025-10-25T05:37:20.959+0000] {base.py:84} INFO - Retrieving connection 'worker_worker-1'
+[2025-10-25T05:37:20.960+0000] {smart_remote_worker_v2.py:208} INFO - 📤 Executing command via SSH...
+[2025-10-25T05:37:20.960+0000] {smart_remote_worker_v2.py:209} INFO - Command:
+#!/bin/bash
+set -x
+
+# Setup environment
+export AIRFLOW_HOME=/home/airflow/airflow-worker
+export WORKER_NAME=worker-1
+export QUEUE_NAME=default
+
+echo "====================================="
+echo "Starting worker: $WORKER_NAME"
+echo "AIRFLOW_HOME: $AIRFLOW_HOME"
+echo "====================================="
+
+# Go to Airflow directory
+cd $AIRFLOW_HOME || exit 1
+
+# Check for Singularity container
+SINGULARITY_IMAGE=""
+if [ -f "containers/airflow-worker.sif" ]; then
+    SINGULARITY_IMAGE="containers/ai...
+[2025-10-25T05:37:20.963+0000] {ssh.py:309} WARNING - No Host Key Verification. This won't protect against Man-In-The-Middle attacks
+[2025-10-25T05:37:20.974+0000] {transport.py:1944} INFO - Connected (version 2.0, client OpenSSH_9.6p1)
+[2025-10-25T05:37:21.073+0000] {transport.py:1944} INFO - Authentication (publickey) successful!
+[2025-10-25T05:37:21.300+0000] {smart_remote_worker_v2.py:221} INFO - 📊 Exit status: 0
+[2025-10-25T05:37:21.300+0000] {smart_remote_worker_v2.py:224} INFO - 📄 Output:
+=====================================
+Starting worker: worker-1
+AIRFLOW_HOME: /home/airflow/airflow-worker
+=====================================
+Found Singularity image: containers/airflow-worker.sif
+Singularity is available
+Executing command in Singularity container...
+==========================================
+Testing Singularity
+==========================================
+❌ Singularity is not available
+==========================================
+Command completed with exit code: 0
+
+[2025-10-25T05:37:21.301+0000] {smart_remote_worker_v2.py:227} INFO - ⚠️ Stderr:
++ export AIRFLOW_HOME=/home/airflow/airflow-worker
++ AIRFLOW_HOME=/home/airflow/airflow-worker
++ export WORKER_NAME=worker-1
++ WORKER_NAME=worker-1
++ export QUEUE_NAME=default
++ QUEUE_NAME=default
++ echo =====================================
++ echo 'Starting worker: worker-1'
++ echo 'AIRFLOW_HOME: /home/airflow/airflow-worker'
++ echo =====================================
++ cd /home/airflow/airflow-worker
++ SINGULARITY_IMAGE=
++ '[' -f containers/airflow-worker.sif ']'
++ SINGULARITY_IMAGE=containers/airflow-worker.sif
++ '[' -n containers/airflow-worker.sif ']'
++ echo 'Found Singularity image: containers/airflow-worker.sif'
++ singularity --version
++ echo 'Singularity is available'
++ echo 'Executing command in Singularity container...'
++ singularity exec --bind /home/airflow/airflow-worker:/home/airflow/airflow-worker containers/airflow-worker.sif bash -c '
+
+echo "=========================================="
+echo "Testing Singularity"
+echo "=========================================="
+
+# Check if Singularity is available
+if command -v singularity > /dev/null 2>&1; then
+    echo "✅ Singularity is available"
+    singularity --version
+    
+    # List Singularity images
+    echo ""
+    echo "Singularity images in AIRFLOW_HOME:"
+    find $AIRFLOW_HOME -name "*.sif" -type f 2>/dev/null || echo "No .sif files found"
+else
+    echo "❌ Singularity is not available"
+fi
+echo "=========================================="
+'
++ exit_code=0
++ echo 'Command completed with exit code: 0'
++ exit 0
+
+[2025-10-25T05:37:21.301+0000] {smart_remote_worker_v2.py:238} INFO - ✅ Task completed successfully on worker-1
+[2025-10-25T05:37:21.302+0000] {smart_remote_worker_v2.py:279} INFO - ================================================================================
+[2025-10-25T05:37:21.302+0000] {smart_remote_worker_v2.py:280} INFO - ✅ SUCCESS: Task completed
+[2025-10-25T05:37:21.302+0000] {smart_remote_worker_v2.py:281} INFO - ================================================================================
+[2025-10-25T05:37:21.342+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-10-25T05:37:21.342+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=test_smart_v2, task_id=test_singularity, run_id=manual__2025-10-25T05:37:14.593992+00:00, execution_date=20251025T053714, start_date=20251025T053720, end_date=20251025T053721
+[2025-10-25T05:37:21.379+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-10-25T05:37:21.409+0000] {taskinstance.py:3900} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2025-10-25T05:37:21.411+0000] {local_task_job_runner.py:245} INFO - ::endgroup::
