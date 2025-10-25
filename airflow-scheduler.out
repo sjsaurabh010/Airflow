@@ -305,3 +305,8 @@
 [2025-10-25T06:50:45.940+0000] {scheduler_job_runner.py:764} INFO - Received executor event with state success for task instance TaskInstanceKey(dag_id='full_integration_test', task_id='cleanup', run_id='manual__2025-10-25T06:50:29.396716+00:00', try_number=1, map_index=-1)
 [2025-10-25T06:50:45.946+0000] {scheduler_job_runner.py:801} INFO - TaskInstance Finished: dag_id=full_integration_test, task_id=cleanup, run_id=manual__2025-10-25T06:50:29.396716+00:00, map_index=-1, run_start_date=2025-10-25 06:50:44.590660+00:00, run_end_date=2025-10-25 06:50:44.793839+00:00, run_duration=0.203179, state=success, executor=CeleryExecutor(parallelism=32), executor_state=success, try_number=1, max_tries=1, job_id=145, pool=default_pool, queue=default, priority_weight=2, operator=PythonOperator, queued_dttm=2025-10-25 06:50:44.249686+00:00, queued_by_job_id=123, pid=133582
 [2025-10-25T06:50:55.653+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
+[2025-10-25T06:55:55.686+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
+[2025-10-25T07:00:55.729+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
+[2025-10-25T07:05:55.760+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
+[2025-10-25T07:10:55.811+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
+[2025-10-25T07:15:55.849+0000] {scheduler_job_runner.py:1847} INFO - Adopting or resetting orphaned tasks for active dag runs
