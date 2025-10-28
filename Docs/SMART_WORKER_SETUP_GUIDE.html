@@ -1,0 +1,3273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Airflow Smart Remote Worker Setup Guide</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #017cee;
+            border-bottom: 3px solid #017cee;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #333;
+            margin-top: 30px;
+            background: #f0f8ff;
+            padding: 10px;
+            border-left: 4px solid #017cee;
+        }
+        h3 {
+            color: #555;
+            margin-top: 20px;
+        }
+        .feature-box {
+            background: #e8f5e9;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+            border-left: 4px solid #4caf50;
+        }
+        .warning-box {
+            background: #fff3cd;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+            border-left: 4px solid #ffc107;
+        }
+        .info-box {
+            background: #e3f2fd;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+            border-left: 4px solid #2196f3;
+        }
+        .file-structure {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            overflow-x: auto;
+            line-height: 2;
+            white-space: pre;
+            font-size: 14px;
+            border: 1px solid #333;
+            position: relative;
+            margin: 20px 0;
+        }
+        .file-structure::before {
+            content: '📁 File Structure';
+            position: absolute;
+            top: -10px;
+            left: 15px;
+            background: #1e1e1e;
+            padding: 0 10px;
+            color: #4ec9b0;
+            font-family: 'Segoe UI', sans-serif;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        .step {
+            background: #fafafa;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+        .step-number {
+            background: #017cee;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 50%;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th {
+            background: #017cee;
+            color: white;
+            padding: 12px;
+            text-align: left;
+        }
+        td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+        tr:hover {
+            background: #f5f5f5;
+        }
+        .flow-diagram {
+            background: white;
+            padding: 20px;
+            margin: 20px 0;
+            border: 2px solid #017cee;
+            border-radius: 5px;
+            text-align: center;
+        }
+        .arrow {
+            color: #017cee;
+            font-size: 24px;
+            margin: 10px 0;
+        }
+        code {
+            background: #f4f4f4;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            color: #d63384;
+            font-size: 14px;
+            border: 1px solid #e0e0e0;
+        }
+        .command {
+            background: #282c34;
+            color: #abb2bf;
+            padding: 20px;
+            padding-top: 45px;
+            border-radius: 8px;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            overflow-x: auto;
+            margin: 15px 0;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            line-height: 1.8;
+            font-size: 14px;
+            border: 1px solid #3e4451;
+            position: relative;
+        }
+        .command::before {
+            content: '$ Terminal';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: #21252b;
+            padding: 8px 15px;
+            color: #61afef;
+            font-size: 12px;
+            font-weight: bold;
+            border-bottom: 1px solid #3e4451;
+            border-radius: 8px 8px 0 0;
+        }
+        .copy-btn {
+            position: absolute;
+            top: 8px;
+            right: 10px;
+            background: #4ec9b0;
+            color: #1e1e1e;
+            border: none;
+            padding: 5px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 11px;
+            font-weight: bold;
+            font-family: 'Segoe UI', sans-serif;
+            transition: all 0.2s;
+            z-index: 10;
+        }
+        .copy-btn:hover {
+            background: #6ee7b7;
+            transform: scale(1.05);
+        }
+        .copy-btn:active {
+            transform: scale(0.95);
+        }
+        .copy-btn.copied {
+            background: #22c55e;
+            color: white;
+        }
+        ul {
+            line-height: 2;
+        }
+        .highlight {
+            background: yellow;
+            padding: 2px 4px;
+            font-weight: bold;
+        }
+    </style>
+    <script>
+        function copyToClipboard(button) {
+            const codeBlock = button.parentElement;
+            const textContent = codeBlock.textContent.replace('Copy', '').replace('Copied!', '').trim();
+            
+            navigator.clipboard.writeText(textContent).then(() => {
+                button.textContent = 'Copied!';
+                button.classList.add('copied');
+                setTimeout(() => {
+                    button.textContent = 'Copy';
+                    button.classList.remove('copied');
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy:', err);
+            });
+        }
+    </script>
+</head>
+<body>
+    
+    <div class="content">
+        <!-- OVERVIEW SECTION -->
+        <section id="overview" class="section">
+            <h2><span class="icon">📋</span> Overview</h2>
+            
+            <div class="important-box">
+                <h3>🎯 Core Concepts</h3>
+                <ul style="margin-left: 20px;">
+                    <li><strong>Master Node:</strong> Runs all services (PostgreSQL, Redis, Scheduler, Webserver)</li>
+                    <li><strong>Worker Nodes:</strong> Ephemeral, no services, connect via SSH tunnels only</li>
+                    <li><strong>On-Demand:</strong> Workers start, execute tasks, then stop immediately</li>
+                    <li><strong>No Root Access:</strong> Everything runs as airflow user</li>
+                    <li><strong>SSH Tunnels:</strong> All worker-to-master communication via SSH port forwarding</li>
+                    <li><strong>Container-Based:</strong> Tasks run in Docker or Singularity containers</li>
+                </ul>
+            </div>
+
+            <div class="info">
+                <strong>Implementation Details:</strong>
+                <ul style="margin-left: 20px;">
+                    <li>🔧 Airflow Version: <strong>2.10.2</strong> (Latest stable)</li>
+                    <li>📦 Container: <strong>Singularity only</strong> (built on master, deployed via SCP)</li>
+                    <li>📍 Master Location: <code>/home/airflow/airflow</code></li>
+                    <li>🗄️ PostgreSQL database on master (port 5432)</li>
+                    <li>📡 Redis broker on master (port 6379)</li>
+                    <li>⚙️ CeleryExecutor for distributed tasks</li>
+                    <li>🔒 SSH tunnels for all worker connections</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- ARCHITECTURE SECTION -->
+        <section id="architecture" class="section">
+            <h2><span class="icon">🏗️</span> System Architecture</h2>
+            
+            <div class="architecture-diagram">
+                <pre>
+┌─────────────────────────────────────────────────────────────┐
+│                        MASTER NODE                          │
+│                  /home/airflow/airflow                      │
+├─────────────────────────────────────────────────────────────┤
+│                                                             │
+│  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐     │
+│  │  PostgreSQL  │  │    Redis     │  │   Scheduler  │     │
+│  │    (5432)    │  │    (6379)    │  │              │     │
+│  └──────────────┘  └──────────────┘  └──────────────┘     │
+│                                                             │
+│  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐     │
+│  │  Webserver   │  │   Flower     │  │     DAGs     │     │
+│  │    (8080)    │  │    (5555)    │  │   (Git Repo) │     │
+│  └──────────────┘  └──────────────┘  └──────────────┘     │
+│                                                             │
+└─────────────────────────┬───────────────────────────────────┘
+                      │
+                      │ SSH Tunnel (Port 22 Only)
+                      │ No Direct Network Access
+                      │
+┌─────────────────────▼────────────────────────┐
+│              WORKER NODES                    │
+│         (On-Demand, No Root Access)          │
+├───────────────────────────────────────────────┤
+│                                               │
+│  ❌ NO PostgreSQL   ❌ NO Redis              │
+│  ❌ NO Persistent Services                    │
+│                                               │
+│  ✅ SSH Client                               │
+│  ✅ Python venv  / Singularity               │
+│  ✅ Celery Worker (Temporary)                │
+│  ✅ Git for DAG Sync (Optional)              │
+│                                              │
+│  Connects to Master via:                     │
+│  localhost:5432 ──SSH──> Master:5432         │
+│  localhost:6379 ──SSH──> Master:6379         │
+└───────────────────────────────────────────────┘
+                </pre>
+            </div>
+
+            <h3>Communication Flow</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Step</th>
+                        <th>Action</th>
+                        <th>Direction</th>
+                        <th>Protocol</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Master triggers task</td>
+                        <td>Master → Queue</td>
+                        <td>Redis</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>SSH to worker</td>
+                        <td>Master → Worker</td>
+                        <td>SSH</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Setup SSH tunnel</td>
+                        <td>Worker → Master</td>
+                        <td>SSH</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Start Celery worker</td>
+                        <td>Worker</td>
+                        <td>Local</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Pull task from queue</td>
+                        <td>Worker → Master</td>
+                        <td>Redis via tunnel</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>Execute task</td>
+                        <td>Worker</td>
+                        <td>Container</td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>Update status</td>
+                        <td>Worker → Master</td>
+                        <td>PostgreSQL via tunnel</td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td>Stop worker</td>
+                        <td>Worker</td>
+                        <td>Local</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- PREREQUISITES SECTION -->
+        <section id="prerequisites" class="section">
+            <h2><span class="icon">✅</span> Prerequisites</h2>
+            
+            <div class="grid">
+                <div class="card">
+                    <h4>Master Node Requirements</h4>
+                    <ul>
+                        <li>Ubuntu 20.04+ or CentOS 8+</li>
+                        <li>4+ CPU cores, 8GB+ RAM</li>
+                        <li>Python 3.8+</li>
+                        <li>PostgreSQL 12+</li>
+                        <li>Redis 6+</li>
+                        <li>Git access to DAG repository</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h4>Worker Node Requirements</h4>
+                    <ul>
+                        <li>Ubuntu 20.04+ or CentOS 8+</li>
+                        <li>2+ CPU cores, 4GB+ RAM</li>
+                        <li>Python 3.8+</li>
+                        <li>SSH server running</li>
+                        <li>Docker or Singularity (optional)</li>
+                        <li>No root access required!</li>
+                    </ul>
+                </div>
+            </div>
+
+
+            <div class="container">
+        <h1>🚀 Airflow Smart Remote Worker Setup Guide</h1>
+        <p><strong>Purpose:</strong> Complete process to add and manage remote workers with SSH-based architecture</p>
+        
+        <div class="feature-box">
+            <h3>✨ 7 Core Features</h3>
+            <ul>
+                <li><strong>No Hardcoded IPs:</strong> Workers defined in Airflow Variables (dynamic)</li>
+                <li><strong>Easy Scaling:</strong> Add workers via UI/CLI without code changes</li>
+                <li><strong>Priority-Based Selection:</strong> Each DAG specifies its worker preference</li>
+                <li><strong>On-Demand Execution:</strong> Workers start only when needed</li>
+                <li><strong>SSH-Only Access:</strong> All connections via SSH tunnels</li>
+                <li><strong>5-Minute Retry:</strong> Built-in retry logic with failover</li>
+                <li><strong>No Root Required:</strong> Works with regular user permissions</li>
+            </ul>
+        </div>
+
+        <!-- ===== FILE STRUCTURE ===== -->
+        <h2>📁 Complete File Structure</h2>
+        <div class="file-structure">
+/home/airflow/airflow/
+├── plugins/
+│   └── operators/
+│       └── smart_remote_worker.py           # Main operator (NO hardcoded IPs)
+│
+├── dags/
+│   ├── worker_health_monitor.py             # Checks worker availability every 5 min
+│   └── example_dag_with_workers.py          # Sample DAG with priority list
+│
+├── scripts/
+│   ├── manage_workers.py                    # CLI to add/remove workers
+│   ├── worker_launcher.sh                   # Script deployed to remote workers
+│   └── setup_ssh_keys.sh                    # SSH key setup helper
+│
+└── config/
+    └── worker_templates.json                # Optional: SSH connection templates
+        </div>
+
+        <h3>📄 File Purposes</h3>
+        <table>
+            <tr>
+                <th>File</th>
+                <th>Purpose</th>
+                <th>Used By</th>
+            </tr>
+            <tr>
+                <td><code>smart_remote_worker.py</code></td>
+                <td>Custom operator that reads worker registry, selects based on priority, establishes SSH tunnels, manages on-demand lifecycle</td>
+                <td>DAGs</td>
+            </tr>
+            <tr>
+                <td><code>worker_health_monitor.py</code></td>
+                <td>Scheduled DAG that checks SSH connectivity to all registered workers every 5 minutes, updates status in registry</td>
+                <td>Airflow Scheduler</td>
+            </tr>
+            <tr>
+                <td><code>example_dag_with_workers.py</code></td>
+                <td>Sample DAG demonstrating how to specify worker priority list</td>
+                <td>User Reference</td>
+            </tr>
+            <tr>
+                <td><code>manage_workers.py</code></td>
+                <td>Command-line tool to add/remove/list workers in registry without touching code</td>
+                <td>Admin</td>
+            </tr>
+            <tr>
+                <td><code>worker_launcher.sh</code></td>
+                <td>Bash script copied to remote workers that starts Celery worker in container with SSH tunnels</td>
+                <td>Remote Workers</td>
+            </tr>
+            <tr>
+                <td><code>setup_ssh_keys.sh</code></td>
+                <td>Helper script to generate and copy SSH keys to remote workers</td>
+                <td>Admin (one-time setup)</td>
+            </tr>
+            <tr>
+                <td><code>worker_templates.json</code></td>
+                <td>Optional template file with common SSH configurations</td>
+                <td>manage_workers.py</td>
+            </tr>
+        </table>
+
+        <!-- ===== ARCHITECTURE OVERVIEW ===== -->
+        <h2>🏗️ System Architecture</h2>
+        
+        <div class="flow-diagram">
+            <h3>Master Node Components</h3>
+            <div style="background: #e3f2fd; padding: 15px; margin: 10px; border-radius: 5px;">
+                <strong>Airflow Webserver</strong><br>
+                UI for monitoring and management
+            </div>
+            <div class="arrow">↕</div>
+            <div style="background: #e3f2fd; padding: 15px; margin: 10px; border-radius: 5px;">
+                <strong>Airflow Scheduler</strong><br>
+                Triggers DAGs and monitors execution
+            </div>
+            <div class="arrow">↕</div>
+            <div style="background: #e3f2fd; padding: 15px; margin: 10px; border-radius: 5px;">
+                <strong>PostgreSQL Database</strong><br>
+                Stores metadata + Worker Registry (Airflow Variables)
+            </div>
+            <div class="arrow">↕</div>
+            <div style="background: #e3f2fd; padding: 15px; margin: 10px; border-radius: 5px;">
+                <strong>Message Broker (Redis/RabbitMQ)</strong><br>
+                Celery task queue
+            </div>
+            <div class="arrow">↓ (SSH Tunnel)</div>
+            <div style="background: #c8e6c9; padding: 15px; margin: 10px; border-radius: 5px;">
+                <strong>Remote Worker Node</strong><br>
+                On-demand Celery worker in container
+            </div>
+        </div>
+
+        <div class="info-box">
+            <strong>Key Point:</strong> All communication from remote workers back to master happens through SSH tunnels. Workers don't need direct network access to PostgreSQL or message broker.
+        </div>
+
+        <!-- ===== WORKER REGISTRY ===== -->
+        <h2>📊 Worker Registry Structure</h2>
+        <p>The worker registry is stored in <strong>Airflow Variables</strong> (in PostgreSQL), accessible via UI or CLI.</p>
+        
+        <h3>Registry JSON Schema</h3>
+        <div class="command"><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+{
+  "workers": {
+    "worker-1": {
+      "host": "45.151.155.74",
+      "ssh_port": 22,
+      "ssh_user": "airflow",
+      "priority": 1,
+      "status": "available",
+      "container_type": "singularity",
+      "tags": ["gpu", "high-memory"]
+    },
+    "worker-2": {
+      "host": "10.0.1.20",
+      "ssh_port": 22,
+      "ssh_user": "airflow",
+      "priority": 2,
+      "status": "available",
+      "container_type": "singularity",
+      "tags": ["cpu-only"]
+    }
+  },
+  "last_updated": "2024-10-25T10:30:00Z"
+}
+        </div>
+
+        <h3>Field Descriptions</h3>
+        <table>
+            <tr>
+                <th>Field</th>
+                <th>Description</th>
+                <th>Example</th>
+            </tr>
+            <tr>
+                <td><code>host</code></td>
+                <td>Remote worker IP address or hostname</td>
+                <td>45.151.155.74</td>
+            </tr>
+            <tr>
+                <td><code>ssh_port</code></td>
+                <td>SSH port on remote worker</td>
+                <td>22</td>
+            </tr>
+            <tr>
+                <td><code>ssh_user</code></td>
+                <td>Username on remote worker</td>
+                <td>airflow</td>
+            </tr>
+            <tr>
+                <td><code>priority</code></td>
+                <td>Global priority (lower = higher priority)</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td><code>status</code></td>
+                <td>Current availability (updated by health monitor)</td>
+                <td>available / unavailable</td>
+            </tr>
+            <tr>
+                <td><code>container_type</code></td>
+                <td>Container runtime on worker</td>
+                <td>singularity / venv</td>
+            </tr>
+            <tr>
+                <td><code>tags</code></td>
+                <td>Optional labels for filtering</td>
+                <td>["gpu", "high-memory"]</td>
+            </tr>
+        </table>
+
+        <!-- ===== SETUP PROCESS ===== -->
+        <h2>🔧 Complete Setup Process</h2>
+
+        <div class="warning-box">
+            <h3>⚠️ Important: Singularity Workflow</h3>
+            <p><strong>This implementation uses Singularity (not Docker)</strong></p>
+            <p>You must build the Singularity image on the <strong>master server</strong> (where you have root access), then copy it to remote workers via SCP.</p>
+            <p><strong>Prerequisites:</strong></p>
+            <ul>
+                <li>Singularity installed on master server (requires root for installation)</li>
+                <li>Build image once on master: <code>sudo singularity build airflow_2.10.2.sif airflow.def</code></li>
+                <li>Copy to all workers: <code>scp airflow_2.10.2.sif worker:/home/airflow/airflow/</code></li>
+                <li>Workers can run the image without root access</li>
+            </ul>
+            <p>See <strong>SINGULARITY_SETUP_GUIDE.md</strong> for detailed instructions.</p>
+        </div>
+
+        <!-- STEP 0: Build Singularity Image -->
+        <div class="step" style="background: #fff3cd; border-left: 4px solid #ffc107;">
+            <h3><span class="step-number">0</span>Build Singularity Image (On Master Server with Root)</h3>
+            <strong>What this does:</strong> Creates the Airflow Singularity container image
+            <br><strong>Where to do it:</strong> Master server (where you have root/sudo access)
+            <br><br><strong>How to do it:</strong>
+            <div class="command"><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+# Create Singularity definition file
+cd /home/airflow/airflow
+cat > airflow.def << 'EOF'
+Bootstrap: docker
+From: apache/airflow:2.10.2
+
+%post
+    pip install --no-cache-dir psycopg2-binary redis celery
+
+%environment
+    export AIRFLOW_HOME=/home/airflow/airflow
+
+%runscript
+    exec celery -A airflow.providers.celery.executors.celery_executor.app worker "$@"
+EOF
+
+# Build the image (REQUIRES ROOT)
+sudo singularity build airflow_2.10.2.sif airflow.def
+
+# Change ownership so airflow user can copy it
+sudo chown airflow:airflow airflow_2.10.2.sif
+
+# Verify the build
+singularity exec airflow_2.10.2.sif airflow version
+            </div>
+            <strong>What you get:</strong>
+            <ul>
+                <li>File: <code>airflow_2.10.2.sif</code> (~1-2 GB)</li>
+                <li>Contains Airflow 2.10.2 with all dependencies</li>
+                <li>Ready to copy to remote workers</li>
+            </ul>
+            <div class="info-box">
+                <strong>📝 Note:</strong> This step only needs to be done once on the master server. The resulting .sif file will be copied to all workers.
+            </div>
+        </div>
+
+        <!-- STEP 0.5: Copy Image to Workers -->
+        <div class="step" style="background: #e8f5e9; border-left: 4px solid #4caf50;">
+            <h3><span class="step-number">½</span>Copy Singularity Image to Remote Workers</h3>
+            <strong>What this does:</strong> Distributes the Singularity image to all remote workers
+            <br><strong>Prerequisites:</strong> SSH keys must be setup (see Step 2)
+            <br><br><strong>Using automated script:</strong>
+            <div class="command"><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+# Copy to single worker
+./scripts/copy_singularity_to_workers.sh 45.151.155.74
+
+# Copy to multiple workers at once
+./scripts/copy_singularity_to_workers.sh 45.151.155.74 10.0.1.20 192.168.1.100
+            </div>
+            <strong>Or manually:</strong>
+            <div class="command"><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+# Copy the .sif file via SCP
+scp -i ~/.ssh/airflow_worker_key \
+    airflow_2.10.2.sif \
+    airflow@45.151.155.74:/home/airflow/airflow/
+
+# Verify on remote
+ssh -i ~/.ssh/airflow_worker_key airflow@45.151.155.74 \
+    "ls -lh /home/airflow/airflow/airflow_2.10.2.sif"
+
+# Test execution on remote (no root needed!)
+ssh -i ~/.ssh/airflow_worker_key airflow@45.151.155.74 \
+    "singularity exec /home/airflow/airflow/airflow_2.10.2.sif python --version"
+            </div>
+            <div class="warning-box">
+                <strong>⚠️ Important:</strong> Copy this file to ALL workers before proceeding. The file is large (~1-2 GB) so copying may take several minutes per worker.
+            </div>
+        </div>
+
+        <!-- STEP 0.75: Remote Worker Directory Structure -->
+        <div class="step" style="background: #e3f2fd; border-left: 4px solid #2196f3;">
+            <h3><span class="step-number">📁</span>Remote Worker Directory Structure & File Locations</h3>
+            <strong>Important:</strong> Understanding where to place files on remote workers
+            <br><br>
+            
+            <h4>Typical Remote Worker Structure:</h4>
+            <div class="file-structure">
+/home/airflow/                              (Home directory)
+├── worker_launcher.sh                      ← Script goes HERE (executable)
+│
+└── airflow-worker/                         (Or "airflow" or custom name)
+    └── Airflow/                            (AIRFLOW_HOME directory)
+        ├── airflow_2.10.2.sif             ← Singularity image HERE
+        ├── dags/                           (DAG files - synced)
+        ├── logs/                           (Worker logs)
+        ├── config/                         (Optional configs)
+        └── venv/                           (Python venv - fallback)
+            </div>
+
+            <h4>Step 1: Identify Your Airflow Directory on Worker</h4>
+            <div class="command"><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+# Login to remote worker
+ssh airflow@45.151.155.74
+
+# Check current directory structure
+pwd
+ls -la
+
+# Common locations:
+# - /home/airflow/airflow/
+# - /home/airflow/airflow-worker/Airflow/
+# - /opt/airflow/
+            </div>
+
+            <h4>Step 2: Set AIRFLOW_HOME Environment Variable</h4>
+            <div class="command"><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+# Example: If your Airflow is in ~/airflow-worker/Airflow/
+export AIRFLOW_HOME=/home/airflow/airflow-worker/Airflow
+
+# Make it permanent (add to ~/.bashrc)
+echo 'export AIRFLOW_HOME=/home/airflow/airflow-worker/Airflow' >> ~/.bashrc
+source ~/.bashrc
+
+# Verify
+echo $AIRFLOW_HOME
+            </div>
+
+            <h4>Step 3: Place Files in Correct Locations</h4>
+            <strong>A. Worker Launcher Script → HOME directory</strong>
+            <div class="command"><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+# Script location: /home/airflow/worker_launcher.sh
+cd ~
+ls -l worker_launcher.sh
+
+# If copying manually from master:
+scp -i ~/.ssh/airflow_worker_key \
+    master:/path/to/worker_launcher.sh \
+    ~/worker_launcher.sh
+
+# Make executable
+chmod +x ~/worker_launcher.sh
+            </div>
+
+            <strong>B. Singularity Image → AIRFLOW_HOME directory</strong>
+            <div class="command"><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+# Image location: $AIRFLOW_HOME/airflow_2.10.2.sif
+# Example: /home/airflow/airflow-worker/Airflow/airflow_2.10.2.sif
+
+# Create directory if needed
+mkdir -p $AIRFLOW_HOME
+
+# Copy from master
+scp -i ~/.ssh/airflow_worker_key \
+    master:/home/airflow/airflow/airflow_2.10.2.sif \
+    $AIRFLOW_HOME/
+
+# Verify
+ls -lh $AIRFLOW_HOME/airflow_2.10.2.sif
+            </div>
+
+            <h4>Step 4: Verification Checklist</h4>
+            <div class="command"><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+# 1. Check AIRFLOW_HOME is set
+echo $AIRFLOW_HOME
+# Should show: /home/airflow/airflow-worker/Airflow (or your path)
+
+# 2. Check worker_launcher.sh exists and is executable
+ls -l ~/worker_launcher.sh
+# Should show: -rwxr-xr-x
+
+# 3. Check Singularity image exists
+ls -lh $AIRFLOW_HOME/airflow_2.10.2.sif
+# Should show: ~1-2GB file
+
+# 4. Test Singularity works
+singularity --version
+singularity exec $AIRFLOW_HOME/airflow_2.10.2.sif python --version
+
+# 5. Verify directory structure
+tree -L 2 /home/airflow/
+# Or: ls -R /home/airflow/
+            </div>
+
+            <div class="info-box">
+                <strong>📝 Common Worker Directory Names:</strong>
+                <ul>
+                    <li><code>/home/airflow/airflow/</code> - Standard setup</li>
+                    <li><code>/home/airflow/airflow-worker/Airflow/</code> - Your current structure</li>
+                    <li><code>/opt/airflow/</code> - System-wide installation</li>
+                    <li><code>/home/airflow/airflow_home/</code> - Custom name</li>
+                </ul>
+                <strong>Key Point:</strong> The <code>worker_launcher.sh</code> script will use <code>$AIRFLOW_HOME</code> to find the Singularity image, so make sure this environment variable is set correctly!
+            </div>
+
+            <div class="warning-box">
+                <strong>⚠️ Important Notes:</strong>
+                <ul>
+                    <li><strong>Worker Script Location:</strong> MUST be in home directory (<code>~/worker_launcher.sh</code>)</li>
+                    <li><strong>Singularity Image:</strong> MUST be in <code>$AIRFLOW_HOME/</code> directory</li>
+                    <li><strong>AIRFLOW_HOME:</strong> MUST be set as environment variable (add to <code>~/.bashrc</code>)</li>
+                    <li><strong>Permissions:</strong> Worker script must be executable (<code>chmod +x</code>)</li>
+                </ul>
+            </div>
+
+            <h4>Example: Complete Setup on Worker with Custom Structure</h4>
+            <div class="command"><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+# Your worker structure: /home/airflow/airflow-worker/Airflow/
+
+# 1. Set AIRFLOW_HOME
+export AIRFLOW_HOME=/home/airflow/airflow-worker/Airflow
+echo 'export AIRFLOW_HOME=/home/airflow/airflow-worker/Airflow' >> ~/.bashrc
+
+# 2. Create directories if needed
+mkdir -p $AIRFLOW_HOME
+
+# 3. Place worker_launcher.sh in home
+cd ~
+# (Master will SCP it here)
+
+# 4. Copy Singularity image to AIRFLOW_HOME
+# (Master will SCP it to: $AIRFLOW_HOME/airflow_2.10.2.sif)
+
+# 5. Final structure:
+# /home/airflow/
+# ├── worker_launcher.sh              ← Here
+# └── airflow-worker/
+#     └── Airflow/
+#         └── airflow_2.10.2.sif      ← Here
+
+# 6. Verify everything
+echo "AIRFLOW_HOME: $AIRFLOW_HOME"
+ls -l ~/worker_launcher.sh
+ls -lh $AIRFLOW_HOME/airflow_2.10.2.sif
+            </div>
+        </div>
+
+        <!-- STEP 1 -->
+        <div class="step">
+            <h3><span class="step-number">1</span>Master Node Prerequisites</h3>
+            <strong>What to verify:</strong>
+            <ul>
+                <li>Airflow installed with CeleryExecutor configured</li>
+                <li>PostgreSQL database running and accessible</li>
+                <li>Message broker (Redis or RabbitMQ) running</li>
+                <li>SSH client installed on master node</li>
+                <li>Airflow user has <code>.ssh</code> directory</li>
+            </ul>
+            <strong>How to check:</strong>
+            <div class="command"><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+# Check Airflow executor
+airflow config get-value core executor
+# Should show: CeleryExecutor
+
+# Check PostgreSQL connection
+psql -h localhost -U airflow -d airflow_db -c "\conninfo"
+
+# Check Redis/RabbitMQ
+redis-cli ping    # For Redis
+rabbitmqctl status # For RabbitMQ
+
+# Check SSH directory
+ls -la /home/airflow/.ssh/
+            </div>
+        </div>
+
+        <!-- STEP 2 -->
+        <div class="step">
+            <h3><span class="step-number">2</span>Generate SSH Keys on Master</h3>
+            <strong>What this does:</strong> Creates SSH key pair for passwordless authentication to remote workers
+            <br><strong>How to do it:</strong>
+            <div class="command"><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+# Run as airflow user on master node
+cd /home/airflow/.ssh/
+
+# Generate new SSH key (no passphrase for automation)
+ssh-keygen -t rsa -b 4096 -f airflow_worker_key -N ""
+
+# This creates:
+# - airflow_worker_key (private key - stays on master)
+# - airflow_worker_key.pub (public key - copy to workers)
+            </div>
+            <div class="warning-box">
+                <strong>⚠️ Security:</strong> Keep private key secure! Only readable by airflow user.
+                <div class="command"><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>chmod 600 /home/airflow/.ssh/airflow_worker_key</div>
+            </div>
+        </div>
+
+        <!-- STEP 3 -->
+        <div class="step">
+            <h3><span class="step-number">3</span>Setup SSH Access to Remote Worker</h3>
+            <strong>What this does:</strong> Copies public key to remote worker and tests connection
+            <br><strong>Manual method:</strong>
+            <div class="command"><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+# Copy public key to remote worker (enter worker password when prompted)
+ssh-copy-id -i /home/airflow/.ssh/airflow_worker_key.pub airflow@45.151.155.74
+
+# Test passwordless SSH connection
+ssh -i /home/airflow/.ssh/airflow_worker_key airflow@45.151.155.74 "hostname"
+# Should return remote hostname without password prompt
+            </div>
+            <strong>Or use helper script:</strong>
+            <div class="command"><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+# Using setup_ssh_keys.sh script
+./scripts/setup_ssh_keys.sh 45.151.155.74 airflow
+            </div>
+            <strong>What happens on remote worker:</strong>
+            <ul>
+                <li>Public key added to <code>~/.ssh/authorized_keys</code></li>
+                <li>Permissions set correctly (700 for .ssh, 600 for authorized_keys)</li>
+                <li>SSH daemon configuration validated</li>
+            </ul>
+        </div>
+
+        <!-- STEP 4 -->
+        <div class="step">
+            <h3><span class="step-number">4</span>Deploy Worker Launcher Script to Remote</h3>
+            <strong>What this does:</strong> Copies the worker startup script to remote worker
+            <br><strong>How to do it:</strong>
+            <div class="command"><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+# Copy launcher script to remote worker
+scp -i /home/airflow/.ssh/airflow_worker_key \
+    scripts/worker_launcher.sh \
+    airflow@45.151.155.74:/home/airflow/
+
+# Make it executable
+ssh -i /home/airflow/.ssh/airflow_worker_key airflow@45.151.155.74 \
+    "chmod +x /home/airflow/worker_launcher.sh"
+            </div>
+            <strong>What worker_launcher.sh does:</strong>
+            <ul>
+                <li>Establishes SSH reverse tunnels back to master (PostgreSQL, broker)</li>
+                <li>Starts Celery worker in Singularity container</li>
+                <li>Connects worker to master via tunnels</li>
+                <li>Executes tasks assigned to this worker</li>
+                <li>Stops when tasks complete (on-demand)</li>
+            </ul>
+        </div>
+
+        <!-- STEP 5 -->
+        <div class="step">
+            <h3><span class="step-number">5</span>Test SSH Tunnel Connectivity</h3>
+            <strong>What this tests:</strong> Verifies SSH tunnel can forward ports from worker to master
+            <br><strong>How to test:</strong>
+            <div class="command"><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+# From master, create test tunnel to PostgreSQL
+ssh -i /home/airflow/.ssh/airflow_worker_key \
+    -L 15432:localhost:5432 \
+    airflow@45.151.155.74 \
+    -N -f
+
+# Test PostgreSQL connection through tunnel
+psql -h localhost -p 15432 -U airflow -d airflow_db -c "SELECT 1;"
+
+# If successful, close tunnel
+pkill -f "ssh.*15432:localhost:5432"
+            </div>
+            <div class="info-box">
+                <strong>Tunnel Explanation:</strong>
+                <ul>
+                    <li><code>-L 15432:localhost:5432</code> - Forward local port 15432 to master's PostgreSQL port 5432</li>
+                    <li><code>-N</code> - Don't execute remote command</li>
+                    <li><code>-f</code> - Run in background</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- STEP 6 -->
+        <div class="step">
+            <h3><span class="step-number">6</span>Add Worker to Airflow Registry</h3>
+            <strong>What this does:</strong> Registers new worker in Airflow Variables (NO code changes needed)
+            <br><strong>Method A: Using Web UI</strong>
+            <ol>
+                <li>Login to Airflow Web UI</li>
+                <li>Navigate to <strong>Admin → Variables</strong></li>
+                <li>Click <strong>"+"</strong> to add new variable or edit existing <code>WORKER_REGISTRY</code></li>
+                <li>Set Key: <code>WORKER_REGISTRY</code></li>
+                <li>Set Value (JSON):
+                    <div class="command"><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+{
+  "workers": {
+    "worker-1": {
+      "host": "45.151.155.74",
+      "ssh_port": 22,
+      "ssh_user": "airflow",
+      "priority": 1,
+      "status": "available",
+      "container_type": "singularity"
+    }
+  }
+}
+                    </div>
+                </li>
+                <li>Click <strong>Save</strong></li>
+            </ol>
+            <strong>Method B: Using CLI Tool</strong>
+            <div class="command"><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+# Add worker using manage_workers.py script
+cd /home/airflow/airflow/scripts/
+python manage_workers.py add worker-1 45.151.155.74 \
+    --user airflow \
+    --priority 1 \
+    --container singularity
+
+# List all workers
+python manage_workers.py list
+
+# Output:
+# Worker ID   | Host           | Status    | Priority
+# worker-1    | 45.151.155.74  | available | 1
+            </div>
+            <strong>Method C: Using Airflow CLI</strong>
+            <div class="command"><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+# Set variable directly
+airflow variables set WORKER_REGISTRY '{
+  "workers": {
+    "worker-1": {
+      "host": "45.151.155.74",
+      "ssh_port": 22,
+      "ssh_user": "airflow",
+      "priority": 1,
+      "status": "available",
+      "container_type": "singularity"
+    }
+  }
+}'
+
+# Verify
+airflow variables get WORKER_REGISTRY
+            </div>
+        </div>
+
+        <!-- STEP 7 -->
+        <div class="step">
+            <h3><span class="step-number">7</span>Deploy Worker Health Monitor DAG</h3>
+            <strong>What this does:</strong> Automatically checks worker availability every 5 minutes
+            <br><strong>How it works:</strong>
+            <ul>
+                <li>Reads all workers from <code>WORKER_REGISTRY</code></li>
+                <li>Tests SSH connection to each worker</li>
+                <li>Updates <code>status</code> field: "available" or "unavailable"</li>
+                <li>Runs on schedule: <code>*/5 * * * *</code> (every 5 minutes)</li>
+            </ul>
+            <strong>To activate:</strong>
+            <div class="command"><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+# The DAG file already exists: dags/worker_health_monitor.py
+# Enable it in Airflow UI
+airflow dags unpause worker_health_monitor
+
+# Check it's running
+airflow dags list | grep worker_health_monitor
+            </div>
+        </div>
+
+        <!-- STEP 8 -->
+        <div class="step">
+            <h3><span class="step-number">8</span>Test Worker with Example DAG</h3>
+            <strong>What this does:</strong> Validates end-to-end worker execution
+            <br><strong>How to test:</strong>
+            <div class="command"><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+# Trigger example DAG
+airflow dags trigger example_dag_with_workers
+
+# Monitor execution in Airflow UI or CLI
+airflow dags state example_dag_with_workers
+            </div>
+            <strong>What should happen:</strong>
+            <ol>
+                <li>DAG triggers with worker priority list: <code>['worker-1', 'worker-2']</code></li>
+                <li><code>SmartRemoteWorkerOperator</code> reads registry and selects worker-1</li>
+                <li>SSH connection established to 45.151.155.74</li>
+                <li>SSH tunnels created (PostgreSQL: 5432, Broker: 6379)</li>
+                <li>Worker launcher script executes on remote</li>
+                <li>Celery worker starts in container</li>
+                <li>Task executes on remote worker</li>
+                <li>Result reported back through tunnel</li>
+                <li>Worker stops after task completion</li>
+                <li>SSH connection closes</li>
+            </ol>
+            <strong>Check logs:</strong>
+            <div class="command"><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+# View task logs in Airflow UI
+# Or via CLI
+airflow tasks logs example_dag_with_workers task_name 2024-10-25
+            </div>
+        </div>
+
+        <!-- ===== HOW TO ADD MORE WORKERS ===== -->
+        <h2>➕ How to Add New Remote Workers</h2>
+
+        <div class="info-box">
+            <strong>🎯 Goal:</strong> Add second worker (worker-2) at IP 10.0.1.20 with priority 2
+        </div>
+
+        <h3>Quick Steps</h3>
+        <div class="step">
+            <strong>1. Setup SSH Access</strong>
+            <div class="command"><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+# Copy SSH key to new worker
+ssh-copy-id -i /home/airflow/.ssh/airflow_worker_key.pub airflow@10.0.1.20
+
+# Test connection
+ssh -i /home/airflow/.ssh/airflow_worker_key airflow@10.0.1.20 "hostname"
+            </div>
+        </div>
+
+        <div class="step">
+            <strong>2. Deploy Worker Launcher</strong>
+            <div class="command"><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+# Copy launcher script
+scp -i /home/airflow/.ssh/airflow_worker_key \
+    scripts/worker_launcher.sh \
+    airflow@10.0.1.20:/home/airflow/
+
+# Make executable
+ssh -i /home/airflow/.ssh/airflow_worker_key airflow@10.0.1.20 \
+    "chmod +x /home/airflow/worker_launcher.sh"
+            </div>
+        </div>
+
+        <div class="step">
+            <strong>3. Add to Registry</strong>
+            <div class="command"><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+# Using CLI tool
+python scripts/manage_workers.py add worker-2 10.0.1.20 \
+    --user airflow \
+    --priority 2 \
+    --container singularity
+
+# Verify
+python scripts/manage_workers.py list
+
+# Output:
+# Worker ID   | Host           | Status    | Priority
+# worker-1    | 45.151.155.74  | available | 1
+# worker-2    | 10.0.1.20      | available | 2
+            </div>
+        </div>
+
+        <div class="step">
+            <strong>4. Test New Worker</strong>
+            <div class="command"><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+# Trigger DAG with new worker in priority list
+airflow dags trigger example_dag_with_workers \
+    --conf '{"worker_priority": ["worker-2", "worker-1"]}'
+            </div>
+        </div>
+
+        <div class="warning-box">
+            <strong>⚠️ Important:</strong> No code changes needed! Just:
+            <ul>
+                <li>Setup SSH access</li>
+                <li>Deploy launcher script</li>
+                <li>Add to registry via UI/CLI</li>
+                <li>Done!</li>
+            </ul>
+        </div>
+
+        <!-- ===== HOW IT WORKS ===== -->
+        <h2>🔄 How Priority Selection & Retry Works</h2>
+
+        <h3>Scenario 1: Normal Execution</h3>
+        <div class="flow-diagram">
+            <div style="background: #fff9c4; padding: 10px; margin: 5px;">
+                DAG triggers with priority: ['worker-1', 'worker-2']
+            </div>
+            <div class="arrow">↓</div>
+            <div style="background: #e3f2fd; padding: 10px; margin: 5px;">
+                SmartRemoteWorkerOperator reads WORKER_REGISTRY
+            </div>
+            <div class="arrow">↓</div>
+            <div style="background: #e3f2fd; padding: 10px; margin: 5px;">
+                Check worker-1 status: "available" ✓
+            </div>
+            <div class="arrow">↓</div>
+            <div style="background: #c8e6c9; padding: 10px; margin: 5px;">
+                Select worker-1 (45.151.155.74)
+            </div>
+            <div class="arrow">↓</div>
+            <div style="background: #c8e6c9; padding: 10px; margin: 5px;">
+                Execute task successfully
+            </div>
+        </div>
+
+        <h3>Scenario 2: Worker Unavailable (5-Minute Retry)</h3>
+        <div class="flow-diagram">
+            <div style="background: #fff9c4; padding: 10px; margin: 5px;">
+                DAG triggers with priority: ['worker-1', 'worker-2']
+            </div>
+            <div class="arrow">↓</div>
+            <div style="background: #ffcdd2; padding: 10px; margin: 5px;">
+                Check worker-1 status: "unavailable" ✗
+            </div>
+            <div class="arrow">↓</div>
+            <div style="background: #fff3cd; padding: 10px; margin: 5px;">
+                <strong>Wait 5 minutes</strong> (retry logic)
+            </div>
+            <div class="arrow">↓</div>
+            <div style="background: #ffcdd2; padding: 10px; margin: 5px;">
+                Check worker-1 again: Still "unavailable" ✗
+            </div>
+            <div class="arrow">↓</div>
+            <div style="background: #e3f2fd; padding: 10px; margin: 5px;">
+                Move to next in priority: worker-2
+            </div>
+            <div class="arrow">↓</div>
+            <div style="background: #c8e6c9; padding: 10px; margin: 5px;">
+                Check worker-2 status: "available" ✓
+            </div>
+            <div class="arrow">↓</div>
+            <div style="background: #c8e6c9; padding: 10px; margin: 5px;">
+                Execute task on worker-2 successfully
+            </div>
+        </div>
+
+        <h3>Scenario 3: Worker Fails During Execution</h3>
+        <div class="flow-diagram">
+            <div style="background: #fff9c4; padding: 10px; margin: 5px;">
+                Task executing on worker-1
+            </div>
+            <div class="arrow">↓</div>
+            <div style="background: #ffcdd2; padding: 10px; margin: 5px;">
+                <strong>Worker-1 connection lost</strong> (network issue / crash)
+            </div>
+            <div class="arrow">↓</div>
+            <div style="background: #fff3cd; padding: 10px; margin: 5px;">
+                <strong>Wait 5 minutes</strong> (retry to reconnect)
+            </div>
+            <div class="arrow">↓</div>
+            <div style="background: #ffcdd2; padding: 10px; margin: 5px;">
+                Still cannot reach worker-1 ✗
+            </div>
+            <div class="arrow">↓</div>
+            <div style="background: #fff3cd; padding: 10px; margin: 5px;">
+                <strong>Kill task on main node</strong>
+            </div>
+            <div class="arrow">↓</div>
+            <div style="background: #e3f2fd; padding: 10px; margin: 5px;">
+                Select next worker: worker-2
+            </div>
+            <div class="arrow">↓</div>
+            <div style="background: #c8e6c9; padding: 10px; margin: 5px;">
+                <strong>Re-run DAG on worker-2</strong>
+            </div>
+        </div>
+
+        <!-- ===== USAGE IN DAGS ===== -->
+        <h2>📝 How to Use in Your DAGs</h2>
+
+        <h3>Example DAG Structure (No Code, Just Explanation)</h3>
+        
+        <div class="step">
+            <strong>File:</strong> <code>dags/my_pipeline.py</code>
+            <br><strong>What it contains:</strong>
+            <ul>
+                <li>Import <code>SmartRemoteWorkerOperator</code> from plugins</li>
+                <li>Define DAG with default parameters</li>
+                <li>Specify worker priority list in DAG params or task params</li>
+                <li>Create tasks using the operator</li>
+                <li>Tasks automatically use priority selection and retry logic</li>
+            </ul>
+            <strong>Priority specification options:</strong>
+            <ol>
+                <li><strong>Explicit list:</strong> <code>['worker-1', 'worker-2']</code> - Try in this exact order</li>
+                <li><strong>Auto-select:</strong> <code>'auto'</code> - Use global priority from registry</li>
+                <li><strong>Tag-based:</strong> <code>['tag:gpu', 'tag:high-memory']</code> - Select by worker tags</li>
+                <li><strong>All available:</strong> <code>None</code> - Use any available worker</li>
+            </ol>
+        </div>
+
+        <h3>How SmartRemoteWorkerOperator Works</h3>
+        <div class="info-box">
+            <strong>Execution Flow Inside Operator:</strong>
+            <ol>
+                <li><strong>Read Registry:</strong> Get <code>WORKER_REGISTRY</code> from Airflow Variables</li>
+                <li><strong>Filter Workers:</strong> Apply priority list from DAG params</li>
+                <li><strong>Check Availability:</strong> Verify status field for each worker in priority order</li>
+                <li><strong>Select Worker:</strong> Choose first available worker</li>
+                <li><strong>Establish SSH Connection:</strong> Connect using credentials from registry</li>
+                <li><strong>Create Tunnels:</strong> Forward PostgreSQL (5432) and Broker (6379) ports</li>
+                <li><strong>Start Worker:</strong> Execute <code>worker_launcher.sh</code> on remote</li>
+                <li><strong>Monitor Task:</strong> Wait for task completion</li>
+                <li><strong>Handle Failures:</strong> If worker fails, wait 5 min, retry once, then try next worker</li>
+                <li><strong>Cleanup:</strong> Stop worker and close SSH connections</li>
+            </ol>
+        </div>
+
+        <!-- ===== MANAGEMENT OPERATIONS ===== -->
+        <h2>🛠️ Common Management Operations</h2>
+
+        <h3>List All Workers</h3>
+        <div class="command"><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+# Using CLI tool
+python scripts/manage_workers.py list
+
+# Or via Airflow UI
+Admin → Variables → Click on WORKER_REGISTRY → View JSON
+        </div>
+
+        <h3>Update Worker Status Manually</h3>
+        <div class="command"><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+# Mark worker as unavailable (for maintenance)
+python scripts/manage_workers.py set-status worker-1 unavailable
+
+# Mark back as available
+python scripts/manage_workers.py set-status worker-1 available
+        </div>
+
+        <h3>Remove Worker</h3>
+        <div class="command"><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+# Remove worker from registry
+python scripts/manage_workers.py remove worker-1
+
+# Verify removal
+python scripts/manage_workers.py list
+        </div>
+
+        <h3>Update Worker Priority</h3>
+        <div class="command"><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+# Change priority (lower number = higher priority)
+python scripts/manage_workers.py set-priority worker-2 1
+
+# This makes worker-2 the first choice
+        </div>
+
+        <h3>View Worker Health Status</h3>
+        <div class="command"><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+# Check last health check time
+airflow dags state worker_health_monitor
+
+# View health monitor logs
+airflow tasks logs worker_health_monitor check_workers_task 2024-10-25
+        </div>
+
+        <!-- ===== SMART REMOTE WORKER V2 ===== -->
+        <h2>🎯 Smart Remote Worker V2 - The Final Solution (RECOMMENDED)</h2>
+
+        <div class="feature-box">
+            <h3>✅ WORKING SOLUTION - Use This!</h3>
+            <p><strong>Smart Remote Worker Operator V2</strong> combines the best of both approaches:</p>
+            <ul>
+                <li>✅ <strong>Dynamic Worker Selection</strong> - Reads from WORKER_REGISTRY, no hardcoded IPs</li>
+                <li>✅ <strong>Reliable Execution</strong> - Uses Airflow's SSHHook (proven and stable)</li>
+                <li>✅ <strong>Auto SSH Connections</strong> - Creates connections automatically</li>
+                <li>✅ <strong>Priority-Based Routing</strong> - Try workers in order you specify</li>
+                <li>✅ <strong>Automatic Failover</strong> - If one worker fails, tries next</li>
+                <li>✅ <strong>Singularity Support</strong> - Auto-detects and uses your containers</li>
+                <li>✅ <strong>Simple & Stable</strong> - No complex worker lifecycle management</li>
+            </ul>
+        </div>
+
+        <h3>📋 Quick Start (3 Steps)</h3>
+
+        <div class="step">
+            <h4><span class="step-number">1</span>Update Worker Configuration</h4>
+            <p>Set the correct AIRFLOW_HOME for your remote worker:</p>
+            <div class="command"><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+# On master server
+cd ~/airflow
+
+# Update worker registry with remote worker's AIRFLOW_HOME
+python update_worker_config.py
+            </div>
+            
+            <p><strong>What this does:</strong> Adds <code>airflow_home: /home/airflow/airflow-worker</code> to worker-1 configuration</p>
+            
+            <div class="info-box">
+                <strong>Note:</strong> Master and remote can have different AIRFLOW_HOME paths! This is normal and correct.
+                <ul>
+                    <li>Master: <code>/home/airflow/airflow</code> (manages orchestration)</li>
+                    <li>Worker: <code>/home/airflow/airflow-worker</code> (executes tasks)</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="step">
+            <h4><span class="step-number">2</span>Verify Configuration</h4>
+            <div class="command"><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+# Check worker configuration
+python scripts/manage_workers.py show worker-1
+            </div>
+            
+            <p><strong>Expected output:</strong></p>
+            <div class="command">
+============================================================
+📋 WORKER DETAILS: worker-1
+============================================================
+
+Connection:
+  Host:          45.151.155.74
+  User:          airflow
+  Port:          22
+
+Configuration:
+  Status:        ✅ available
+  Priority:      1
+  Container:     singularity
+  AIRFLOW_HOME:  /home/airflow/airflow-worker  ← Should see this!
+
+============================================================
+            </div>
+        </div>
+
+        <div class="step">
+            <h4><span class="step-number">3</span>Test the Operator</h4>
+            <div class="command"><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+# Trigger test DAG
+airflow dags trigger test_smart_v2
+
+# Wait 30 seconds
+sleep 30
+
+# Check logs
+cat ~/airflow/logs/dag_id=test_smart_v2/run_id=manual*/task_id=test_simple_command/attempt=1.log | tail -80
+            </div>
+            
+            <p><strong>Expected success output:</strong></p>
+            <div class="command">
+[INFO] 🚀 Smart Remote Worker Operator V2 - Starting
+[INFO] 📋 Loaded 1 workers from registry
+[INFO] 📋 Selected 1 worker(s)
+[INFO]    - worker-1 (priority: 1, host: 45.151.155.74)
+[INFO] 🎯 ATTEMPT 1/1: Trying worker 'worker-1'
+[INFO] 🎯 Executing on worker: worker-1
+[INFO]    Host: 45.151.155.74
+[INFO]    AIRFLOW_HOME: /home/airflow/airflow-worker
+[INFO] ✅ Created SSH connection: worker_worker-1
+[INFO] 📤 Executing command via SSH...
+[INFO] 📊 Exit status: 0
+[INFO] 📄 Output:
+==========================================
+Simple test on remote worker
+Hostname: remotedimpal-2
+Date: Sat Oct 25 05:30:00 UTC 2025
+PWD: /home/airflow/airflow-worker
+User: airflow
+==========================================
+[INFO] ✅ Task completed successfully on worker-1
+[INFO] ✅ SUCCESS: Task completed
+            </div>
+        </div>
+
+        <h3>🎯 Using V2 Operator in Your DAGs</h3>
+
+        <div class="step">
+            <h4>Example 1: Simple Task</h4>
+            <div class="command"><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+from datetime import datetime
+from airflow import DAG
+import sys, os
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'plugins'))
+from operators.smart_remote_worker_v2 import SmartRemoteWorkerOperatorV2
+
+with DAG(
+    'my_dag',
+    start_date=datetime(2024, 1, 1),
+    schedule=None,
+    catchup=False,
+) as dag:
+    
+    task = SmartRemoteWorkerOperatorV2(
+        task_id='my_remote_task',
+        bash_command='echo "Hello from remote worker!"',
+        worker_priority=['worker-1'],  # Try worker-1
+        dag=dag,
+    )
+            </div>
+        </div>
+
+        <div class="step">
+            <h4>Example 2: Auto-Select Worker</h4>
+            <div class="command"><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+task = SmartRemoteWorkerOperatorV2(
+    task_id='auto_select_task',
+    bash_command='''
+    echo "Processing data..."
+    python /path/to/script.py
+    echo "Done!"
+    ''',
+    worker_priority=[],  # Empty list = auto-select by priority
+    dag=dag,
+)
+            </div>
+            <p>When <code>worker_priority=[]</code>, operator uses all available workers sorted by priority number (1 = highest)</p>
+        </div>
+
+        <div class="step">
+            <h4>Example 3: Failover with Multiple Workers</h4>
+            <div class="command"><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+task = SmartRemoteWorkerOperatorV2(
+    task_id='failover_task',
+    bash_command='./process_large_dataset.sh',
+    worker_priority=['gpu-worker-1', 'gpu-worker-2', 'worker-1'],
+    retry_delay_seconds=120,  # Wait 2 minutes before retry
+    dag=dag,
+)
+            </div>
+            <p>If gpu-worker-1 fails, tries gpu-worker-2, then worker-1. After all fail, waits 2 minutes and retries.</p>
+        </div>
+
+        <div class="step">
+            <h4>Example 4: Complex Data Processing</h4>
+            <div class="command"><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+process_data = SmartRemoteWorkerOperatorV2(
+    task_id='process_data',
+    bash_command='''
+    cd $AIRFLOW_HOME/data
+    
+    echo "Starting data processing at $(date)"
+    echo "Worker: $(hostname)"
+    echo "Directory: $(pwd)"
+    
+    # Process data
+    python process_dataset.py --input raw/ --output processed/
+    
+    # Verify output
+    ls -lh processed/
+    
+    echo "Processing complete at $(date)"
+    ''',
+    worker_priority=['worker-1'],
+    dag=dag,
+)
+            </div>
+        </div>
+
+        <h3>📊 Comparison: V1 vs V2</h3>
+
+        <table>
+            <tr>
+                <th>Feature</th>
+                <th>V1 (Old)</th>
+                <th>V2 (New) ✅</th>
+            </tr>
+            <tr>
+                <td>Dynamic Worker Selection</td>
+                <td>✅ Yes</td>
+                <td>✅ Yes</td>
+            </tr>
+            <tr>
+                <td>SSH Connection</td>
+                <td>❌ Raw paramiko (unstable)</td>
+                <td>✅ SSHHook (reliable)</td>
+            </tr>
+            <tr>
+                <td>Auto-creates Connections</td>
+                <td>❌ No</td>
+                <td>✅ Yes</td>
+            </tr>
+            <tr>
+                <td>Worker Lifecycle Management</td>
+                <td>❌ Complex (caused issues)</td>
+                <td>✅ Simple (just execute)</td>
+            </tr>
+            <tr>
+                <td>Singularity Support</td>
+                <td>✅ Yes</td>
+                <td>✅ Yes (auto-detect)</td>
+            </tr>
+            <tr>
+                <td>Priority-based Routing</td>
+                <td>✅ Yes</td>
+                <td>✅ Yes</td>
+            </tr>
+            <tr>
+                <td>Automatic Failover</td>
+                <td>✅ Yes</td>
+                <td>✅ Yes</td>
+            </tr>
+            <tr>
+                <td>Stability</td>
+                <td>❌ Had pkill/SSH issues</td>
+                <td>✅ Stable</td>
+            </tr>
+            <tr>
+                <td>Code Complexity</td>
+                <td>❌ Complex (619 lines)</td>
+                <td>✅ Simpler (320 lines)</td>
+            </tr>
+        </table>
+
+        <h3>🔧 Configuration Options</h3>
+
+        <table>
+            <tr>
+                <th>Parameter</th>
+                <th>Type</th>
+                <th>Default</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td><code>bash_command</code></td>
+                <td>str</td>
+                <td>(required)</td>
+                <td>Command to execute on remote worker</td>
+            </tr>
+            <tr>
+                <td><code>worker_priority</code></td>
+                <td>list</td>
+                <td>[]</td>
+                <td>List of worker names to try in order. Empty = auto-select all by priority</td>
+            </tr>
+            <tr>
+                <td><code>retry_delay_seconds</code></td>
+                <td>int</td>
+                <td>300</td>
+                <td>Seconds to wait before retry if all workers fail</td>
+            </tr>
+            <tr>
+                <td><code>queue</code></td>
+                <td>str</td>
+                <td>'default'</td>
+                <td>Queue name (for future use)</td>
+            </tr>
+        </table>
+
+        <h3>🗑️ Cleanup Old Files</h3>
+
+        <div class="warning-box">
+            <h4>⚠️ Remove Obsolete Files</h4>
+            <p>Now that V2 is working, you can safely remove old/buggy files:</p>
+        </div>
+
+        <div class="command"><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+# Run cleanup script (creates backup first)
+chmod +x cleanup_old_files.sh
+./cleanup_old_files.sh
+        </div>
+
+        <p><strong>Files that will be removed:</strong></p>
+        <ul>
+            <li><code>plugins/operators/smart_remote_worker.py</code> - Old buggy version</li>
+            <li><code>dags/example_dag_with_workers.py</code> - Old example using V1</li>
+            <li>Various debug/fix markdown files (info moved to this HTML)</li>
+        </ul>
+
+        <p><strong>Files that are KEPT:</strong></p>
+        <ul>
+            <li>✅ <code>plugins/operators/smart_remote_worker_v2.py</code> - Working V2 operator</li>
+            <li>✅ <code>plugins/operators/remote_worker_operator_fixed.py</code> - Reference</li>
+            <li>✅ <code>dags/test_smart_v2.py</code> - Working test DAG</li>
+            <li>✅ <code>scripts/manage_workers.py</code> - Worker management CLI</li>
+            <li>✅ <code>update_worker_config.py</code> - Configuration helper</li>
+            <li>✅ <code>SMART_WORKER_SETUP_GUIDE.html</code> - This guide</li>
+        </ul>
+
+        <h3>📝 Worker Management Commands</h3>
+
+        <div class="step">
+            <h4>View All Workers</h4>
+            <div class="command"><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+python scripts/manage_workers.py list
+            </div>
+        </div>
+
+        <div class="step">
+            <h4>Add New Worker</h4>
+            <div class="command"><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+# Add worker-2
+python scripts/manage_workers.py add worker-2 IP_ADDRESS --user airflow --priority 2
+
+# Update its airflow_home
+python -c "
+from airflow.models import Variable
+import json
+registry = json.loads(Variable.get('WORKER_REGISTRY'))
+registry['workers']['worker-2']['airflow_home'] = '/home/airflow/airflow-worker'
+Variable.set('WORKER_REGISTRY', json.dumps(registry))
+print('✅ Updated worker-2 airflow_home')
+"
+            </div>
+        </div>
+
+        <div class="step">
+            <h4>Update Worker Status</h4>
+            <div class="command"><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+# Mark worker unavailable for maintenance
+python scripts/manage_workers.py set-status worker-1 maintenance
+
+# Mark back as available
+python scripts/manage_workers.py set-status worker-1 available
+            </div>
+        </div>
+
+        <div class="step">
+            <h4>Remove Worker</h4>
+            <div class="command"><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+python scripts/manage_workers.py remove worker-2
+            </div>
+        </div>
+
+        <h3>✅ Testing Checklist</h3>
+
+        <div class="step">
+            <strong>1. Verify SSH Connection</strong>
+            <div class="command"><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+ssh airflow@45.151.155.74 "hostname && echo 'SSH OK'"
+            </div>
+        </div>
+
+        <div class="step">
+            <strong>2. Check Worker Registry</strong>
+            <div class="command"><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+python scripts/manage_workers.py show worker-1 | grep "AIRFLOW_HOME"
+# Should show: AIRFLOW_HOME:  /home/airflow/airflow-worker
+            </div>
+        </div>
+
+        <div class="step">
+            <strong>3. Verify Singularity Image</strong>
+            <div class="command"><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+ssh airflow@45.151.155.74 "ls -lh /home/airflow/airflow-worker/containers/*.sif"
+# Should show: airflow-worker.sif
+            </div>
+        </div>
+
+        <div class="step">
+            <strong>4. Test V2 Operator</strong>
+            <div class="command"><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+airflow dags trigger test_smart_v2
+sleep 30
+airflow dags list-runs -d test_smart_v2 -o table --num-runs 1
+            </div>
+        </div>
+
+        <div class="step">
+            <strong>5. Check Task Logs</strong>
+            <div class="command"><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+# Look for these success indicators:
+cat ~/airflow/logs/dag_id=test_smart_v2/run_id=manual*/task_id=test_simple_command/attempt=1.log | grep -E "✅|Exit status: 0|SUCCESS"
+            </div>
+        </div>
+
+        <!-- ===== INTEGRATION TESTING ===== -->
+        <h2>🧪 Full Integration Testing</h2>
+
+        <div class="feature-box">
+            <h3>Complete End-to-End Test Suite</h3>
+            <p>Automated testing to validate your entire setup:</p>
+            <ul>
+                <li>✅ Start → Connect to Remote → Execute Tasks → PostgreSQL/Redis → Complete</li>
+                <li>✅ Tests all components of the system</li>
+                <li>✅ Automated monitoring and reporting</li>
+                <li>✅ Quick validation (30 seconds) or Full test (5 minutes)</li>
+            </ul>
+        </div>
+
+        <h3>📦 Test Suite Components</h3>
+
+        <table>
+            <tr>
+                <th>File</th>
+                <th>Purpose</th>
+                <th>Time</th>
+            </tr>
+            <tr>
+                <td><code>quick_test.sh</code></td>
+                <td>Fast validation of basic setup</td>
+                <td>30 seconds</td>
+            </tr>
+            <tr>
+                <td><code>run_full_integration_test.sh</code></td>
+                <td>Complete automated test runner</td>
+                <td>5 minutes</td>
+            </tr>
+            <tr>
+                <td><code>dags/full_integration_test.py</code></td>
+                <td>Integration test DAG (13 tasks)</td>
+                <td>Triggered by runner</td>
+            </tr>
+        </table>
+
+        <h3>🚀 Quick Test (Recommended First)</h3>
+
+        <div class="step">
+            <h4>Run 30-Second Validation</h4>
+            <div class="command"><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+cd ~/airflow
+chmod +x quick_test.sh
+./quick_test.sh
+            </div>
+
+            <p><strong>What it tests:</strong></p>
+            <ul>
+                <li>SSH connection to remote worker</li>
+                <li>Remote AIRFLOW_HOME</li>
+                <li>Directory structure</li>
+                <li>Singularity images</li>
+                <li>Worker registry</li>
+                <li>Remote command execution</li>
+                <li>Network connectivity</li>
+            </ul>
+
+            <p><strong>Expected output:</strong></p>
+            <div class="command">
+========================================
+🚀 QUICK VALIDATION TEST
+========================================
+
+ℹ️  Test 1/7: SSH Connection to Remote Worker...
+✅ SSH connection works (remote: remotedimpal-2)
+
+ℹ️  Test 2/7: Remote AIRFLOW_HOME...
+✅ AIRFLOW_HOME: /home/airflow/airflow-worker
+
+ℹ️  Test 3/7: Remote Directory Structure...
+✅ Remote Airflow directory exists
+
+ℹ️  Test 4/7: Singularity Image...
+✅ Singularity image found: airflow-worker.sif
+
+ℹ️  Test 5/7: Worker Registry...
+✅ Worker registry found (1 workers)
+
+ℹ️  Test 6/7: Remote Command Execution...
+✅ Remote command execution works
+
+ℹ️  Test 7/7: PostgreSQL Connectivity...
+✅ Remote can reach PostgreSQL on master
+
+========================================
+✅ QUICK TEST COMPLETE
+========================================
+
+All quick tests passed! 🎉
+            </div>
+        </div>
+
+        <h3>🔬 Full Integration Test</h3>
+
+        <div class="step">
+            <h4>Run Complete Test Suite</h4>
+            <div class="command"><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+cd ~/airflow
+chmod +x run_full_integration_test.sh
+./run_full_integration_test.sh
+            </div>
+
+            <p><strong>Test Flow:</strong></p>
+            <div style="background: #f5f5f5; padding: 15px; border-radius: 5px; font-family: monospace;">
+                Start<br>
+                &nbsp;&nbsp;↓<br>
+                Pre-flight Checks (SSH, workers, Airflow)<br>
+                &nbsp;&nbsp;↓<br>
+                Trigger Integration Test DAG<br>
+                &nbsp;&nbsp;↓<br>
+                Monitor Execution (real-time)<br>
+                &nbsp;&nbsp;↓<br>
+                Test SSH Connection ✅<br>
+                &nbsp;&nbsp;↓<br>
+                Test Basic Execution ✅<br>
+                &nbsp;&nbsp;↓<br>
+                Test PostgreSQL ── Test Redis<br>
+                &nbsp;&nbsp;↓<br>
+                Test Complex Task ✅<br>
+                &nbsp;&nbsp;↓<br>
+                Test Singularity ✅<br>
+                &nbsp;&nbsp;↓<br>
+                Test Error Handling ✅<br>
+                &nbsp;&nbsp;↓<br>
+                Collect Results<br>
+                &nbsp;&nbsp;↓<br>
+                Cleanup<br>
+                &nbsp;&nbsp;↓<br>
+                Generate Report<br>
+                &nbsp;&nbsp;↓<br>
+                End
+            </div>
+        </div>
+
+        <div class="step">
+            <h4>Expected Results</h4>
+            <div class="command">
+========================================
+TEST REPORT
+========================================
+
+Date: Sat Oct 25 06:20:15 UTC 2025
+DAG: full_integration_test
+Run ID: manual__2025-10-25T06:15:00+00:00
+
+✅ Overall Status: PASSED ✅
+
+Summary:
+  ✅ SSH connection to remote worker: OK
+  ✅ Remote command execution: OK
+  ✅ PostgreSQL access test: Completed
+  ✅ Redis access test: Completed
+  ✅ Complex task execution: OK
+  ✅ Singularity container test: Completed
+  ✅ Error handling test: OK
+
+Detailed Results:
+✅ PASSED      - start
+✅ PASSED      - print_banner
+✅ PASSED      - get_connection_info
+✅ PASSED      - test_ssh_connection
+✅ PASSED      - test_basic_execution
+✅ PASSED      - test_postgresql_access
+✅ PASSED      - test_redis_access
+✅ PASSED      - test_complex_task
+✅ PASSED      - test_singularity_execution
+✅ PASSED      - test_error_handling
+✅ PASSED      - collect_results
+✅ PASSED      - cleanup
+✅ PASSED      - end
+
+========================================
+🎉 INTEGRATION TEST PASSED!
+========================================
+            </div>
+        </div>
+
+        <h3>📋 Test Commands Reference</h3>
+
+        <div class="step">
+            <h4>Quick Test</h4>
+            <div class="command"><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+# Run quick validation (30 seconds)
+./quick_test.sh
+            </div>
+        </div>
+
+        <div class="step">
+            <h4>Full Test</h4>
+            <div class="command"><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+# Run full integration test (5 minutes)
+./run_full_integration_test.sh
+
+# View recent test status
+./run_full_integration_test.sh status
+
+# View specific task logs
+./run_full_integration_test.sh logs test_ssh_connection
+
+# Clean old test runs
+./run_full_integration_test.sh clean
+            </div>
+        </div>
+
+        <div class="step">
+            <h4>Manual DAG Trigger</h4>
+            <div class="command"><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+# Trigger test via CLI
+airflow dags trigger full_integration_test
+
+# Check status
+airflow dags list-runs -d full_integration_test -o table --num-runs 1
+
+# View in Web UI
+# Go to: http://localhost:8080/dags/full_integration_test/grid
+            </div>
+        </div>
+
+        <h3>⚠️ Optional Tests (May Show Warnings)</h3>
+
+        <div class="info-box">
+            <p><strong>PostgreSQL and Redis Tests:</strong></p>
+            <p>These tests try to connect directly from the remote worker to master's PostgreSQL and Redis.</p>
+            <p><strong>⚠️ These may fail with warnings, and that's NORMAL!</strong></p>
+            <ul>
+                <li>V2 operator <strong>does NOT require</strong> direct database access from workers</li>
+                <li>Workers only need SSH access to master</li>
+                <li>If these tests show warnings, your system still works perfectly!</li>
+            </ul>
+            <p><strong>When you see:</strong> "Cannot connect to PostgreSQL" or "Cannot connect to Redis"</p>
+            <p><strong>This means:</strong> Database is not exposed to remote workers (which is fine and more secure!)</p>
+        </div>
+
+        <h3>🎯 What Tests Validate</h3>
+
+        <table>
+            <tr>
+                <th>Component</th>
+                <th>Test</th>
+                <th>Required?</th>
+            </tr>
+            <tr>
+                <td>SSH Connection</td>
+                <td>Connect to remote worker</td>
+                <td>✅ Yes</td>
+            </tr>
+            <tr>
+                <td>Remote Execution</td>
+                <td>Run commands on remote</td>
+                <td>✅ Yes</td>
+            </tr>
+            <tr>
+                <td>Worker Registry</td>
+                <td>Configuration is valid</td>
+                <td>✅ Yes</td>
+            </tr>
+            <tr>
+                <td>V2 Operator</td>
+                <td>All operator features work</td>
+                <td>✅ Yes</td>
+            </tr>
+            <tr>
+                <td>PostgreSQL Direct Access</td>
+                <td>Remote can reach master DB</td>
+                <td>❌ Optional</td>
+            </tr>
+            <tr>
+                <td>Redis Direct Access</td>
+                <td>Remote can reach master Redis</td>
+                <td>❌ Optional</td>
+            </tr>
+            <tr>
+                <td>Singularity</td>
+                <td>Container execution</td>
+                <td>❌ Optional</td>
+            </tr>
+        </table>
+
+        <h3>🔗 SSH Tunnel Support (NEW!)</h3>
+
+        <div class="feature-box">
+            <h4>✅ SSH Tunnels Now Implemented!</h4>
+            <p>The V2 operator now automatically creates SSH tunnels from remote workers to master for PostgreSQL and Redis access.</p>
+            <p><strong>Features:</strong></p>
+            <ul>
+                <li>✅ Automatic tunnel creation before task execution</li>
+                <li>✅ PostgreSQL tunnel (port 5432)</li>
+                <li>✅ Redis/Celery broker tunnel (port 6379)</li>
+                <li>✅ Automatic tunnel cleanup after task completion</li>
+                <li>✅ Works even if tunnels fail (graceful degradation)</li>
+            </ul>
+        </div>
+
+        <h4>Configuration</h4>
+
+        <div class="step">
+            <h4>Step 1: Set Master Node IP (Required)</h4>
+            <p>Workers need to know the master node IP to create tunnels back:</p>
+            <div class="command"><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+# Set master node IP in Airflow Variables
+airflow variables set MASTER_NODE_IP "45.151.155.100"
+
+# Or via Web UI:
+# Go to Admin → Variables → Add
+# Key: MASTER_NODE_IP
+# Value: 45.151.155.100
+            </div>
+        </div>
+
+        <div class="step">
+            <h4>Step 2: Verify SSH Keys (Required)</h4>
+            <p>Workers must be able to SSH back to master node:</p>
+            <div class="command"><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+# On remote worker, test SSH to master
+ssh airflow@45.151.155.100 "echo 'Can reach master'"
+
+# If fails, set up SSH keys FROM worker TO master
+ssh-keygen -t ed25519 -f ~/.ssh/id_ed25519 -N ""
+ssh-copy-id airflow@45.151.155.100
+            </div>
+        </div>
+
+        <div class="step">
+            <h4>Step 3: Allow SSH Port Forwarding (Required)</h4>
+            <p>On master node, ensure SSH allows port forwarding:</p>
+            <div class="command"><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+# On master server, edit SSH config
+sudo nano /etc/ssh/sshd_config
+
+# Ensure these settings:
+AllowTcpForwarding yes
+GatewayPorts no
+PermitTunnel yes
+
+# Restart SSH
+sudo systemctl restart sshd
+            </div>
+        </div>
+
+        <div class="info-box">
+            <h4>How SSH Tunnels Work:</h4>
+            <p><strong>Flow:</strong></p>
+            <ol>
+                <li>Master connects to Worker via SSH</li>
+                <li>Worker creates reverse SSH tunnel back to Master</li>
+                <li>Worker's localhost:5432 → Master's PostgreSQL</li>
+                <li>Worker's localhost:6379 → Master's Redis</li>
+                <li>Task executes with DB/Redis access</li>
+                <li>Tunnels automatically cleaned up</li>
+            </ol>
+        </div>
+
+        <div class="step">
+            <h4>Verify Tunnels Work</h4>
+            <div class="command"><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+# Trigger a test task
+airflow dags trigger test_smart_v2
+
+# Check logs for tunnel creation
+cat ~/airflow/logs/dag_id=test_smart_v2/run_id=manual*/task_id=*/attempt=1.log | grep -A5 "Creating SSH tunnels"
+
+# Should see:
+# 🔗 Creating SSH tunnels from worker to master...
+# ✅ PostgreSQL tunnel established on port 5432
+# ✅ Redis tunnel established on port 6379
+            </div>
+        </div>
+
+        <h3>✅ Success Criteria</h3>
+
+        <div class="feature-box">
+            <h4>Your system is production-ready if:</h4>
+            <ul>
+                <li>✅ Quick test passes completely</li>
+                <li>✅ Full integration test shows all tasks as PASSED</li>
+                <li>✅ SSH connection works reliably</li>
+                <li>✅ Remote commands execute successfully</li>
+                <li>✅ V2 operator creates connections automatically</li>
+            </ul>
+            
+            <h4>Optional warnings are OK:</h4>
+            <ul>
+                <li>⚠️ "Cannot connect to PostgreSQL from remote" - This is fine!</li>
+                <li>⚠️ "Cannot connect to Redis from remote" - This is fine!</li>
+                <li>⚠️ "Singularity not available" - Tasks run directly (fine!)</li>
+            </ul>
+        </div>
+
+        <h3>📖 Detailed Test Documentation</h3>
+
+        <div class="info-box">
+            <p>For complete testing documentation, see: <code>INTEGRATION_TEST_GUIDE.md</code></p>
+            <p>Includes:</p>
+            <ul>
+                <li>Detailed explanation of each test</li>
+                <li>Troubleshooting for test failures</li>
+                <li>How to interpret results</li>
+                <li>Command reference</li>
+                <li>CI/CD integration examples</li>
+            </ul>
+        </div>
+
+        <!-- ===== TROUBLESHOOTING ===== -->
+        <h2>🔍 Troubleshooting Guide</h2>
+
+        <div class="info-box">
+            <strong>Most Common Issues:</strong> Worker unavailable despite SSH working, health monitor not updating, SSH key problems. All solutions tested and verified!
+        </div>
+
+        <!-- Issue 0: Most Common - Worker Unavailable But SSH Works -->
+        <h3>❌ Issue 0: Worker Shows Unavailable (But SSH Works) - MOST COMMON!</h3>
+
+        <div class="step" style="background: #ffebee; border-left: 4px solid #f44336;">
+            <h4>Symptoms:</h4>
+            <div class="command">
+python scripts/manage_workers.py list
+
+Worker ID            Host                 Status       Priority
+worker-1             45.151.155.74        ❌ unavailable 1
+            </div>
+            
+            <h4>FIRST: Test SSH Connection</h4>
+            <div class="command"><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+# Test if SSH works without password
+ssh airflow@45.151.155.74 "hostname"
+            </div>
+
+            <div class="warning-box">
+                <strong>If SSH connects without password:</strong> Keys are set up, just update status manually!<br>
+                <strong>If SSH asks for password:</strong> Keys are NOT set up, follow Scenario B below.
+            </div>
+
+            <h4>Scenario A: SSH Works ✅ (Quick Fix!)</h4>
+            <div class="command"><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+# Simply set status to available
+python scripts/manage_workers.py set-status worker-1 available
+
+# Verify
+python scripts/manage_workers.py list
+
+# Should now show: worker-1  ✅ available
+            </div>
+
+            <h4>Scenario B: SSH Asks for Password ❌ (Setup Keys)</h4>
+            <div class="command"><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+# 1. Generate SSH key
+ssh-keygen -t ed25519 -f ~/.ssh/id_ed25519 -N ""
+
+# 2. Copy to worker (enter password once)
+ssh-copy-id airflow@45.151.155.74
+
+# 3. Test passwordless login
+ssh airflow@45.151.155.74 "hostname"
+
+# 4. Set status
+python scripts/manage_workers.py set-status worker-1 available
+
+# 5. Verify
+python scripts/manage_workers.py list
+            </div>
+        </div>
+
+        <!-- Issue 0.5: Health Monitor -->
+        <h3>🏥 Issue 0.5: Health Monitor Not Updating Status</h3>
+
+        <div class="step" style="background: #fff3cd; border-left: 4px solid #ffc107;">
+            <h4>Symptoms:</h4>
+            <ul>
+                <li>Status never changes even after SSH is working</li>
+                <li>Health monitor DAG runs but no updates</li>
+            </ul>
+
+            <h4>Solution: Check & Fix Health Monitor</h4>
+            <div class="command"><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+# 1. Check if DAG is paused
+airflow dags list | grep worker_health_monitor
+
+# 2. Unpause it
+airflow dags unpause worker_health_monitor
+
+# 3. Trigger it manually
+airflow dags trigger worker_health_monitor
+
+# 4. Wait and check
+sleep 30
+python scripts/manage_workers.py list
+
+# 5. Check logs if still not working
+airflow dags list-runs -d worker_health_monitor -o table
+airflow tasks logs worker_health_monitor check_worker_health [DATE_FROM_ABOVE]
+            </div>
+        </div>
+
+        <!-- Quick Fix Cheat Sheet -->
+        <h3>⚡ Quick Fix Cheat Sheet</h3>
+
+        <div class="step" style="background: #e8f5e9; border-left: 4px solid #4caf50;">
+            <table>
+                <tr>
+                    <th>Problem</th>
+                    <th>Quick Solution</th>
+                </tr>
+                <tr>
+                    <td>Worker unavailable but SSH works</td>
+                    <td><code>python scripts/manage_workers.py set-status worker-1 available</code></td>
+                </tr>
+                <tr>
+                    <td>SSH asks for password</td>
+                    <td><code>ssh-copy-id airflow@45.151.155.74</code></td>
+                </tr>
+                <tr>
+                    <td>Health monitor not running</td>
+                    <td><code>airflow dags unpause worker_health_monitor && airflow dags trigger worker_health_monitor</code></td>
+                </tr>
+                <tr>
+                    <td>Can't SSH at all</td>
+                    <td><code>ssh-keygen -t ed25519 -f ~/.ssh/id_ed25519 -N "" && ssh-copy-id airflow@45.151.155.74</code></td>
+                </tr>
+                <tr>
+                    <td>Complete reset needed</td>
+                    <td>See "Complete Reset" section below</td>
+                </tr>
+            </table>
+
+            <h4>Complete Reset (Nuclear Option):</h4>
+            <div class="command"><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+# Full reset and setup
+ssh-keygen -t ed25519 -f ~/.ssh/id_ed25519 -N ""
+ssh-copy-id airflow@45.151.155.74
+ssh airflow@45.151.155.74 "hostname"
+python scripts/manage_workers.py set-status worker-1 available
+airflow dags unpause worker_health_monitor
+python scripts/manage_workers.py list
+            </div>
+        </div>
+
+        <!-- Issue 0: V2 Operator Issues -->
+        <h3>🎯 Issue 0: Smart Remote Worker V2 Troubleshooting</h3>
+
+        <div class="step" style="background: #e3f2fd; border-left: 4px solid #2196f3;">
+            <h4>Common V2 Operator Issues:</h4>
+            
+            <h4>Problem 1: "airflow_home not set in worker config"</h4>
+            <div class="warning-box">
+                <strong>Error:</strong> <code>Worker worker-1 does not have airflow_home configured</code>
+                <p><strong>Cause:</strong> The WORKER_REGISTRY doesn't have airflow_home field for the worker</p>
+                <p><strong>Solution:</strong></p>
+                <div class="command"><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+# Run the update script
+python update_worker_config.py
+
+# Or manually update
+python -c "
+from airflow.models import Variable
+import json
+registry = json.loads(Variable.get('WORKER_REGISTRY'))
+registry['workers']['worker-1']['airflow_home'] = '/home/airflow/airflow-worker'
+Variable.set('WORKER_REGISTRY', json.dumps(registry))
+print('✅ Updated')
+"
+
+# Verify
+python scripts/manage_workers.py show worker-1 | grep AIRFLOW_HOME
+                </div>
+            </div>
+
+            <h4>Problem 2: "SSH connection failed"</h4>
+            <div class="warning-box">
+                <strong>Error:</strong> <code>Failed to establish SSH connection to worker-1</code>
+                <p><strong>Cause:</strong> SSH keys not set up or connection failed</p>
+                <p><strong>Solution:</strong></p>
+                <div class="command"><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+# Test SSH manually first
+ssh airflow@45.151.155.74 "hostname"
+
+# If fails, set up SSH keys
+ssh-copy-id airflow@45.151.155.74
+
+# If connection exists in Airflow, delete and let V2 recreate
+airflow connections delete worker_worker-1
+
+# Retry the task - V2 will auto-create the connection
+                </div>
+            </div>
+
+            <h4>Problem 3: "Singularity image not found"</h4>
+            <div class="warning-box">
+                <strong>Warning:</strong> <code>Singularity image not found, executing directly</code>
+                <p><strong>Cause:</strong> Singularity .sif file doesn't exist or in wrong location</p>
+                <p><strong>Solution:</strong></p>
+                <div class="command"><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+# Check on remote worker
+ssh airflow@45.151.155.74 "ls -la /home/airflow/airflow-worker/containers/"
+
+# Should see: airflow-worker.sif
+# If missing, build it on remote worker:
+ssh airflow@45.151.155.74 "cd /home/airflow/airflow-worker && \
+  mkdir -p containers && \
+  cd containers && \
+  singularity build airflow-worker.sif docker://apache/airflow:2.10.2"
+                </div>
+                <p><strong>Note:</strong> V2 will still execute the command without Singularity, but you may want the container for consistency</p>
+            </div>
+
+            <h4>Problem 4: "Task fails but SSH works"</h4>
+            <div class="warning-box">
+                <strong>Symptom:</strong> SSH connection works, but task returns non-zero exit code
+                <p><strong>Cause:</strong> Command itself is failing on remote worker</p>
+                <p><strong>Debug:</strong></p>
+                <div class="command"><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+# Test command directly on remote worker
+ssh airflow@45.151.155.74 "cd /home/airflow/airflow-worker && YOUR_COMMAND"
+
+# Check task logs for exact error
+cat ~/airflow/logs/dag_id=YOUR_DAG/run_id=*/task_id=YOUR_TASK/attempt=1.log | tail -100
+
+# Look for the "📄 Output:" section to see actual command output
+# Look for "📊 Exit status:" - non-zero means command failed
+                </div>
+                <p><strong>Common causes:</strong></p>
+                <ul>
+                    <li>Python script not found (check path)</li>
+                    <li>Missing dependencies in Singularity image</li>
+                    <li>Wrong working directory</li>
+                    <li>Permission issues</li>
+                </ul>
+            </div>
+
+            <h4>Problem 5: "Worker unavailable" even though SSH works</h4>
+            <div class="warning-box">
+                <strong>Symptom:</strong> <code>No available workers matching priority</code>
+                <p><strong>Cause:</strong> Worker status is set to 'unavailable' or 'maintenance' in registry</p>
+                <p><strong>Solution:</strong></p>
+                <div class="command"><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+# Check current status
+python scripts/manage_workers.py show worker-1
+
+# Update to available
+python scripts/manage_workers.py set-status worker-1 available
+
+# Verify
+python scripts/manage_workers.py list
+                </div>
+            </div>
+
+            <h4>Problem 6: "Different AIRFLOW_HOME on master vs worker"</h4>
+            <div class="info-box">
+                <strong>This is NORMAL and CORRECT!</strong>
+                <p>Master and remote workers can (and should!) have different AIRFLOW_HOME paths:</p>
+                <ul>
+                    <li>Master: <code>/home/airflow/airflow</code> → Manages orchestration, scheduler, webserver</li>
+                    <li>Worker: <code>/home/airflow/airflow-worker</code> → Executes tasks only</li>
+                </ul>
+                <p>The WORKER_REGISTRY stores the <strong>remote worker's path</strong>, not the master's!</p>
+                <p><strong>No action needed</strong> - this is by design!</p>
+            </div>
+        </div>
+
+        <h3>🔍 V2 Operator Diagnostic Checklist</h3>
+
+        <div class="step">
+            <h4>Run these commands in order to diagnose V2 issues:</h4>
+            <div class="command"><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+echo "========== V2 OPERATOR DIAGNOSTIC =========="
+
+echo ""
+echo "1. Check worker registry configuration:"
+python scripts/manage_workers.py show worker-1
+
+echo ""
+echo "2. Verify SSH connection:"
+ssh airflow@45.151.155.74 "hostname && pwd && ls -la"
+
+echo ""
+echo "3. Check remote AIRFLOW_HOME:"
+ssh airflow@45.151.155.74 "echo \$AIRFLOW_HOME && ls -la /home/airflow/airflow-worker/"
+
+echo ""
+echo "4. Check Singularity image:"
+ssh airflow@45.151.155.74 "ls -lh /home/airflow/airflow-worker/containers/*.sif"
+
+echo ""
+echo "5. Test simple command:"
+airflow dags trigger test_smart_v2
+
+echo ""
+echo "Wait 30 seconds for task to complete..."
+sleep 30
+
+echo ""
+echo "6. Check task status:"
+airflow dags list-runs -d test_smart_v2 -o table --num-runs 1
+
+echo ""
+echo "7. View task logs:"
+cat ~/airflow/logs/dag_id=test_smart_v2/run_id=manual*/task_id=test_simple_command/attempt=1.log | tail -50
+
+echo ""
+echo "========== DIAGNOSTIC COMPLETE =========="
+            </div>
+            
+            <p><strong>Expected output if everything works:</strong></p>
+            <ul>
+                <li>✅ Worker shows: <code>AIRFLOW_HOME: /home/airflow/airflow-worker</code></li>
+                <li>✅ SSH returns: <code>hostname</code> and directory listing</li>
+                <li>✅ Singularity shows: <code>airflow-worker.sif</code> file exists</li>
+                <li>✅ Task status shows: <code>success</code></li>
+                <li>✅ Logs show: <code>[INFO] ✅ SUCCESS: Task completed</code></li>
+            </ul>
+        </div>
+
+        <!-- Diagnostic Script -->
+        <h3>🔍 Complete Worker Diagnostic Script</h3>
+
+        <div class="step">
+            <h4>Run This to Diagnose All Issues:</h4>
+            <div class="command"><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+#!/bin/bash
+echo "========================================="
+echo "WORKER DIAGNOSTICS"
+echo "========================================="
+
+echo -e "\n1. Worker Registry Status:"
+python scripts/manage_workers.py list
+
+echo -e "\n2. SSH Connection Test:"
+if ssh -o BatchMode=yes -o ConnectTimeout=5 airflow@45.151.155.74 "echo OK" 2>/dev/null; then
+    echo "✅ SSH works"
+else
+    echo "❌ SSH failed"
+fi
+
+echo -e "\n3. SSH Keys:"
+ls -la ~/.ssh/id_* 2>/dev/null || echo "No SSH keys"
+
+echo -e "\n4. Health Monitor:"
+airflow dags show worker_health_monitor 2>/dev/null | grep "is_paused"
+
+echo -e "\n5. Network Test:"
+ping -c 2 45.151.155.74 2>/dev/null || echo "❌ Cannot ping worker"
+
+echo -e "\n========================================="
+            </div>
+
+            <strong>Save as <code>diagnose.sh</code> and run:</strong>
+            <div class="command"><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+chmod +x diagnose.sh
+./diagnose.sh
+            </div>
+        </div>
+
+        <h3>Issue 1: Worker Shows "Unavailable"</h3>
+        <div class="step">
+            <strong>Symptoms:</strong> Worker status in registry shows "unavailable"
+            <br><strong>Possible Causes:</strong>
+            <ul>
+                <li>Worker machine is down</li>
+                <li>SSH service not running on worker</li>
+                <li>Network connectivity issue</li>
+                <li>SSH key authentication failed</li>
+            </ul>
+            <strong>How to diagnose:</strong>
+            <div class="command"><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+# Test SSH connection manually
+ssh -i /home/airflow/.ssh/airflow_worker_key airflow@45.151.155.74 "echo OK"
+
+# Check worker machine is reachable
+ping 45.151.155.74
+
+# Check SSH service on worker
+ssh -i /home/airflow/.ssh/airflow_worker_key airflow@45.151.155.74 "systemctl status sshd"
+            </div>
+            <strong>Solution:</strong>
+            <ul>
+                <li>Restart SSH service on worker</li>
+                <li>Verify SSH key permissions (600 for private key)</li>
+                <li>Check firewall rules</li>
+            </ul>
+        </div>
+
+        <h3>Issue 2: Task Fails with "No Available Workers"</h3>
+        <div class="step">
+            <strong>Symptoms:</strong> DAG execution fails with error "No workers available in priority list"
+            <br><strong>Possible Causes:</strong>
+            <ul>
+                <li>All workers in priority list are unavailable</li>
+                <li>Worker names in DAG don't match registry</li>
+                <li>Registry not properly configured</li>
+            </ul>
+            <strong>How to diagnose:</strong>
+            <div class="command"><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+# Check registry contents
+airflow variables get WORKER_REGISTRY
+
+# Check health monitor status
+airflow dags list-runs -d worker_health_monitor
+
+# Manually trigger health check
+airflow dags trigger worker_health_monitor
+            </div>
+            <strong>Solution:</strong>
+            <ul>
+                <li>Verify worker names match in DAG and registry</li>
+                <li>Check at least one worker is "available"</li>
+                <li>Add fallback workers to priority list</li>
+            </ul>
+        </div>
+
+        <h3>Issue 3: SSH Tunnel Connection Timeout</h3>
+        <div class="step">
+            <strong>Symptoms:</strong> Task logs show "SSH tunnel connection timeout" or "Could not connect to database"
+            <br><strong>Possible Causes:</strong>
+            <ul>
+                <li>Firewall blocking SSH tunnel ports</li>
+                <li>PostgreSQL/Broker not listening on correct ports</li>
+                <li>SSH timeout too short</li>
+            </ul>
+            <strong>How to diagnose:</strong>
+            <div class="command"><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+# Test tunnel manually
+ssh -i /home/airflow/.ssh/airflow_worker_key \
+    -L 15432:localhost:5432 \
+    airflow@45.151.155.74 \
+    "sleep 10"
+
+# In another terminal, test PostgreSQL connection
+psql -h localhost -p 15432 -U airflow -d airflow_db -c "SELECT 1;"
+            </div>
+            <strong>Solution:</strong>
+            <ul>
+                <li>Increase SSH timeout in operator configuration</li>
+                <li>Verify PostgreSQL listening on 0.0.0.0 or localhost</li>
+                <li>Check <code>pg_hba.conf</code> allows connections</li>
+            </ul>
+        </div>
+
+        <h3>Issue 4: Worker Process Doesn't Stop After Task</h3>
+        <div class="step">
+            <strong>Symptoms:</strong> Celery worker process remains running on remote after task completes
+            <br><strong>Possible Causes:</strong>
+            <ul>
+                <li>Worker launcher script not properly stopping worker</li>
+                <li>Container not exiting cleanly</li>
+                <li>SSH connection not closing</li>
+            </ul>
+            <strong>How to diagnose:</strong>
+            <div class="command"><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+# Check running processes on worker
+ssh -i /home/airflow/.ssh/airflow_worker_key airflow@45.151.155.74 \
+    "ps aux | grep celery"
+
+# Check Singularity processes
+ssh -i /home/airflow/.ssh/airflow_worker_key airflow@45.151.155.74 \
+    "ps aux | grep singularity"
+            </div>
+            <strong>Solution:</strong>
+            <ul>
+                <li>Update worker launcher script to properly stop containers</li>
+                <li>Add timeout to worker execution</li>
+                <li>Manually stop orphaned processes</li>
+            </ul>
+        </div>
+
+        <!-- ===== SECURITY BEST PRACTICES ===== -->
+        <h2>🔒 Security Best Practices</h2>
+
+        <div class="warning-box">
+            <h3>SSH Key Management</h3>
+            <ul>
+                <li><strong>Never share private keys</strong> - Keep <code>airflow_worker_key</code> on master only</li>
+                <li><strong>Use correct permissions:</strong>
+                    <ul>
+                        <li>Private key: <code>chmod 600</code></li>
+                        <li>Public key: <code>chmod 644</code></li>
+                        <li><code>.ssh</code> directory: <code>chmod 700</code></li>
+                    </ul>
+                </li>
+                <li><strong>Rotate keys periodically</strong> (every 6-12 months)</li>
+                <li><strong>Use separate keys per environment</strong> (dev, staging, prod)</li>
+            </ul>
+        </div>
+
+        <div class="warning-box">
+            <h3>Worker Registry Security</h3>
+            <ul>
+                <li><strong>Don't store passwords</strong> in registry (use SSH keys only)</li>
+                <li><strong>Restrict Airflow Variables access</strong> to admin users only</li>
+                <li><strong>Log registry changes</strong> for audit trail</li>
+                <li><strong>Validate worker IPs</strong> before adding to registry</li>
+            </ul>
+        </div>
+
+        <div class="warning-box">
+            <h3>Network Security</h3>
+            <ul>
+                <li><strong>Firewall rules:</strong> Only allow SSH (port 22) from master IP to workers</li>
+                <li><strong>No direct exposure:</strong> PostgreSQL and broker should NOT be accessible from workers without tunnel</li>
+                <li><strong>Use VPN</strong> if workers are on different networks</li>
+                <li><strong>Enable SSH logs</strong> on both master and workers for monitoring</li>
+            </ul>
+        </div>
+
+        <!-- ===== SUMMARY ===== -->
+        <h2>✅ Setup Summary Checklist</h2>
+
+        <table>
+            <tr>
+                <th>Step</th>
+                <th>Action</th>
+                <th>Verification</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>Master node prerequisites verified</td>
+                <td><code>airflow version</code> shows CeleryExecutor</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>SSH keys generated on master</td>
+                <td><code>ls ~/.ssh/airflow_worker_key*</code> shows both files</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>SSH access configured to worker</td>
+                <td><code>ssh -i ~/.ssh/airflow_worker_key user@worker "echo OK"</code> returns OK</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>Worker launcher script deployed</td>
+                <td><code>ssh worker "ls -l ~/worker_launcher.sh"</code> shows executable</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>SSH tunnel tested</td>
+                <td>PostgreSQL connection through tunnel successful</td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td>Worker added to registry</td>
+                <td><code>airflow variables get WORKER_REGISTRY</code> shows worker</td>
+            </tr>
+            <tr>
+                <td>7</td>
+                <td>Health monitor DAG active</td>
+                <td><code>airflow dags list | grep worker_health_monitor</code> shows enabled</td>
+            </tr>
+            <tr>
+                <td>8</td>
+                <td>Example DAG tested</td>
+                <td>Task executed successfully on remote worker</td>
+            </tr>
+        </table>
+
+        <!-- ===== NEXT STEPS ===== -->
+        <h2>🚀 Next Steps After Setup</h2>
+
+        <div class="step">
+            <h3>1. Scale to Multiple Workers</h3>
+            <ul>
+                <li>Repeat setup steps for each new worker</li>
+                <li>Add workers to registry with appropriate priorities</li>
+                <li>Test with DAG that uses worker priority list</li>
+            </ul>
+        </div>
+
+        <div class="step">
+            <h3>2. Customize Worker Selection Logic</h3>
+            <ul>
+                <li>Use tags to categorize workers (gpu, high-memory, etc.)</li>
+                <li>Implement custom selection algorithms in operator</li>
+                <li>Add load balancing across workers</li>
+            </ul>
+        </div>
+
+        <div class="step">
+            <h3>3. Implement Monitoring</h3>
+            <ul>
+                <li>Set up alerts for worker unavailability</li>
+                <li>Monitor SSH tunnel stability</li>
+                <li>Track task execution times per worker</li>
+                <li>Create dashboard showing worker health status</li>
+            </ul>
+        </div>
+
+        <div class="step">
+            <h3>4. Optimize Performance</h3>
+            <ul>
+                <li>Tune SSH timeout values</li>
+                <li>Adjust health check frequency</li>
+                <li>Configure worker resource limits</li>
+                <li>Optimize container startup time</li>
+            </ul>
+        </div>
+
+        <!-- ===== HOW WORKER LAUNCHER WORKS ===== -->
+        <h2>📖 Understanding worker_launcher.sh - How It Works</h2>
+
+        <div class="info-box">
+            <strong>Purpose:</strong> The <code>worker_launcher.sh</code> script is deployed to remote workers and handles the entire worker lifecycle: SSH tunneling, worker startup, task execution, and cleanup.
+        </div>
+
+        <h3>🎯 What Does worker_launcher.sh Do?</h3>
+        
+        <div class="step">
+            <h4>Complete Workflow Overview</h4>
+            <ol>
+                <li><strong>Cleanup old processes</strong> - Removes any existing workers or tunnels</li>
+                <li><strong>Create SSH tunnels</strong> - Establishes secure connection back to master</li>
+                <li><strong>Start Celery worker</strong> - Launches worker in Singularity container</li>
+                <li><strong>Process tasks</strong> - Executes DAG tasks assigned to this worker</li>
+                <li><strong>Stop and cleanup</strong> - Shuts down worker and closes tunnels when done</li>
+            </ol>
+        </div>
+
+        <h3>🔄 Step-by-Step Execution Flow</h3>
+
+        <div class="step" style="background: #fff3cd; border-left: 4px solid #ffc107;">
+            <h4>Phase 1: Configuration</h4>
+            <strong>What happens:</strong> Script reads environment variables passed from master
+            <div class="command"><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+# Environment variables set by master
+WORKER_NAME="worker-1"
+MASTER_IP="192.168.1.100"  # Master node IP
+QUEUE_NAME="default"
+AIRFLOW_HOME="/home/airflow/airflow-worker/Airflow"
+CONTAINER_TYPE="singularity"
+            </div>
+            <strong>Purpose:</strong> Master tells worker who it is and where to connect
+        </div>
+
+        <div class="step" style="background: #ffebee; border-left: 4px solid #f44336;">
+            <h4>Phase 2: Cleanup Old Processes</h4>
+            <strong>What happens:</strong> Kills any existing worker or SSH tunnel
+            <div class="command"><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+# Stop old Celery worker
+pkill -f "celery.*worker.*worker-1"
+
+# Close old SSH tunnels
+pkill -f "ssh.*-L.*5432"  # PostgreSQL tunnel
+pkill -f "ssh.*-L.*6379"  # Redis tunnel
+            </div>
+            <strong>Purpose:</strong> Ensures clean state, no conflicts with previous runs
+        </div>
+
+        <div class="step" style="background: #e3f2fd; border-left: 4px solid #2196f3;">
+            <h4>Phase 3: Setup SSH Tunnels (THE KEY FEATURE!)</h4>
+            <strong>What happens:</strong> Creates reverse SSH tunnels from worker to master
+            <div class="command"><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+# Create SSH tunnel from worker back to master
+ssh -f -N \
+    -L 5432:localhost:5432 \  # PostgreSQL tunnel
+    -L 6379:localhost:6379 \  # Redis tunnel
+    airflow@192.168.1.100     # Master IP
+            </div>
+            <strong>How it works:</strong>
+            <div class="flow-diagram">
+                <div style="background: #c8e6c9; padding: 15px; margin: 10px;">
+                    <strong>Remote Worker</strong><br>
+                    localhost:5432 (worker) ◄─── SSH Tunnel ───► Master PostgreSQL:5432<br>
+                    localhost:6379 (worker) ◄─── SSH Tunnel ───► Master Redis:6379
+                </div>
+            </div>
+            <strong>Result:</strong> Worker can connect to "localhost:5432" but it actually connects to master's database through secure SSH tunnel!
+            <div class="info-box">
+                <strong>Why SSH tunnels?</strong>
+                <ul>
+                    <li>Worker has NO direct network access to master's PostgreSQL/Redis</li>
+                    <li>All traffic goes through encrypted SSH connection</li>
+                    <li>Master's databases not exposed to network</li>
+                    <li>Worker thinks it's connecting to localhost (but it's actually master!)</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="step" style="background: #e8f5e9; border-left: 4px solid #4caf50;">
+            <h4>Phase 4: Start Celery Worker in Singularity</h4>
+            <strong>What happens:</strong> Launches Celery worker inside Singularity container
+            <div class="command"><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+# Check Singularity image exists
+ls $AIRFLOW_HOME/airflow_2.10.2.sif
+
+# Start worker in Singularity container
+nohup singularity exec \
+    --bind $AIRFLOW_HOME:$AIRFLOW_HOME \
+    airflow_2.10.2.sif \
+    celery worker \
+    --hostname=worker-1 \
+    --queues=default \
+    --concurrency=4 \
+    > /tmp/worker_worker-1.log 2>&1 &
+
+# Save process ID
+echo $! > /tmp/worker_worker-1.pid
+            </div>
+            <strong>What this means:</strong>
+            <ul>
+                <li><code>singularity exec</code> - Run command inside container</li>
+                <li><code>--bind</code> - Mount Airflow directory inside container</li>
+                <li><code>celery worker</code> - Start Celery worker process</li>
+                <li><code>--hostname=worker-1</code> - Identifies this worker</li>
+                <li><code>--queues=default</code> - Which task queues to listen to</li>
+                <li><code>nohup ... &</code> - Run in background</li>
+            </ul>
+            <strong>Worker is now running and listening for tasks!</strong>
+        </div>
+
+        <div class="step" style="background: #f3e5f5; border-left: 4px solid #9c27b0;">
+            <h4>Phase 5: Task Execution</h4>
+            <strong>How tasks flow from master to worker:</strong>
+            <div class="flow-diagram">
+                <div style="background: #e1f5fe; padding: 10px; margin: 5px; border-radius: 5px;">
+                    <strong>1. Master:</strong> Task queued to Redis
+                </div>
+                <div class="arrow">↓ (via SSH tunnel)</div>
+                <div style="background: #c8e6c9; padding: 10px; margin: 5px; border-radius: 5px;">
+                    <strong>2. Worker:</strong> Picks up task from Redis
+                </div>
+                <div class="arrow">↓</div>
+                <div style="background: #fff9c4; padding: 10px; margin: 5px; border-radius: 5px;">
+                    <strong>3. Worker:</strong> Executes bash_command from DAG
+                </div>
+                <div class="arrow">↓ (via SSH tunnel)</div>
+                <div style="background: #e1f5fe; padding: 10px; margin: 5px; border-radius: 5px;">
+                    <strong>4. Master:</strong> Worker updates status in PostgreSQL
+                </div>
+                <div class="arrow">↓</div>
+                <div style="background: #c8e6c9; padding: 10px; margin: 5px; border-radius: 5px;">
+                    <strong>5. Master:</strong> Task complete, visible in Airflow UI
+                </div>
+            </div>
+        </div>
+
+        <div class="step" style="background: #ffebee; border-left: 4px solid #ef5350;">
+            <h4>Phase 6: Cleanup (On-Demand Shutdown)</h4>
+            <strong>What happens:</strong> Worker stops after task completion
+            <div class="command"><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+# Stop Celery worker
+pkill -f "celery.*worker.*worker-1"
+
+# Close SSH tunnels
+pkill -f "ssh.*-L.*5432"
+pkill -f "ssh.*-L.*6379"
+
+# Worker is now stopped (on-demand model)
+            </div>
+            <strong>Result:</strong> No persistent processes on remote worker!
+        </div>
+
+        <h3>🔍 Real Example: Complete Trace</h3>
+
+        <div class="command">
+<strong>Master triggers DAG task on remote worker...</strong>
+
+<strong>Step 1: Master SSHs into worker and runs:</strong>
+$ ssh worker-1 "export WORKER_NAME=worker-1; \
+                export MASTER_IP=192.168.1.100; \
+                /home/airflow/worker_launcher.sh"
+
+<strong>Step 2: On worker machine:</strong>
+[worker-1] $ pkill celery          # Cleanup
+[worker-1] $ ssh -f -N -L 5432:localhost:5432 master  # Create tunnels
+[worker-1] $ singularity exec airflow_2.10.2.sif celery worker &  # Start
+[worker-1] Worker started, listening for tasks...
+
+<strong>Step 3: Worker connects to master (via tunnels):</strong>
+[worker-1] Connecting to postgresql://localhost:5432  ← Actually master!
+[worker-1] Connecting to redis://localhost:6379       ← Actually master!
+
+<strong>Step 4: Worker picks up and executes task:</strong>
+[worker-1] Received task: my_dag.my_task
+[worker-1] Executing: echo "Hello from worker"
+[worker-1] Task completed successfully
+
+<strong>Step 5: Master calls cleanup:</strong>
+$ ssh worker-1 "pkill celery; pkill ssh"
+[worker-1] Worker stopped, tunnels closed
+        </div>
+
+        <h3>🎯 Key Benefits</h3>
+
+        <table>
+            <tr>
+                <th>Feature</th>
+                <th>How It Works</th>
+                <th>Benefit</th>
+            </tr>
+            <tr>
+                <td><strong>SSH Tunnels</strong></td>
+                <td>Worker connects to localhost, traffic goes through SSH to master</td>
+                <td>✅ Secure, no direct database access needed</td>
+            </tr>
+            <tr>
+                <td><strong>On-Demand</strong></td>
+                <td>Worker starts when task arrives, stops after completion</td>
+                <td>✅ No persistent processes, saves resources</td>
+            </tr>
+            <tr>
+                <td><strong>Singularity</strong></td>
+                <td>Worker runs inside container image</td>
+                <td>✅ No root access needed, consistent environment</td>
+            </tr>
+            <tr>
+                <td><strong>Cleanup</strong></td>
+                <td>Script traps signals and always cleans up</td>
+                <td>✅ No orphaned processes or tunnels</td>
+            </tr>
+        </table>
+
+        <h3>🔧 Script Configuration Variables</h3>
+
+        <table>
+            <tr>
+                <th>Variable</th>
+                <th>Default</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td><code>WORKER_NAME</code></td>
+                <td>worker-default</td>
+                <td>Unique identifier for this worker</td>
+            </tr>
+            <tr>
+                <td><code>MASTER_IP</code></td>
+                <td>localhost</td>
+                <td>Master node IP address</td>
+            </tr>
+            <tr>
+                <td><code>QUEUE_NAME</code></td>
+                <td>default</td>
+                <td>Celery queue to listen to</td>
+            </tr>
+            <tr>
+                <td><code>AIRFLOW_HOME</code></td>
+                <td>/home/airflow/airflow</td>
+                <td>Where Singularity image is located</td>
+            </tr>
+            <tr>
+                <td><code>CONTAINER_TYPE</code></td>
+                <td>singularity</td>
+                <td>Container type (singularity or venv)</td>
+            </tr>
+            <tr>
+                <td><code>CONCURRENCY</code></td>
+                <td>4</td>
+                <td>Number of parallel tasks</td>
+            </tr>
+        </table>
+
+        <h3>📊 Worker Lifecycle Diagram</h3>
+
+        <div class="flow-diagram">
+            <div style="background: #fff9c4; padding: 15px; margin: 10px; border-radius: 5px;">
+                <strong>IDLE STATE</strong><br>
+                No worker running on remote machine
+            </div>
+            <div class="arrow">↓ (DAG triggers)</div>
+            <div style="background: #e3f2fd; padding: 15px; margin: 10px; border-radius: 5px;">
+                <strong>STARTING</strong><br>
+                Master calls worker_launcher.sh via SSH
+            </div>
+            <div class="arrow">↓</div>
+            <div style="background: #c8e6c9; padding: 15px; margin: 10px; border-radius: 5px;">
+                <strong>RUNNING</strong><br>
+                Worker processes tasks (tunneled to master)
+            </div>
+            <div class="arrow">↓ (Task complete)</div>
+            <div style="background: #ffebee; padding: 15px; margin: 10px; border-radius: 5px;">
+                <strong>STOPPING</strong><br>
+                Master calls cleanup, worker shuts down
+            </div>
+            <div class="arrow">↓</div>
+            <div style="background: #fff9c4; padding: 15px; margin: 10px; border-radius: 5px;">
+                <strong>IDLE STATE</strong><br>
+                Back to idle, ready for next task
+            </div>
+        </div>
+
+        <div class="warning-box">
+            <h3>⚠️ Important Notes</h3>
+            <ul>
+                <li><strong>Script Location:</strong> Must be in worker's home directory: <code>~/worker_launcher.sh</code></li>
+                <li><strong>Executable:</strong> Must have execute permissions: <code>chmod +x worker_launcher.sh</code></li>
+                <li><strong>AIRFLOW_HOME:</strong> Must be set on worker and point to where Singularity image is</li>
+                <li><strong>SSH Keys:</strong> Master must have passwordless SSH access to worker</li>
+                <li><strong>Singularity Image:</strong> Must be copied to <code>$AIRFLOW_HOME/airflow_2.10.2.sif</code></li>
+            </ul>
+        </div>
+
+        <h3>🔍 Debugging Worker Issues</h3>
+
+        <div class="step">
+            <h4>Check if worker is running:</h4>
+            <div class="command"><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+# On remote worker
+ps aux | grep celery | grep worker-1
+
+# Check worker log
+tail -f /tmp/worker_worker-1.log
+            </div>
+        </div>
+
+        <div class="step">
+            <h4>Check if SSH tunnels are active:</h4>
+            <div class="command"><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+# On remote worker
+netstat -tuln | grep 5432  # PostgreSQL tunnel
+netstat -tuln | grep 6379  # Redis tunnel
+
+# Or check SSH processes
+ps aux | grep "ssh.*-L"
+            </div>
+        </div>
+
+        <div class="step">
+            <h4>Test tunnel connectivity:</h4>
+            <div class="command"><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+# On remote worker (through tunnel)
+psql -h localhost -p 5432 -U airflow -d airflow_db -c "SELECT 1;"
+
+# Test Redis
+redis-cli -h localhost -p 6379 ping
+            </div>
+        </div>
+
+        <!-- ===== VIEW WORKERS ===== -->
+        <h2>🔍 How to View Worker/Remote Server List</h2>
+
+        <div class="info-box">
+            <strong>Workers are stored in Airflow Variables</strong> under the key <code>WORKER_REGISTRY</code>. You can view them in multiple ways.
+        </div>
+
+        <h3>Method 1: CLI Tool (Recommended)</h3>
+        <div class="command"><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+# List all workers with formatted table
+python scripts/manage_workers.py list
+
+# Show detailed info for specific worker
+python scripts/manage_workers.py show worker-1
+        </div>
+
+        <strong>Output Example:</strong>
+        <div class="command">
+==================================================================================
+📋 WORKER REGISTRY
+==================================================================================
+Last updated: 2024-10-25T10:30:00
+
+Worker ID            Host                 Status       Priority Container    User      
+------------------------------------------------------------------------------------------
+✅ worker-1          45.151.155.74        available    1        singularity  airflow   
+❌ worker-2          10.0.1.20            unavailable  2        singularity  airflow   
+==================================================================================
+Total workers: 2
+Available: 1
+Unavailable: 1
+        </div>
+
+        <h3>Method 2: Airflow Web UI (Visual)</h3>
+        <ol>
+            <li>Open Airflow Web UI: <code>http://localhost:8080</code></li>
+            <li>Click <strong>Admin</strong> in top menu</li>
+            <li>Click <strong>Variables</strong></li>
+            <li>Search for: <code>WORKER_REGISTRY</code></li>
+            <li>Click on the row to view JSON</li>
+        </ol>
+        <div class="info-box">
+            <strong>UI Navigation:</strong> Top Menu → Admin → Variables → WORKER_REGISTRY
+        </div>
+
+        <h3>Method 3: Airflow CLI</h3>
+        <div class="command"><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+# Get raw JSON
+airflow variables get WORKER_REGISTRY
+
+# Pretty print JSON
+airflow variables get WORKER_REGISTRY | python -m json.tool
+
+# Export to file
+airflow variables get WORKER_REGISTRY > workers.json
+        </div>
+
+        <h3>Method 4: Health Monitor Logs</h3>
+        <div class="command"><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+# View latest health check logs
+airflow dags list-runs -d worker_health_monitor --state success -n 1
+
+# View specific run logs (replace date)
+airflow tasks logs worker_health_monitor check_worker_health 2024-10-25
+        </div>
+
+        <h3>Quick Status Check</h3>
+        <div class="command"><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+# Quick status of all workers
+airflow variables get WORKER_REGISTRY | \
+    python -c "import sys, json; data=json.load(sys.stdin); \
+    [print(f'{k}: {v[\"status\"]}') for k,v in data['workers'].items()]"
+
+# Count available workers
+airflow variables get WORKER_REGISTRY | \
+    python -c "import sys, json; data=json.load(sys.stdin); \
+    print(f'Available: {sum(1 for w in data[\"workers\"].values() if w[\"status\"]==\"available\")}')"
+        </div>
+
+        <h3>Watch Mode (Real-time Monitoring)</h3>
+        <div class="command"><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+# Watch worker status (updates every 2 seconds)
+watch -n 2 'python scripts/manage_workers.py list'
+        </div>
+
+        <div class="warning-box">
+            <h3>Troubleshooting</h3>
+            <strong>"WORKER_REGISTRY not found"</strong>
+            <div class="command"><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+# Check if variable exists
+airflow variables list | grep WORKER_REGISTRY
+
+# If not found, add your first worker
+python scripts/manage_workers.py add worker-1 45.151.155.74 --user airflow
+            </div>
+        </div>
+
+        <table>
+            <tr>
+                <th>Method</th>
+                <th>Command</th>
+                <th>Best For</th>
+            </tr>
+            <tr>
+                <td>CLI Tool</td>
+                <td><code>python scripts/manage_workers.py list</code></td>
+                <td>Quick checks, formatted output</td>
+            </tr>
+            <tr>
+                <td>Web UI</td>
+                <td>Admin → Variables → WORKER_REGISTRY</td>
+                <td>Visual management, editing</td>
+            </tr>
+            <tr>
+                <td>Airflow CLI</td>
+                <td><code>airflow variables get WORKER_REGISTRY</code></td>
+                <td>Scripting, automation</td>
+            </tr>
+            <tr>
+                <td>Health Monitor</td>
+                <td><code>airflow tasks logs worker_health_monitor ...</code></td>
+                <td>Historical status, monitoring</td>
+            </tr>
+        </table>
+
+        <!-- ===== REFERENCE ===== -->
+        <h2>📚 Quick Reference</h2>
+
+        <h3>Important File Locations</h3>
+        <table>
+            <tr>
+                <th>Component</th>
+                <th>Location</th>
+            </tr>
+            <tr>
+                <td>SSH Private Key</td>
+                <td><code>/home/airflow/.ssh/airflow_worker_key</code></td>
+            </tr>
+            <tr>
+                <td>Worker Registry</td>
+                <td>Airflow Variables → <code>WORKER_REGISTRY</code></td>
+            </tr>
+            <tr>
+                <td>Main Operator</td>
+                <td><code>/home/airflow/airflow/plugins/operators/smart_remote_worker.py</code></td>
+            </tr>
+            <tr>
+                <td>Health Monitor DAG</td>
+                <td><code>/home/airflow/airflow/dags/worker_health_monitor.py</code></td>
+            </tr>
+            <tr>
+                <td>Management CLI</td>
+                <td><code>/home/airflow/airflow/scripts/manage_workers.py</code></td>
+            </tr>
+            <tr>
+                <td>Worker Launcher</td>
+                <td><code>/home/airflow/worker_launcher.sh</code> (on remote worker)</td>
+            </tr>
+        </table>
+
+        <h3>Common Commands</h3>
+        <table>
+            <tr>
+                <th>Task</th>
+                <th>Command</th>
+            </tr>
+            <tr>
+                <td>List workers</td>
+                <td><code>python scripts/manage_workers.py list</code></td>
+            </tr>
+            <tr>
+                <td>Add worker</td>
+                <td><code>python scripts/manage_workers.py add WORKER_ID IP --user USER</code></td>
+            </tr>
+            <tr>
+                <td>Remove worker</td>
+                <td><code>python scripts/manage_workers.py remove WORKER_ID</code></td>
+            </tr>
+            <tr>
+                <td>Test SSH</td>
+                <td><code>ssh -i ~/.ssh/airflow_worker_key USER@IP "hostname"</code></td>
+            </tr>
+            <tr>
+                <td>Check health</td>
+                <td><code>airflow dags trigger worker_health_monitor</code></td>
+            </tr>
+            <tr>
+                <td>View registry</td>
+                <td><code>airflow variables get WORKER_REGISTRY</code></td>
+            </tr>
+        </table>
+
+        <div class="info-box">
+            <h3>🎯 Key Takeaways</h3>
+            <ul>
+                <li><span class="highlight">No hardcoded IPs</span> - All workers managed via Airflow Variables</li>
+                <li><span class="highlight">Easy scaling</span> - Add workers without touching code</li>
+                <li><span class="highlight">Priority selection</span> - Each DAG chooses preferred workers</li>
+                <li><span class="highlight">On-demand</span> - Workers start only when needed</li>
+                <li><span class="highlight">SSH-only</span> - All communication through secure tunnels</li>
+                <li><span class="highlight">Auto-retry</span> - 5-minute wait with automatic failover</li>
+                <li><span class="highlight">No root</span> - Everything runs as regular user</li>
+            </ul>
+        </div>
+
+        <hr>
+        <p style="text-align: center; color: #666; margin-top: 30px;">
+            <strong>Document Version:</strong> 1.0 | <strong>Last Updated:</strong> 2024-10-25
+            <br>For questions or issues, refer to troubleshooting section or contact admin.
+        </p>
+    </div>
+</body>
+</html>

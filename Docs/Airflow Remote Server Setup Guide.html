@@ -1,0 +1,1131 @@
+<!DOCTYPE html>
+<!-- saved from url=(0128)file:///C:/Users/iamku/Downloads/snale-flow-88ed9701fca39ded3475d5b89bc76f80451f0b43/Airflow/PHASE2_COMPLETE_IMPLEMENTATION.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phase 2: Complete Remote Worker Setup</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+        }
+        h1 { color: #2c3e50; border-bottom: 5px solid #3498db; padding-bottom: 15px; margin-bottom: 30px; font-size: 2.5em; }
+        h2 { color: #2980b9; margin-top: 50px; margin-bottom: 25px; border-left: 6px solid #3498db; padding-left: 20px; font-size: 1.8em; }
+        h3 { color: #16a085; margin-top: 30px; margin-bottom: 15px; font-size: 1.4em; }
+        h4 { color: #27ae60; margin-top: 20px; margin-bottom: 10px; }
+        .server-tag-master { background: #e74c3c; color: white; padding: 5px 15px; border-radius: 5px; font-weight: bold; display: inline-block; margin-left: 10px; }
+        .server-tag-remote { background: #27ae60; color: white; padding: 5px 15px; border-radius: 5px; font-weight: bold; display: inline-block; margin-left: 10px; }
+        .meta-info { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 20px; border-radius: 10px; margin-bottom: 30px; }
+        pre { background: #2c3e50; color: #ecf0f1; padding: 20px; border-radius: 8px; overflow-x: auto; margin: 15px 0; border-left: 5px solid #3498db; font-size: 14px; }
+        code { background: #ecf0f1; padding: 3px 8px; border-radius: 4px; font-family: 'Courier New', monospace; color: #e74c3c; font-size: 14px; }
+        pre code { background: transparent; color: #ecf0f1; padding: 0; }
+        .alert { padding: 20px; margin: 25px 0; border-radius: 8px; border-left: 6px solid; }
+        .alert-info { background: #d1ecf1; border-color: #0c5460; color: #0c5460; }
+        .alert-warning { background: #fff3cd; border-color: #856404; color: #856404; }
+        .alert-success { background: #d4edda; border-color: #155724; color: #155724; }
+        .alert-danger { background: #f8d7da; border-color: #721c24; color: #721c24; }
+        .why-section { background: #fff3cd; border-left: 5px solid #ffc107; padding: 20px; margin: 25px 0; border-radius: 5px; }
+        .how-section { background: #d1ecf1; border-left: 5px solid #17a2b8; padding: 20px; margin: 25px 0; border-radius: 5px; }
+        .step-number { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 8px 20px; border-radius: 25px; font-weight: bold; margin-right: 15px; display: inline-block; }
+        table { width: 100%; border-collapse: collapse; margin: 25px 0; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        th, td { padding: 15px; text-align: left; border-bottom: 1px solid #ddd; }
+        th { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; font-weight: 600; }
+        tr:hover { background-color: #f5f5f5; }
+        .checklist { background: #f8f9fa; padding: 20px; border-radius: 8px; margin: 20px 0; }
+        .checklist ul { list-style: none; }
+        .checklist li { padding: 8px 0; }
+        .checklist li:before { content: "☐ "; font-size: 1.2em; margin-right: 10px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 PHASE 2: COMPLETE REMOTE WORKER SETUP</h1>
+        <h2 style="border:none; margin-top:0;">Master Server + Remote Worker Configuration</h2>
+        
+        <div class="meta-info">
+            <p><strong>Goal:</strong> Setup complete remote worker infrastructure with ON-DEMAND capability</p>
+            <p><strong>Servers:</strong> Master (masterdimpal-1) + Remote (remotedimpal-2)</p>
+            <p><strong>Duration:</strong> 1-2 days</p>
+            <p><strong>Prerequisites:</strong> Phase 1 completed (Master Airflow running)</p>
+            <p><strong>⚠️ CRITICAL:</strong> This includes ALL client requirements</p>
+        </div>
+
+        <div class="alert alert-warning">
+            <h3>📋 PHASE 2 COMPLETE WORKFLOW</h3>
+            <table>
+                <tbody><tr><th>Section</th><th>Where</th><th>What</th><th>Why</th></tr>
+                <tr><td>2.1</td><td>🔴 MASTER</td><td>Setup GitHub &amp; Clone DAGs</td><td>Scheduler needs DAG files</td></tr>
+                <tr><td>2.2</td><td>🔴 MASTER</td><td>Build Singularity Container</td><td>Master has sudo, Remote doesn't</td></tr>
+                <tr><td>2.3</td><td>🟢 REMOTE</td><td>Prepare Environment</td><td>Create directories, verify tools</td></tr>
+                <tr><td>2.4</td><td>🟢 REMOTE</td><td>Setup GitHub &amp; Clone DAGs</td><td>Worker needs same DAG code</td></tr>
+                <tr><td>2.5</td><td>🔴+🟢 BOTH</td><td>Transfer Container</td><td>Move built container to Remote</td></tr>
+                <tr><td>2.6</td><td>🟢 REMOTE</td><td>Configure SSH Tunnels</td><td>Remote accesses Master services</td></tr>
+                <tr><td>2.7</td><td>🟢 REMOTE</td><td>Setup DAG Sync Script</td><td>Keep DAGs updated from GitHub</td></tr>
+                <tr><td>2.8</td><td>🟢 REMOTE</td><td>Create Worker Scripts</td><td>Start/stop worker on-demand</td></tr>
+                <tr><td>2.9</td><td>🟢 REMOTE</td><td>Test Worker Registration</td><td>Verify worker connects to Master</td></tr>
+            </tbody></table>
+        </div>
+
+        <h1 style="margin-top: 60px;">🔴 PART A: MASTER SERVER SETUP</h1>
+
+        <!-- SECTION 2.1 -->
+        <h2><span class="step-number">2.1</span>MASTER: Setup GitHub &amp; Clone DAGs</h2>
+
+        <div class="why-section">
+            <h4>🎯 WHY: Master Scheduler Needs DAG Files</h4>
+            <p><strong>Airflow Scheduler reads Python files from <code>~/airflow/dags/</code> directory.</strong></p>
+            <p>Without DAG files, Scheduler has nothing to schedule!</p>
+            <ul style="margin-left: 25px; margin-top: 10px;">
+                <li>Master Scheduler parses DAG definitions</li>
+                <li>Creates task instances</li>
+                <li>Routes tasks to Celery queues</li>
+            </ul>
+        </div>
+
+        <h3>2.1.1 Generate SSH Key for GitHub (On Master)</h3>
+        
+        <pre><code># SSH to Master as airflow user
+ssh airflow@masterdimpal-1
+
+# Verify you're in correct directory
+pwd
+# Should show: /home/airflow
+
+# Generate SSH key specifically for GitHub
+ssh-keygen -t ed25519 -C "master-dag-sync" -f ~/.ssh/github_dag_key -N ""
+
+# This creates:
+# ~/.ssh/github_dag_key (private - KEEP SECRET!)
+# ~/.ssh/github_dag_key.pub (public - add to GitHub)
+
+# Display public key
+cat ~/.ssh/github_dag_key.pub
+
+# Output looks like:
+# ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIxxx... master-dag-sync
+
+# Copy this ENTIRE line!</code></pre>
+
+        <div class="alert alert-info">
+            <h4>✅ What This Does:</h4>
+            <ul style="margin-left: 25px;">
+                <li><strong>-t ed25519:</strong> Modern, secure key type</li>
+                <li><strong>-C "master-dag-sync":</strong> Comment for identification</li>
+                <li><strong>-f ~/.ssh/github_dag_key:</strong> Custom filename (not default id_rsa)</li>
+                <li><strong>-N "":</strong> No passphrase (for automated scripts)</li>
+            </ul>
+        </div>
+
+        <h3>2.1.2 Add SSH Key to GitHub Repository</h3>
+
+        <div class="alert alert-warning">
+            <h4>📝 Steps in GitHub Web Interface:</h4>
+            <ol style="margin-left: 25px;">
+                <li>Go to: <strong>https://github.com/sjsaurabh010/Airflow/settings/keys</strong></li>
+                <li>Click "<strong>Add deploy key</strong>"</li>
+                <li><strong>Title:</strong> "Master Server - DAG Sync"</li>
+                <li><strong>Key:</strong> Paste the public key from previous step</li>
+                <li>☐ <strong>Allow write access</strong> (UNCHECK - read-only for Master)</li>
+                <li>Click "<strong>Add key</strong>"</li>
+            </ol>
+            <p style="margin-top: 15px;"><strong>✅ Result:</strong> Master can now clone the repository!</p>
+        </div>
+
+        <h3>2.1.3 Configure SSH for GitHub (On Master)</h3>
+
+        <pre><code># Still on Master as airflow user
+
+# Create/edit SSH config
+nano ~/.ssh/config
+
+# Add these lines:
+# ========================================
+Host github.com
+    HostName github.com
+    User git
+    IdentityFile ~/.ssh/github_dag_key
+    StrictHostKeyChecking no
+    UserKnownHostsFile /dev/null
+# ========================================
+
+# Save and exit: Ctrl+X, then Y, then Enter
+
+# Set correct permissions
+chmod 600 ~/.ssh/config
+
+# Test GitHub connection
+ssh -T git@github.com
+
+# Expected output:
+# Hi sjsaurabh010! You've successfully authenticated, but GitHub does not provide shell access.
+# ↑ This is SUCCESS! ✅</code></pre>
+
+        <h3>2.1.4 Clone DAG Repository (On Master)</h3>
+
+        <div class="alert alert-info">
+            <h4>📍 IMPORTANT: Where to Clone on Master</h4>
+            <p><strong>Clone destination:</strong> <code>~/airflow/dags/</code></p>
+            <p><strong>Why:</strong> Airflow Scheduler reads DAGs from this directory</p>
+            <p><strong>Current location matters!</strong> Must be IN the dags directory before cloning</p>
+        </div>
+
+        <pre><code># Navigate to Airflow DAGs directory (MUST be here!)
+cd ~/airflow/dags
+
+# Verify you're in correct location
+pwd
+# Should show: /home/airflow/airflow/dags ✅
+
+# Check if directory is empty (should be from Phase 1)
+ls -la
+
+# Clone GitHub repository
+git clone git@github.com:sjsaurabh010/Airflow.git .
+# ↑ Note the DOT (.) at end
+# This clones INTO current directory (~/airflow/dags/)
+# NOT into a subdirectory!
+
+# Verify files cloned
+ls -la
+
+# Should show:
+# - flow/
+# - README.md
+# - PHASE*.html files
+# - etc.
+
+# Double-check location
+pwd
+# Should STILL show: /home/airflow/airflow/dags ✅
+
+# Check if Scheduler detects DAGs
+# Wait 30 seconds for Scheduler to parse
+sleep 30
+
+# Check Airflow UI or CLI
+airflow dags list
+
+# Should show: forecast_aubenas (from old 2023 code)
+# We'll migrate this in Phase 5!</code></pre>
+
+        <div class="alert alert-success">
+            <h4>✅ Section 2.1 Complete - Master has DAG files!</h4>
+            <p>Verification checklist:</p>
+            <ul style="margin-left: 25px;">
+                <li>✅ SSH key generated</li>
+                <li>✅ Key added to GitHub</li>
+                <li>✅ SSH connection to GitHub works</li>
+                <li>✅ Repository cloned to ~/airflow/dags/</li>
+                <li>✅ Files visible in directory</li>
+                <li>✅ Scheduler detects DAGs (airflow dags list)</li>
+            </ul>
+        </div>
+
+        <!-- SECTION 2.2 -->
+        <h2><span class="step-number">2.2</span>MASTER: Build Singularity Worker Container</h2>
+
+        <div class="why-section">
+            <h4>🎯 WHY: Build Container on Master?</h4>
+            <p><strong>Building Singularity containers requires sudo/root privileges!</strong></p>
+            <ul style="margin-left: 25px; margin-top: 10px;">
+                <li><strong>Master:</strong> You have sudo ✅</li>
+                <li><strong>Remote:</strong> NO sudo ❌ (Client requirement)</li>
+                <li><strong>Solution:</strong> Build on Master, transfer to Remote</li>
+            </ul>
+        </div>
+
+        <h3>2.2.1 Install Singularity (On Master - Requires Sudo)</h3>
+
+        <pre><code># Check if Singularity already installed
+singularity --version
+
+# If installed, skip to 2.2.2
+# If NOT installed:
+
+# Install dependencies
+sudo apt-get update
+sudo apt-get install -y \
+    build-essential \
+    libssl-dev \
+    uuid-dev \
+    libgpgme11-dev \
+    squashfs-tools \
+    libseccomp-dev \
+    wget \
+    pkg-config \
+    git \
+    cryptsetup
+
+# Install Go (required for Singularity)
+export VERSION=1.20.5 OS=linux ARCH=amd64
+cd /tmp
+wget https://dl.google.com/go/go$VERSION.$OS-$ARCH.tar.gz
+sudo tar -C /usr/local -xzvf go$VERSION.$OS-$ARCH.tar.gz
+rm go$VERSION.$OS-$ARCH.tar.gz
+
+# Add Go to PATH
+echo 'export PATH=/usr/local/go/bin:$PATH' &gt;&gt; ~/.bashrc
+source ~/.bashrc
+
+# Verify Go installed
+go version
+
+# Download and install Singularity
+export VERSION=3.11.4
+cd /tmp
+wget https://github.com/sylabs/singularity/releases/download/v${VERSION}/singularity-ce-${VERSION}.tar.gz
+tar -xzf singularity-ce-${VERSION}.tar.gz
+cd singularity-ce-${VERSION}
+
+# Compile and install
+./mconfig
+make -C builddir
+sudo make -C builddir install
+
+# Verify Singularity installed
+singularity --version
+# Should show: singularity-ce version 3.11.4</code></pre>
+
+        <div class="alert alert-info">
+            <h4>💡 If Installation Fails:</h4>
+            <p><strong>Alternative: Install pre-built package (Ubuntu 24.04):</strong></p>
+            <pre><code>sudo apt-get update
+sudo apt-get install -y singularity-container
+# OR
+sudo apt-get install -y singularityce</code></pre>
+        </div>
+
+        <h3>2.2.2 Create Singularity Definition File (On Master)</h3>
+
+        <pre><code># Create definition file in home directory
+cd ~
+nano airflow-worker.def
+
+# Paste this content:
+# ========================================
+Bootstrap: docker
+From: python:3.12-slim
+
+%post
+    # Update system
+    apt-get update &amp;&amp; apt-get install -y \
+        openssh-client \
+        git \
+        postgresql-client \
+        redis-tools \
+        build-essential \
+        libpq-dev \
+        netcat-openbsd \
+        curl \
+        vim \
+        &amp;&amp; rm -rf /var/lib/apt/lists/*
+    
+    # Install Airflow 2.10.2 with required extras
+    # CRITICAL: Same version as Master!
+    pip install --no-cache-dir \
+        apache-airflow[celery,postgres,redis,ssh]==2.10.2 \
+        celery[redis] \
+        paramiko \
+        sshtunnel \
+        psycopg2-binary \
+        redis
+    
+    # Install business logic dependencies (from old worker requirements.txt)
+    pip install --no-cache-dir \
+        pyshp \
+        elasticsearch==7.11 \
+        tzwhere \
+        geopandas \
+        rasterio \
+        requests
+    
+    # Create directories
+    mkdir -p /airflow /dags /logs
+
+%environment
+    export AIRFLOW_HOME=/airflow
+    export AIRFLOW__CORE__DAGS_FOLDER=/dags
+    export AIRFLOW__CORE__LOAD_EXAMPLES=False
+    export AIRFLOW__LOGGING__BASE_LOG_FOLDER=/logs
+
+%runscript
+    # Default: start Celery worker
+    exec celery -A airflow.executors.celery_executor worker "$@"
+# ========================================
+
+# Save and exit: Ctrl+X, then Y, then Enter
+
+# Verify file created
+cat airflow-worker.def</code></pre>
+
+        <div class="alert alert-warning">
+            <h4>⚠️ CRITICAL: Version Compatibility</h4>
+            <p><strong>Master and Worker MUST have IDENTICAL Airflow versions!</strong></p>
+            <pre><code>Master:  Airflow 2.10.2  }  ← MUST MATCH!
+Worker:  Airflow 2.10.2  }</code></pre>
+            <p>If versions differ:</p>
+            <ul style="margin-left: 25px;">
+                <li>❌ Task serialization incompatible</li>
+                <li>❌ Worker won't register</li>
+                <li>❌ Tasks will fail mysteriously</li>
+            </ul>
+        </div>
+
+        <h3>2.2.3 Build Container (On Master - Takes 15-20 minutes)</h3>
+
+        <pre><code># Still in /home/airflow directory
+pwd
+# Should show: /home/airflow
+
+# Build container (requires sudo!)
+sudo singularity build airflow-worker.sif airflow-worker.def
+
+# This process:
+# 1. Downloads base Python image (~200 MB)
+# 2. Installs system packages
+# 3. Installs Python packages (~500 MB)
+# 4. Creates compressed container (~350-400 MB)
+
+# ⏰ Wait 15-20 minutes...
+
+# Build complete! Check file size:
+ls -lh airflow-worker.sif
+# Should show: ~350-400 MB
+
+# Fix ownership (sudo created it as root)
+sudo chown airflow:airflow airflow-worker.sif
+
+# Verify ownership
+ls -l airflow-worker.sif
+# Should show: airflow airflow</code></pre>
+
+        <h3>2.2.4 Test Container (On Master)</h3>
+
+        <pre><code># Create test directories (containers need writable bind mounts)
+mkdir -p ~/test-container/{logs,dags}
+
+# Test 1: Airflow version
+singularity exec \
+    --bind ~/test-container/logs:/logs \
+    --bind ~/test-container/dags:/dags \
+    --env AIRFLOW_HOME=/tmp/airflow \
+    --env AIRFLOW__CORE__DAGS_FOLDER=/dags \
+    --env AIRFLOW__LOGGING__BASE_LOG_FOLDER=/logs \
+    ~/airflow-worker.sif \
+    airflow version
+
+# Expected output: 2.10.2 ✅
+
+# Test 2: Celery version
+singularity exec ~/airflow-worker.sif celery --version
+# Expected: 5.x.x
+
+# Test 3: Python version
+singularity exec ~/airflow-worker.sif python --version
+# Expected: Python 3.12.x
+
+# Test 4: Check all required packages
+singularity exec ~/airflow-worker.sif pip list | grep -E "airflow|celery|redis|paramiko"
+
+# Should show all installed packages
+
+# Cleanup test directories
+rm -rf ~/test-container
+
+# ✅ Container is ready!</code></pre>
+
+        <div class="alert alert-success">
+            <h4>✅ Section 2.2 Complete - Container Built!</h4>
+            <p>You now have: <code>~/airflow-worker.sif</code></p>
+            <p>Verification:</p>
+            <ul style="margin-left: 25px;">
+                <li>✅ Singularity installed</li>
+                <li>✅ Definition file created</li>
+                <li>✅ Container built (airflow-worker.sif exists)</li>
+                <li>✅ Airflow 2.10.2 in container</li>
+                <li>✅ Celery works</li>
+                <li>✅ All dependencies installed</li>
+            </ul>
+        </div>
+
+        <!-- PART B: REMOTE -->
+        <h1 style="margin-top: 60px;">🟢 PART B: REMOTE SERVER SETUP</h1>
+
+        <div class="alert alert-info">
+            <h4>🖥️ Switch to Remote Server</h4>
+            <p><strong>From now on, all commands run on Remote (remotedimpal-2)</strong></p>
+            <pre><code># SSH to Remote as airflow user
+ssh airflow@remotedimpal-2
+
+# Verify you're on correct server
+hostname
+# Should show: remotedimpal-2
+
+whoami
+# Should show: airflow</code></pre>
+        </div>
+
+        <!-- SECTION 2.3 -->
+        <h2><span class="step-number">2.3</span>REMOTE: Prepare Environment</h2>
+
+        <h3>2.3.1 Verify Python 3.12 (On Remote)</h3>
+
+        <pre><code># Check Python version
+python3 --version
+# Should show: Python 3.12.x ✅
+
+# If not 3.12, check if available via modules
+module avail python
+# If shows python/3.12, load it:
+module load python/3.12
+
+# Verify pip
+pip3 --version
+
+# Check Singularity
+singularity --version
+# Should show version 3.x</code></pre>
+
+        <h3>2.3.2 Create Directory Structure (On Remote)</h3>
+
+        <pre><code># Create main working directories
+mkdir -p ~/airflow-worker/{containers,dags,logs,config}
+mkdir -p ~/scripts
+
+# Verify structure
+tree -L 2 ~/airflow-worker
+# OR if tree not installed:
+ls -la ~/airflow-worker/
+
+# Should show:
+# airflow-worker/
+# ├── containers/  ← Container will go here
+# ├── dags/        ← DAGs will be cloned here
+# ├── logs/        ← Worker logs
+# └── config/      ← Configuration files
+
+ls -la ~/scripts/
+# Should be empty (will add scripts later)</code></pre>
+
+        <!-- SECTION 2.4 -->
+        <h2><span class="step-number">2.4</span>REMOTE: Setup GitHub &amp; Clone DAGs</h2>
+
+        <div class="why-section">
+            <h4>🎯 WHY: Remote Needs Same DAG Files</h4>
+            <p><strong>Worker executes the Python code in DAG files!</strong></p>
+            <ul style="margin-left: 25px; margin-top: 10px;">
+                <li><strong>Master:</strong> Scheduler reads DAGs to create tasks</li>
+                <li><strong>Remote:</strong> Worker needs same Python code to execute tasks</li>
+                <li><strong>Both need:</strong> SAME DAG files from SAME GitHub repo</li>
+            </ul>
+        </div>
+
+        <h3>2.4.1 Generate SSH Key for GitHub (On Remote)</h3>
+
+        <pre><code># Generate SSH key (different from Master's key)
+ssh-keygen -t ed25519 -C "worker-dag-sync" -f ~/.ssh/github_dag_key -N ""
+
+# Display public key
+cat ~/.ssh/github_dag_key.pub
+
+# Copy the ENTIRE output!</code></pre>
+
+        <h3>2.4.2 Add Second Deploy Key to GitHub</h3>
+
+        <div class="alert alert-warning">
+            <h4>📝 Add SECOND Deploy Key:</h4>
+            <ol style="margin-left: 25px;">
+                <li>Go to: <strong>https://github.com/sjsaurabh010/Airflow/settings/keys</strong></li>
+                <li>Click "<strong>Add deploy key</strong>" (again)</li>
+                <li><strong>Title:</strong> "Remote Worker - DAG Sync"</li>
+                <li><strong>Key:</strong> Paste the public key from Remote server</li>
+                <li>☐ <strong>Allow write access</strong> (UNCHECK - read-only)</li>
+                <li>Click "<strong>Add key</strong>"</li>
+            </ol>
+            <p style="margin-top: 15px;"><strong>✅ Result:</strong> GitHub now has TWO deploy keys (Master + Remote)</p>
+        </div>
+
+        <h3>2.4.3 Configure SSH and Clone (On Remote)</h3>
+
+        <pre><code># Configure SSH for GitHub
+nano ~/.ssh/config
+
+# Add these lines:
+# ========================================
+Host github.com
+    HostName github.com
+    User git
+    IdentityFile ~/.ssh/github_dag_key
+    StrictHostKeyChecking no
+    UserKnownHostsFile /dev/null
+# ========================================
+
+# Save: Ctrl+X, Y, Enter
+
+# Set permissions
+chmod 600 ~/.ssh/config
+
+# Test connection
+ssh -T git@github.com
+# Expected: "Hi sjsaurabh010!..." ✅</code></pre>
+
+        <div class="alert alert-warning">
+            <h4>⚠️ CRITICAL: Clone to CORRECT Directory!</h4>
+            <p><strong>WRONG:</strong> <code>cd ~ &amp;&amp; git clone ... .</code> ← Home directory ❌</p>
+            <p><strong>RIGHT:</strong> <code>cd ~/airflow-worker/dags &amp;&amp; git clone ... .</code> ← DAG directory ✅</p>
+        </div>
+
+        <pre><code># Navigate to the CORRECT directory (NOT home directory!)
+cd ~/airflow-worker/dags
+
+# Verify you're in correct location
+pwd
+# Should show: /home/airflow/airflow-worker/dags
+
+# Check if directory is empty
+ls -la
+# If not empty, remove content first:
+# rm -rf * .*  (BE CAREFUL!)
+
+# Clone repository INTO current directory (note the DOT at end!)
+git clone git@github.com:sjsaurabh010/Airflow.git .
+
+# Verify files cloned
+ls -la
+
+# Should show: flow/, README.md, PHASE*.html, etc.
+
+# Verify correct location
+pwd
+# Should show: /home/airflow/airflow-worker/dags ✅</code></pre>
+
+        <div class="alert alert-success">
+            <h4>✅ Sections 2.3-2.4 Complete!</h4>
+            <p>Remote now has:</p>
+            <ul style="margin-left: 25px;">
+                <li>✅ Python 3.12 verified</li>
+                <li>✅ Directory structure created</li>
+                <li>✅ GitHub access configured</li>
+                <li>✅ DAG files cloned</li>
+            </ul>
+        </div>
+
+        <!-- SECTION 2.5 -->
+        <h2><span class="step-number">2.5</span>BOTH SERVERS: Transfer Container</h2>
+
+        <div class="how-section">
+            <h4>🔧 HOW: Transfer Large File Between Servers</h4>
+            <p><strong>Container is ~400 MB. We'll use SCP (Secure Copy via SSH).</strong></p>
+            <p>Flow: Master → SCP → Remote</p>
+        </div>
+
+        <h3>2.5.1 Setup SSH Keys for Master→Remote (On Master)</h3>
+
+        <pre><code># ON MASTER: Switch back to Master terminal
+ssh airflow@masterdimpal-1
+
+# Generate key for Master→Remote connection (if not exists)
+if [ ! -f ~/.ssh/id_rsa ]; then
+    ssh-keygen -t rsa -b 4096 -C "master-to-remote" -f ~/.ssh/id_rsa -N ""
+fi
+
+# Display public key
+cat ~/.ssh/id_rsa.pub
+
+# Copy the output!</code></pre>
+
+        <h3>2.5.2 Add Master's Key to Remote (On Remote)</h3>
+
+        <pre><code># ON REMOTE: Switch to Remote terminal
+ssh airflow@remotedimpal-2
+
+# Add Master's public key to authorized_keys
+nano ~/.ssh/authorized_keys
+
+# Paste Master's public key on a NEW line
+# Save: Ctrl+X, Y, Enter
+
+# Set correct permissions
+chmod 600 ~/.ssh/authorized_keys
+chmod 700 ~/.ssh
+
+# Verify
+cat ~/.ssh/authorized_keys
+# Should show Master's key</code></pre>
+
+        <h3>2.5.3 Test SSH Connection (From Master)</h3>
+
+        <pre><code># ON MASTER: Test SSH to Remote
+ssh airflow@remotedimpal-2
+
+# Should connect WITHOUT password prompt!
+# If successful, you'll see Remote's shell prompt
+
+# Exit back to Master
+exit</code></pre>
+
+        <h3>2.5.4 Transfer Container (From Master to Remote)</h3>
+
+        <pre><code># ON MASTER: Transfer container file
+# ⏰ This takes 2-5 minutes depending on network speed
+
+scp ~/airflow-worker.sif airflow@remotedimpal-2:~/airflow-worker/containers/
+
+# Progress will show:
+# airflow-worker.sif    100%  350MB  70.0MB/s   00:05
+
+# ✅ Transfer complete!</code></pre>
+
+        <h3>2.5.5 Verify Container on Remote</h3>
+
+        <pre><code># ON REMOTE: Check container received
+ls -lh ~/airflow-worker/containers/airflow-worker.sif
+
+# Should show: ~350-400 MB file
+
+# Test container (with bind mounts to avoid read-only error)
+mkdir -p ~/test-container/{logs,dags}
+
+singularity exec \
+    --bind ~/test-container/logs:/logs \
+    --bind ~/test-container/dags:/dags \
+    --env AIRFLOW_HOME=/tmp/airflow \
+    --env AIRFLOW__CORE__DAGS_FOLDER=/dags \
+    --env AIRFLOW__LOGGING__BASE_LOG_FOLDER=/logs \
+    ~/airflow-worker/containers/airflow-worker.sif \
+    airflow version
+
+# Expected: 2.10.2 ✅
+
+# Cleanup
+rm -rf ~/test-container</code></pre>
+
+        <div class="alert alert-success">
+            <h4>✅ Section 2.5 Complete - Container Transferred!</h4>
+            <p>Verification:</p>
+            <ul style="margin-left: 25px;">
+                <li>✅ SSH connection Master→Remote works</li>
+                <li>✅ Container transferred (airflow-worker.sif on Remote)</li>
+                <li>✅ Container works on Remote (Airflow 2.10.2)</li>
+            </ul>
+        </div>
+
+        <div class="alert alert-info" style="margin-top: 40px;">
+            <h3>📝 CHECKPOINT: What We Have So Far</h3>
+            <table>
+                <tbody><tr><th>Component</th><th>Master Status</th><th>Remote Status</th></tr>
+                <tr><td>DAG Files</td><td>✅ Cloned to ~/airflow/dags/</td><td>✅ Cloned to ~/airflow-worker/dags/</td></tr>
+                <tr><td>Container</td><td>✅ Built (airflow-worker.sif)</td><td>✅ Received &amp; tested</td></tr>
+                <tr><td>GitHub Access</td><td>✅ SSH key configured</td><td>✅ SSH key configured</td></tr>
+                <tr><td>SSH Keys</td><td>✅ Can connect to Remote</td><td>✅ Accepts Master connection</td></tr>
+            </tbody></table>
+            <p style="margin-top: 15px;"><strong>Next:</strong> Configure SSH tunnels and worker scripts</p>
+        </div>
+
+        <!-- SECTION 2.6 -->
+        <h2><span class="step-number">2.6</span>REMOTE: Configure SSH Tunnels</h2>
+
+        <div class="why-section">
+            <h4>🎯 WHY: SSH Tunnels for Master Services</h4>
+            <p><strong>Remote worker needs to access Master's PostgreSQL and Redis</strong></p>
+            <p>But Remote has NO direct network access to Master services!</p>
+            <div class="architecture-box" style="font-size: 12px;">
+Remote: "Can I connect to Master:5432?"
+Firewall: "NO!"
+    ↓
+Solution: SSH Tunnel
+    ↓
+Remote connects to localhost:5432
+    ↓
+SSH forwards to Master:5432
+    ↓
+✅ Works!</div>
+        </div>
+
+        <h3>2.6.1 Create Tunnel Setup Script (On Remote)</h3>
+
+        <pre><code># ON REMOTE: Create tunnel script
+cat &gt; ~/scripts/setup-tunnels.sh &lt;&lt; 'EOF'
+#!/bin/bash
+set -e
+
+# CONFIGURATION - CHANGE THESE!
+MASTER_HOST="45.151.155.100"  # ← Your Master IP here!
+MASTER_USER="airflow"
+SSH_KEY="$HOME/.ssh/id_rsa"
+
+echo "Setting up SSH tunnels to Master..."
+
+# Kill existing tunnels FIRST (prevents "port already in use" error)
+pkill -f "ssh.*${MASTER_HOST}.*5432" 2&gt;/dev/null || true
+pkill -f "ssh.*${MASTER_HOST}.*6379" 2&gt;/dev/null || true
+
+# Wait for ports to be released
+sleep 3
+
+# Start SSH tunnel for PostgreSQL and Redis
+ssh -i "$SSH_KEY" \
+    -o ServerAliveInterval=30 \
+    -o ServerAliveCountMax=3 \
+    -o StrictHostKeyChecking=no \
+    -o ExitOnForwardFailure=yes \
+    -f -N \
+    -L 5432:localhost:5432 \
+    -L 6379:localhost:6379 \
+    ${MASTER_USER}@${MASTER_HOST}
+
+# Wait for tunnels to establish
+sleep 3
+
+# Verify tunnels
+if command -v nc &amp;&gt; /dev/null; then
+    if nc -z localhost 5432 &amp;&amp; nc -z localhost 6379; then
+        echo "✅ Tunnels established successfully"
+        echo "  PostgreSQL: localhost:5432 → ${MASTER_HOST}:5432"
+        echo "  Redis: localhost:6379 → ${MASTER_HOST}:6379"
+        exit 0
+    else
+        echo "❌ Tunnel verification failed!"
+        exit 1
+    fi
+else
+    echo "⚠️  'nc' not available, skipping verification"
+    echo "Tunnels started (assuming success)"
+    exit 0
+fi
+EOF
+
+# Make executable
+chmod +x ~/scripts/setup-tunnels.sh
+
+# Edit to add your Master IP
+nano ~/scripts/setup-tunnels.sh
+# Change: MASTER_HOST="45.151.155.100" to your actual Master IP</code></pre>
+
+        <h3>2.6.2 Create Tunnel Cleanup Script (On Remote)</h3>
+
+        <pre><code># ON REMOTE: Create cleanup script
+cat &gt; ~/scripts/cleanup-tunnels.sh &lt;&lt; 'EOF'
+#!/bin/bash
+echo "Cleaning up SSH tunnels..."
+pkill -f "ssh.*5432.*6379" 2&gt;/dev/null || true
+pkill -f "ssh.*5432" 2&gt;/dev/null || true
+pkill -f "ssh.*6379" 2&gt;/dev/null || true
+echo "✅ Tunnels closed"
+EOF
+
+chmod +x ~/scripts/cleanup-tunnels.sh</code></pre>
+
+        <h3>2.6.3 Test Tunnels (On Remote)</h3>
+
+        <pre><code># Start tunnels
+~/scripts/setup-tunnels.sh
+
+# Check tunnel processes
+ps aux | grep ssh | grep 5432
+
+# Verify tunnels work
+nc -zv localhost 5432  # PostgreSQL
+nc -zv localhost 6379  # Redis
+# Both should show: Connection succeeded
+
+# Cleanup when done testing
+~/scripts/cleanup-tunnels.sh</code></pre>
+
+        <!-- SECTION 2.7 -->
+        <h2><span class="step-number">2.7</span>REMOTE: Setup DAG Synchronization</h2>
+
+        <pre><code># ON REMOTE: Create DAG sync script
+cat &gt; ~/scripts/sync-dags.sh &lt;&lt; 'EOF'
+#!/bin/bash
+set -e
+
+DAG_DIR="$HOME/airflow-worker/dags"
+
+echo "Syncing DAGs from GitHub..."
+cd "$DAG_DIR"
+
+# Reset any local changes (force sync)
+git fetch origin
+git reset --hard origin/main
+
+echo "✅ DAGs synced to latest version"
+git log -1 --oneline
+EOF
+
+chmod +x ~/scripts/sync-dags.sh
+
+# Test sync
+~/scripts/sync-dags.sh</code></pre>
+
+        <!-- SECTION 2.8 -->
+        <h2><span class="step-number">2.8</span>REMOTE: Create Worker Scripts</h2>
+
+        <div class="alert alert-danger">
+            <h3>⚠️ CRITICAL: Proper Bind Mounts Required!</h3>
+            <p><strong>Singularity containers have READ-ONLY filesystems by default!</strong></p>
+            <p>You MUST use <code>--bind</code> options for writable directories:</p>
+            <ul style="margin-left: 25px;">
+                <li><code>--bind ~/airflow-worker/logs:/logs</code> ← Log files</li>
+                <li><code>--bind /tmp:/tmp</code> ← Temp files</li>
+                <li><code>AIRFLOW_HOME=/tmp/airflow</code> ← Use /tmp (writable)</li>
+            </ul>
+            <p style="margin-top: 10px;"><strong>Without these:</strong> You'll get "Read-only file system" errors!</p>
+        </div>
+
+        <h3>2.8.1 Create Configuration File (On Remote)</h3>
+
+        <pre><code># ON REMOTE: Store Master connection details
+cat &gt; ~/airflow-worker/config/master.env &lt;&lt; 'EOF'
+# Master connection details (GET FROM MASTER's airflow.cfg!)
+MASTER_IP=45.151.155.100
+MASTER_POSTGRES_PASSWORD=YOUR_POSTGRES_PASSWORD_HERE
+MASTER_REDIS_PASSWORD=YOUR_REDIS_PASSWORD_HERE
+
+# Worker configuration
+WORKER_NAME=worker1
+WORKER_QUEUE=worker1
+WORKER_CONCURRENCY=4
+EOF
+
+# Secure the file
+chmod 600 ~/airflow-worker/config/master.env
+
+# Edit with actual values
+nano ~/airflow-worker/config/master.env</code></pre>
+
+        <div class="alert alert-warning">
+            <h4>📝 Get Master Passwords:</h4>
+            <p><strong>On Master, run these commands:</strong></p>
+            <pre><code># Get PostgreSQL password
+grep sql_alchemy_conn ~/airflow/airflow.cfg
+# Format: postgresql+psycopg2://airflow:PASSWORD@localhost/airflow
+
+# Get Redis password
+grep broker_url ~/airflow/airflow.cfg
+# Format: redis://:PASSWORD@localhost:6379/0</code></pre>
+        </div>
+
+        <h3>2.8.2 Create Worker START Script (On Remote)</h3>
+
+        <pre><code># ON REMOTE: Create start script with PROPER BIND MOUNTS
+cat &gt; ~/scripts/start-worker.sh &lt;&lt; 'EOF'
+#!/bin/bash
+set -e
+
+# Load configuration
+source ~/airflow-worker/config/master.env
+
+echo "=========================================="
+echo "  STARTING ON-DEMAND CELERY WORKER"
+echo "=========================================="
+echo ""
+
+# Step 1: Setup SSH tunnels
+echo "[1/4] Setting up SSH tunnels..."
+~/scripts/setup-tunnels.sh
+echo ""
+
+# Step 2: Sync DAGs from GitHub
+echo "[2/4] Syncing DAGs..."
+~/scripts/sync-dags.sh
+echo ""
+
+# Step 3: Set environment variables
+echo "[3/4] Setting environment..."
+
+# ✅ CRITICAL: Use /tmp/airflow instead of /airflow (writable!)
+export AIRFLOW_HOME=/tmp/airflow
+export AIRFLOW__CORE__DAGS_FOLDER=/dags
+export AIRFLOW__CORE__LOAD_EXAMPLES=False
+export AIRFLOW__LOGGING__BASE_LOG_FOLDER=/logs
+
+# Database configuration (via tunnel)
+export AIRFLOW__DATABASE__SQL_ALCHEMY_CONN="postgresql+psycopg2://airflow:${MASTER_POSTGRES_PASSWORD}@localhost:5432/airflow"
+
+# Celery configuration (via tunnel)
+export AIRFLOW__CELERY__BROKER_URL="redis://:${MASTER_REDIS_PASSWORD}@localhost:6379/0"
+export AIRFLOW__CELERY__RESULT_BACKEND="db+postgresql://airflow:${MASTER_POSTGRES_PASSWORD}@localhost:5432/airflow"
+
+# Executor configuration
+export AIRFLOW__CORE__EXECUTOR="CeleryExecutor"
+
+echo ""
+
+# Step 4: Start Celery worker in container
+echo "[4/4] Starting Celery worker in container..."
+echo "Worker: ${WORKER_NAME}"
+echo "Queue: ${WORKER_QUEUE}"
+echo "Concurrency: ${WORKER_CONCURRENCY}"
+echo ""
+
+# ✅ CRITICAL: Proper bind mounts for writable directories!
+singularity exec \
+    --bind ~/airflow-worker/dags:/dags \
+    --bind ~/airflow-worker/logs:/logs \
+    --bind /tmp:/tmp \
+    --env AIRFLOW_HOME=/tmp/airflow \
+    --env AIRFLOW__CORE__DAGS_FOLDER=/dags \
+    --env AIRFLOW__CORE__LOAD_EXAMPLES=False \
+    --env AIRFLOW__LOGGING__BASE_LOG_FOLDER=/logs \
+    --env AIRFLOW__DATABASE__SQL_ALCHEMY_CONN="postgresql+psycopg2://airflow:${MASTER_POSTGRES_PASSWORD}@localhost:5432/airflow" \
+    --env AIRFLOW__CELERY__BROKER_URL="redis://:${MASTER_REDIS_PASSWORD}@localhost:6379/0" \
+    --env AIRFLOW__CELERY__RESULT_BACKEND="db+postgresql://airflow:${MASTER_POSTGRES_PASSWORD}@localhost:5432/airflow" \
+    --env AIRFLOW__CORE__EXECUTOR="CeleryExecutor" \
+    ~/airflow-worker/containers/airflow-worker.sif \
+    celery -A airflow.providers.celery.executors.celery_executor.app worker \
+    --hostname ${WORKER_NAME}@%h \
+    --queues ${WORKER_QUEUE} \
+    --concurrency ${WORKER_CONCURRENCY} \
+    --autoscale ${WORKER_CONCURRENCY},2
+EOF
+
+chmod +x ~/scripts/start-worker.sh</code></pre>
+
+        <div class="alert alert-success">
+            <h4>✅ What This Script Does:</h4>
+            <ol style="margin-left: 25px;">
+                <li><strong>Setup Tunnels:</strong> Creates SSH tunnels to Master (PostgreSQL + Redis)</li>
+                <li><strong>Sync DAGs:</strong> Pulls latest DAG files from GitHub</li>
+                <li><strong>Set Environment:</strong> Configures Airflow settings via environment variables</li>
+                <li><strong>Start Worker:</strong> Runs Celery worker inside Singularity container with proper bind mounts</li>
+            </ol>
+            <p style="margin-top: 15px;"><strong>Key Features:</strong></p>
+            <ul style="margin-left: 25px;">
+                <li>✅ Uses <code>/tmp/airflow</code> (writable) instead of <code>/airflow</code> (read-only)</li>
+                <li>✅ Bind mounts for logs and DAGs</li>
+                <li>✅ All connections via SSH tunnels (secure)</li>
+                <li>✅ Auto-scales worker processes (2-4 concurrent tasks)</li>
+            </ul>
+        </div>
+
+        <h3>2.8.3 Create Worker STOP Script (On Remote)</h3>
+
+        <pre><code># ON REMOTE: Create stop script
+cat &gt; ~/scripts/stop-worker.sh &lt;&lt; 'EOF'
+#!/bin/bash
+
+echo "Stopping worker..."
+
+# Find and kill Celery worker process
+pkill -f "celery.*airflow.providers.celery.executors" || true
+pkill -f "celery.*airflow.executors.celery_executor" || true
+
+# Wait for graceful shutdown
+sleep 5
+
+# Force kill if still running
+pkill -9 -f celery 2&gt;/dev/null || true
+
+# Cleanup tunnels
+~/scripts/cleanup-tunnels.sh
+
+echo "✅ Worker stopped"
+EOF
+
+chmod +x ~/scripts/stop-worker.sh</code></pre>
+
+        <!-- SECTION 2.9 -->
+        <h2><span class="step-number">2.9</span>REMOTE: Test Worker</h2>
+
+        <h3>2.9.1 Start Worker (On Remote)</h3>
+
+        <pre><code># ON REMOTE: Start worker manually
+~/scripts/start-worker.sh
+
+# Expected output:
+# ==========================================
+#   STARTING ON-DEMAND CELERY WORKER
+# ==========================================
+#
+# [1/4] Setting up SSH tunnels...
+# ✅ Tunnels established successfully
+#
+# [2/4] Syncing DAGs...
+# ✅ DAGs synced to latest version
+#
+# [3/4] Setting environment...
+#
+# [4/4] Starting Celery worker in container...
+# Worker: worker1
+# Queue: worker1
+# Concurrency: 4
+#
+# [2025-10-23 ...] [INFO] Connected to redis://**@localhost:6379/0
+# [2025-10-23 ...] [INFO] mingle: searching for neighbors
+# [2025-10-23 ...] [INFO] mingle: all alone
+# [2025-10-23 ...] [INFO] celery@worker1 ready.
+
+# Worker runs in foreground!
+# Keep this terminal open</code></pre>
+
+        <h3>2.9.2 Verify Registration (On Master)</h3>
+
+        <pre><code># ON MASTER: Open new terminal
+ssh airflow@masterdimpal-1
+source ~/airflow-env/bin/activate
+
+# Check if worker registered
+celery -A airflow.executors.celery_executor inspect active
+
+# Should show:
+# -&gt; worker1@remotedimpal-2: OK
+#    []
+
+# Check worker stats
+celery -A airflow.executors.celery_executor inspect stats
+
+# Should show worker details</code></pre>
+
+        <h3>2.9.3 Stop Worker (On Remote)</h3>
+
+        <pre><code># ON REMOTE: Press Ctrl+C to stop foreground worker
+# Or open new terminal and run:
+~/scripts/stop-worker.sh
+
+# Verify no processes running:
+ps aux | grep celery
+# Should show nothing ✅
+
+ps aux | grep "ssh.*5432"
+# Should show nothing ✅
+
+# ✅ This confirms ON-DEMAND model working!</code></pre>
+
+        <div class="alert alert-success">
+            <h3>✅ PHASE 2 COMPLETE CHECKLIST</h3>
+            <table>
+                <tbody><tr><th>Section</th><th>Task</th><th>Status</th></tr>
+                <tr><td>2.1</td><td>Master: GitHub &amp; DAGs cloned</td><td>☐</td></tr>
+                <tr><td>2.2</td><td>Master: Container built</td><td>☐</td></tr>
+                <tr><td>2.3</td><td>Remote: Environment prepared</td><td>☐</td></tr>
+                <tr><td>2.4</td><td>Remote: GitHub &amp; DAGs cloned</td><td>☐</td></tr>
+                <tr><td>2.5</td><td>Container transferred to Remote</td><td>☐</td></tr>
+                <tr><td>2.6</td><td>SSH tunnels configured</td><td>☐</td></tr>
+                <tr><td>2.7</td><td>DAG sync script created</td><td>☐</td></tr>
+                <tr><td>2.8</td><td>Worker scripts created</td><td>☐</td></tr>
+                <tr><td>2.9</td><td>Worker tested &amp; registered</td><td>☐</td></tr>
+            </tbody></table>
+            <p style="margin-top: 20px;"><strong>✅ All Complete? Ready for Phase 3!</strong></p>
+            <p><strong>Next:</strong> SMART_WORKER_SETUP_GUIDE</p>
+        </div>
+
+        <p style="text-align: center; color: #7f8c8d; margin-top: 40px;">
+            <em>Phase 2 Complete: Remote Worker Infrastructure Ready | Python 3.12 | Airflow 2.10.2</em>
+        </p>
+    </div>
+
+
+</body></html>

@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<!-- saved from url=(0176)file:///C:/Users/iamku/Downloads/snale-flow-88ed9701fca39ded3475d5b89bc76f80451f0b43/snale-flow-88ed9701fca39ded3475d5b89bc76f80451f0b43/PHASE1_MASTER_SETUP_COMMANDS.HTML#step4 -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Airflow Master Server Setup Guide</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #333;
+        }
+        h1, h2, h3 {
+            color: #2c3e50;
+        }
+        h1 {
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        h2 {
+            border-bottom: 1px solid #bdc3c7;
+            padding-bottom: 5px;
+            margin-top: 30px;
+        }
+        pre {
+            background-color: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 4px;
+            padding: 15px;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+        code {
+            font-family: Consolas, Monaco, 'Andale Mono', monospace;
+            font-size: 14px;
+        }
+        .note {
+            background-color: #e8f4fc;
+            border-left: 4px solid #3498db;
+            padding: 10px 15px;
+            margin: 15px 0;
+        }
+        .warning {
+            background-color: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 10px 15px;
+            margin: 15px 0;
+        }
+        .step {
+            margin-bottom: 30px;
+        }
+        .verification {
+            background-color: #d4edda;
+            border-left: 4px solid #28a745;
+            padding: 10px 15px;
+            margin: 15px 0;
+        }
+        .copy-button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            float: right;
+            font-size: 12px;
+        }
+        .copy-button:hover {
+            background-color: #2980b9;
+        }
+        .toc {
+            background-color: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 4px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        .toc ul {
+            padding-left: 20px;
+        }
+        .toc li {
+            margin: 5px 0;
+        }
+        .toc a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        .toc a:hover {
+            text-decoration: underline;
+        }
+    </style>
+    <script>
+        function copyToClipboard(element) {
+            const text = document.getElementById(element).textContent;
+            navigator.clipboard.writeText(text).then(function() {
+                alert("Copied to clipboard!");
+            }, function() {
+                alert("Failed to copy!");
+            });
+        }
+    </script>
+</head>
+<body>
+    <h1>Airflow Master Server Setup Guide</h1>
+    
+    <div class="note">
+        <strong>Server:</strong> Master (Fresh Ubuntu)<br>
+        <strong>User:</strong> root or sudo user<br>
+        <strong>Duration:</strong> 1-2 days
+    </div>
+
+    <div class="toc">
+        <h2>Table of Contents</h2>
+        <ul>
+            <li><a href="file:///C:/Users/iamku/Downloads/snale-flow-88ed9701fca39ded3475d5b89bc76f80451f0b43/snale-flow-88ed9701fca39ded3475d5b89bc76f80451f0b43/PHASE1_MASTER_SETUP_COMMANDS.HTML#step1">STEP 1: INSTALL SYSTEM DEPENDENCIES</a></li>
+            <li><a href="file:///C:/Users/iamku/Downloads/snale-flow-88ed9701fca39ded3475d5b89bc76f80451f0b43/snale-flow-88ed9701fca39ded3475d5b89bc76f80451f0b43/PHASE1_MASTER_SETUP_COMMANDS.HTML#step2">STEP 2: CREATE AIRFLOW USER AND ENVIRONMENT</a></li>
+            <li><a href="file:///C:/Users/iamku/Downloads/snale-flow-88ed9701fca39ded3475d5b89bc76f80451f0b43/snale-flow-88ed9701fca39ded3475d5b89bc76f80451f0b43/PHASE1_MASTER_SETUP_COMMANDS.HTML#step3">STEP 3: CONFIGURE POSTGRESQL DATABASE</a></li>
+            <li><a href="file:///C:/Users/iamku/Downloads/snale-flow-88ed9701fca39ded3475d5b89bc76f80451f0b43/snale-flow-88ed9701fca39ded3475d5b89bc76f80451f0b43/PHASE1_MASTER_SETUP_COMMANDS.HTML#step4">STEP 4: CONFIGURE REDIS MESSAGE BROKER</a></li>
+            <li><a href="file:///C:/Users/iamku/Downloads/snale-flow-88ed9701fca39ded3475d5b89bc76f80451f0b43/snale-flow-88ed9701fca39ded3475d5b89bc76f80451f0b43/PHASE1_MASTER_SETUP_COMMANDS.HTML#step5">STEP 5: INSTALL AND CONFIGURE AIRFLOW</a></li>
+            <li><a href="file:///C:/Users/iamku/Downloads/snale-flow-88ed9701fca39ded3475d5b89bc76f80451f0b43/snale-flow-88ed9701fca39ded3475d5b89bc76f80451f0b43/PHASE1_MASTER_SETUP_COMMANDS.HTML#step6">STEP 6: START AIRFLOW SERVICES</a></li>
+            <li><a href="file:///C:/Users/iamku/Downloads/snale-flow-88ed9701fca39ded3475d5b89bc76f80451f0b43/snale-flow-88ed9701fca39ded3475d5b89bc76f80451f0b43/PHASE1_MASTER_SETUP_COMMANDS.HTML#verify">VERIFY EVERYTHING WORKS</a></li>
+            <li><a href="file:///C:/Users/iamku/Downloads/snale-flow-88ed9701fca39ded3475d5b89bc76f80451f0b43/snale-flow-88ed9701fca39ded3475d5b89bc76f80451f0b43/PHASE1_MASTER_SETUP_COMMANDS.HTML#troubleshooting">TROUBLESHOOTING</a></li>
+            <li><a href="file:///C:/Users/iamku/Downloads/snale-flow-88ed9701fca39ded3475d5b89bc76f80451f0b43/snale-flow-88ed9701fca39ded3475d5b89bc76f80451f0b43/PHASE1_MASTER_SETUP_COMMANDS.HTML#commands">USEFUL COMMANDS</a></li>
+        </ul>
+    </div>
+
+    <div id="step1" class="step">
+        <h2>STEP 1: INSTALL SYSTEM DEPENDENCIES</h2>
+        
+        <h3>1.1 Update System</h3>
+        <button class="copy-button" onclick="copyToClipboard(&#39;update-system&#39;)">Copy</button>
+        <pre id="update-system"><code># Login to your Ubuntu server as root or user with sudo
+
+# Update package lists
+sudo apt update
+
+# Upgrade existing packages
+sudo apt upgrade -y
+
+# Check if reboot needed
+[ -f /var/run/reboot-required ] &amp;&amp; echo "Reboot required" || echo "No reboot needed"
+
+# If reboot required:
+sudo reboot
+
+# After reboot, login again</code></pre>
+        
+        <div class="verification">
+            <strong>Verification:</strong>
+            <pre><code># Check Ubuntu version
+lsb_release -a
+# Should show Ubuntu 20.04 or 22.04</code></pre>
+        </div>
+        
+        <h3>1.2 Install Python 3.9+</h3>
+        <button class="copy-button" onclick="copyToClipboard(&#39;install-python&#39;)">Copy</button>
+        <pre id="install-python"><code># Check current Python version
+python3 --version
+
+# If Python 3.9+ already installed, skip to next section
+# If not, install Python 3.9
+
+# Add deadsnakes PPA (for newer Python versions)
+sudo apt install software-properties-common -y
+sudo add-apt-repository ppa:deadsnakes/ppa -y
+sudo apt update
+
+# Install Python 3.9
+sudo apt install python3.12 python3.12-venv python3.12-dev -y
+
+# Install pip for Python 3.9
+sudo apt install python3-pip -y
+
+# Set Python 3.9 as default (optional)
+sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.9 1</code></pre>
+        
+        <div class="verification">
+            <strong>Verification:</strong>
+            <pre><code>python3 --version
+# Should show: Python 3.9.x
+
+pip3 --version
+# Should show pip version</code></pre>
+        </div>
+        
+        <h3>1.3 Install PostgreSQL</h3>
+        <button class="copy-button" onclick="copyToClipboard(&#39;install-postgres&#39;)">Copy</button>
+        <pre id="install-postgres"><code># Install PostgreSQL 14
+sudo apt install postgresql postgresql-contrib -y
+
+# Start PostgreSQL service
+sudo systemctl start postgresql
+
+# Enable PostgreSQL to start on boot
+sudo systemctl enable postgresql
+
+# Check PostgreSQL status
+sudo systemctl status postgresql
+# Should show "active (running)"</code></pre>
+        
+        <div class="verification">
+            <strong>Verification:</strong>
+            <pre><code># Check PostgreSQL version
+sudo -u postgres psql --version
+# Should show: psql (PostgreSQL) 14.x or higher
+
+# Check if PostgreSQL is listening
+sudo netstat -plnt | grep 5432
+# Should show postgres listening on port 5432</code></pre>
+        </div>
+        
+        <h3>1.4 Install Redis</h3>
+        <button class="copy-button" onclick="copyToClipboard(&#39;install-redis&#39;)">Copy</button>
+        <pre id="install-redis"><code># Install Redis server
+sudo apt install redis-server -y
+
+# Start Redis service
+sudo systemctl start redis-server
+
+# Enable Redis to start on boot
+sudo systemctl enable redis-server
+
+# Check Redis status
+sudo systemctl status redis-server
+# Should show "active (running)"</code></pre>
+        
+        <div class="verification">
+            <strong>Verification:</strong>
+            <pre><code># Test Redis connection
+redis-cli ping
+# Should return: PONG
+
+# Check Redis version
+redis-server --version
+# Should show: Redis server v=6.x or higher</code></pre>
+        </div>
+        
+        <h3>1.5 Install Additional Tools</h3>
+        <button class="copy-button" onclick="copyToClipboard(&#39;install-tools&#39;)">Copy</button>
+        <pre id="install-tools"><code># Install build tools and libraries
+sudo apt install -y \
+  git \
+  curl \
+  wget \
+  build-essential \
+  libpq-dev \
+  libssl-dev \
+  libffi-dev \
+  net-tools \
+  vim \
+  nano
+
+# Verify installations
+git --version
+curl --version</code></pre>
+    </div>
+    
+    <div id="step2" class="step">
+        <h2>STEP 2: CREATE AIRFLOW USER AND ENVIRONMENT</h2>
+        
+        <h3>2.1 Create Airflow User</h3>
+        <button class="copy-button" onclick="copyToClipboard(&#39;create-user&#39;)">Copy</button>
+        <pre id="create-user"><code># Create airflow user with home directory
+sudo useradd -m -s /bin/bash airflow
+
+# Set password for airflow user (choose a strong password)
+sudo passwd airflow
+# Enter password twice
+
+# Add airflow user to sudo group (optional, for troubleshooting)
+sudo usermod -aG sudo airflow
+
+# Switch to airflow user
+sudo su - airflow</code></pre>
+        
+        <div class="verification">
+            <strong>Verification:</strong>
+            <pre><code># Confirm you're now airflow user
+whoami
+# Should show: airflow
+
+# Check home directory
+pwd
+# Should show: /home/airflow</code></pre>
+        </div>
+        
+        <h3>2.2 Create Directory Structure</h3>
+        <button class="copy-button" onclick="copyToClipboard(&#39;create-dirs&#39;)">Copy</button>
+        <pre id="create-dirs"><code># You should be logged in as airflow user now
+
+# Create directories
+mkdir -p ~/airflow-env
+mkdir -p ~/airflow
+mkdir -p ~/airflow/dags
+mkdir -p ~/airflow/logs
+mkdir -p ~/airflow/plugins
+mkdir -p ~/airflow/config
+mkdir -p ~/.ssh
+
+# Set proper permissions
+chmod 700 ~/.ssh
+
+# Verify structure
+ls -la ~/</code></pre>
+        
+        <h3>2.3 Setup Python Virtual Environment</h3>
+        <button class="copy-button" onclick="copyToClipboard(&#39;setup-venv&#39;)">Copy</button>
+        <pre id="setup-venv"><code># Still as airflow user
+
+# Create virtual environment
+python3 -m venv ~/airflow-env
+
+# Activate virtual environment
+source ~/airflow-env/bin/activate
+
+# Your prompt should change to show (airflow-env)
+
+# Upgrade pip, setuptools, wheel
+pip install --upgrade pip setuptools wheel
+
+# Verify
+pip --version
+# Should show pip from ~/airflow-env/bin/pip</code></pre>
+        
+        <h3>2.4 Set Environment Variables</h3>
+        <button class="copy-button" onclick="copyToClipboard(&#39;set-env&#39;)">Copy</button>
+        <pre id="set-env"><code># Still as airflow user
+
+# Edit .bashrc to add environment variables
+nano ~/.bashrc
+
+# Add these lines at the end of the file:
+# ========================================
+export AIRFLOW_HOME=/home/airflow/airflow
+export PATH=/home/airflow/airflow-env/bin:$PATH
+
+# Alias for easy activation
+alias activate-airflow='source /home/airflow/airflow-env/bin/activate'
+# ========================================
+
+# Save and exit (Ctrl+X, then Y, then Enter)
+
+# Apply changes
+source ~/.bashrc
+
+# Verify
+echo $AIRFLOW_HOME
+# Should show: /home/airflow/airflow</code></pre>
+    </div>
+    
+    <div id="step3" class="step">
+        <h2>STEP 3: CONFIGURE POSTGRESQL DATABASE</h2>
+        
+        <h3>3.1 Create Airflow Database and User</h3>
+        <button class="copy-button" onclick="copyToClipboard(&#39;create-db&#39;)">Copy</button>
+        <pre id="create-db"><code># Exit airflow user, go back to sudo user
+exit
+
+# Switch to postgres user
+sudo -u postgres psql
+
+# You're now in PostgreSQL prompt (postgres=#)
+# Run these SQL commands:</code></pre>
+        
+        <div class="note">
+            <strong>In PostgreSQL (postgres=#):</strong>
+            <pre><code>-- Create airflow database
+CREATE DATABASE airflow;
+
+-- Create airflow user with password
+CREATE USER airflow WITH PASSWORD '123@HellOS';
+
+-- Grant privileges
+GRANT ALL PRIVILEGES ON DATABASE airflow TO airflow;
+
+-- Connect to the airflow database
+\c airflow
+
+-- Make the airflow user the owner of the public schema
+ALTER SCHEMA public OWNER TO airflow;
+
+
+-- Exit PostgreSQL
+\q</code></pre>
+        </div>
+        
+        <h3>3.2 Configure PostgreSQL for Local Connections</h3>
+        <button class="copy-button" onclick="copyToClipboard(&#39;config-postgres&#39;)">Copy</button>
+        <pre id="config-postgres"><code># Still as sudo user
+
+# Edit pg_hba.conf
+sudo nano /etc/postgresql/14/main/pg_hba.conf
+
+# Find the line:
+# local   all             all                                     peer
+
+# Add this line BEFORE that line:
+# ========================================
+local   airflow         airflow                                 scram-sha-256
+host    airflow         airflow         127.0.0.1/32            scram-sha-256
+# ========================================
+
+# Save and exit (Ctrl+X, then Y, then Enter)
+
+# Restart PostgreSQL
+sudo systemctl restart postgresql
+
+# Check status
+sudo systemctl status postgresql</code></pre>
+        
+        <h3>3.3 Test PostgreSQL Connection</h3>
+        <button class="copy-button" onclick="copyToClipboard(&#39;test-postgres&#39;)">Copy</button>
+        <pre id="test-postgres"><code># Switch back to airflow user
+sudo su - airflow
+
+# Test connection
+psql -h localhost -U airflow -d airflow
+
+# You'll be prompted for password (enter the one you set earlier)
+# If successful, you'll see: airflow=&gt;
+
+# Test a query
+SELECT 1;
+# Should return: 1
+
+# Exit
+\q</code></pre>
+        
+        <div class="warning">
+            <strong>If connection fails:</strong>
+            <ul>
+                <li>Check password is correct</li>
+                <li>Check pg_hba.conf has the right entries</li>
+                <li>Check PostgreSQL is running: <code>sudo systemctl status postgresql</code></li>
+            </ul>
+        </div>
+    </div>
+    
+    <div id="step4" class="step">
+        <h2>STEP 4: CONFIGURE REDIS MESSAGE BROKER</h2>
+        
+        <h3>4.1 Set Redis Password</h3>
+        <button class="copy-button" onclick="copyToClipboard(&#39;redis-password&#39;)">Copy</button>
+        <pre id="redis-password"><code># Exit airflow user, go back to sudo user
+exit
+
+# Edit Redis configuration
+sudo nano /etc/redis/redis.conf
+
+# Find this line (around line 790):
+# # requirepass foobared
+
+# Uncomment and change password:
+# ========================================
+requirepass your_redis_strong_password_here
+# ========================================
+
+# Also ensure Redis binds to localhost only
+# Find this line:
+# bind 127.0.0.1 ::1
+
+# Make sure it's NOT commented (no # at start)
+
+# Save and exit (Ctrl+X, then Y, then Enter)
+
+# Restart Redis
+sudo systemctl restart redis-server
+
+# Check status
+sudo systemctl status redis-server</code></pre>
+        
+        <h3>4.2 Test Redis Connection</h3>
+        <button class="copy-button" onclick="copyToClipboard(&#39;test-redis&#39;)">Copy</button>
+        <pre id="test-redis"><code># Test Redis with password
+redis-cli -a your_redis_strong_password_here ping
+# Should return: PONG
+
+# If you get warning about password on command line, that's OK for testing
+# We'll use config files in production
+
+# Test Redis info
+redis-cli -a your_redis_strong_password_here INFO server
+# Should show Redis version info</code></pre>
+    </div>
+    
+    <div id="step5" class="step">
+        <h2>STEP 5: INSTALL AND CONFIGURE AIRFLOW</h2>
+        
+        <h3>5.1 Install Airflow</h3>
+        <button class="copy-button" onclick="copyToClipboard(&#39;install-airflow&#39;)">Copy</button>
+        <pre id="install-airflow"><code># Switch to airflow user
+sudo su - airflow
+
+# Activate virtual environment
+source ~/airflow-env/bin/activate
+
+# Set variables
+export AIRFLOW_VERSION=2.10.2
+export PYTHON_VERSION="3.12"
+export CONSTRAINT_URL="https://raw.githubusercontent.com/apache/airflow/constraints-${AIRFLOW_VERSION}/constraints-${PYTHON_VERSION}.txt"
+
+# Install Airflow
+pip install "apache-airflow[celery,postgres,redis,ssh,slack]==${AIRFLOW_VERSION}" --constraint "${CONSTRAINT_URL}"
+
+
+# Verify installation
+airflow version
+# Should show: 2.10.2</code></pre>
+        
+        <h3>5.2 Initialize Airflow Configuration</h3>
+        <button class="copy-button" onclick="copyToClipboard(&#39;init-airflow&#39;)">Copy</button>
+        <pre id="init-airflow"><code># Still as airflow user with venv activated
+
+# Initialize Airflow database (creates airflow.cfg)
+airflow db init
+
+# Check that airflow.cfg was created
+ls -la $AIRFLOW_HOME/airflow.cfg
+# Should show the config file
+
+# Check directory structure
+ls -la $AIRFLOW_HOME/
+# Should show: airflow.cfg, dags/, logs/, plugins/</code></pre>
+        
+        <h3>5.3 Edit Airflow Configuration</h3>
+        <button class="copy-button" onclick="copyToClipboard(&#39;edit-config&#39;)">Copy</button>
+        <pre id="edit-config"><code># Still as airflow user
+
+# Backup original config
+cp $AIRFLOW_HOME/airflow.cfg $AIRFLOW_HOME/airflow.cfg.backup
+
+# Edit configuration
+nano $AIRFLOW_HOME/airflow.cfg</code></pre>
+        
+        <div class="note">
+            <strong>Find and modify these sections:</strong>
+            
+            <p><strong>Section [core]:</strong></p>
+            <pre><code># Find: executor = SequentialExecutor
+# Change to:
+executor = CeleryExecutor
+
+# Find: sql_alchemy_conn = sqlite:////home/airflow/airflow/airflow.db
+# Change to (use YOUR PostgreSQL password):
+sql_alchemy_conn = postgresql+psycopg2://airflow:your_postgres_password@localhost/airflow
+
+# Find: load_examples = True
+# Change to:
+load_examples = False
+
+# Find: dags_folder = /home/airflow/airflow/dags
+# Should already be correct, verify it</code></pre>
+            
+            <p><strong>Section [celery]:</strong></p>
+            <pre><code># Find: broker_url = redis://localhost:6379/0
+# Change to (use YOUR Redis password):
+broker_url = redis://:123HelloS@localhost:6379/0
+
+# Find: result_backend = db+postgresql://airflow:airflow@localhost/airflow
+# Change to (use YOUR PostgreSQL password):
+result_backend = db+postgresql://airflow:123HelloS@localhost/airflow</code></pre>
+            
+            <p><strong>Section [webserver]:</strong></p>
+            <pre><code># Find: base_url = http://localhost:8080
+# Change to (use YOUR server IP):
+base_url = http://YOUR_SERVER_IP:8080
+
+# Find: secret_key = temporary_key
+# Change to a random 32-character string:
+secret_key = changethisto32characterrandomstring123
+
+# To generate random key:
+# python3 -c "import secrets; print(secrets.token_urlsafe(32))"</code></pre>
+            
+            <p><strong>Save and exit</strong> (Ctrl+X, then Y, then Enter)</p>
+        </div>
+        
+        <h3>5.4 Initialize Airflow Database Schema</h3>
+        <button class="copy-button" onclick="copyToClipboard(&#39;init-db&#39;)">Copy</button>
+        <pre id="init-db"><code># Still as airflow user with venv activated
+
+# Run database migrations
+airflow db init
+
+# This creates all Airflow tables in PostgreSQL
+# Takes 1-2 minutes</code></pre>
+        
+        <h3>5.5 Create Airflow Admin User</h3>
+        <button class="copy-button" onclick="copyToClipboard(&#39;create-admin&#39;)">Copy</button>
+        <pre id="create-admin"><code># Still as airflow user
+
+# Create admin user
+airflow users create \
+    --username admin \
+    --firstname Admin \
+    --lastname User \
+    --role Admin \
+    --email admin@example.com
+
+# You'll be prompted for password
+123HelloS
+# Enter a strong password and remember it!
+
+# Verify user created
+airflow users list
+
+(airflow-env) airflow@masterdimpal-1:~$ airflow users list
+id | username | email             | first_name | last_name | roles
+===+==========+===================+============+===========+======
+1  | admin    | admin@example.com | Admin      | User      | Admin
+
+# Should show your admin user</code></pre>
+    </div>
+    
+    <div id="step6" class="step">
+        <h2>STEP 6: START AIRFLOW SERVICES</h2>
+        
+        <h3>6.1 Start Webserver</h3>
+        <button class="copy-button" onclick="copyToClipboard(&#39;start-webserver&#39;)">Copy</button>
+        <pre id="start-webserver"><code># Still as airflow user
+
+# Make sure virtual environment is activated
+source ~/airflow-env/bin/activate
+
+# Start webserver in background
+airflow webserver -D
+
+# Check webserver log
+tail -f ~/airflow/logs/scheduler/latest/webserver.log
+
+# Press Ctrl+C to stop tailing
+
+# Verify webserver is running
+ps aux | grep "airflow webserver"
+# Should show process
+
+# Check port
+netstat -plnt | grep 8080
+# Should show airflow listening on port 8080</code></pre>
+        
+        <h3>6.2 Start Scheduler</h3>
+        <button class="copy-button" onclick="copyToClipboard(&#39;start-scheduler&#39;)">Copy</button>
+        <pre id="start-scheduler"><code># Still as airflow user
+
+# Start scheduler in background
+airflow scheduler -D
+
+# Check scheduler log
+tail -f ~/airflow/logs/scheduler/latest/scheduler.log
+
+# Press Ctrl+C to stop tailing
+
+# Verify scheduler is running
+ps aux | grep "airflow scheduler"
+# Should show process</code></pre>
+        
+        <h3>6.3 Access Airflow Web UI</h3>
+        <div class="note">
+            <strong>From your local machine:</strong>
+            <ol>
+                <li>Open web browser</li>
+                <li>Go to: <code>http://YOUR_SERVER_IP:8080</code></li>
+                <li>Login with:
+                    <ul>
+                        <li>Username: <code>admin</code></li>
+                        <li>Password: (the one you set)</li>
+                    </ul>
+                </li>
+            </ol>
+            
+            <p><strong>If you can't access:</strong></p>
+            <pre><code># Check Ubuntu firewall
+sudo ufw status
+
+# If firewall is active, allow port 8080
+sudo ufw allow 8080/tcp</code></pre>
+        </div>
+        
+        <div class="verification">
+            <strong>Verification:</strong>
+            <ul>
+                <li>✅ Can access Airflow UI</li>
+                <li>✅ Can login successfully</li>
+                <li>✅ DAGs page loads (empty - no DAGs yet)</li>
+                <li>✅ No errors on homepage</li>
+            </ul>
+        </div>
+    </div>
+    
+    <div id="verify" class="step">
+        <h2>VERIFY EVERYTHING WORKS</h2>
+        <button class="copy-button" onclick="copyToClipboard(&#39;verify-commands&#39;)">Copy</button>
+        <pre id="verify-commands"><code># As airflow user
+
+# 1. Check Airflow version
+airflow version
+# Should show: 2.6.1
+
+# 2. Check database connection
+airflow db check
+# Should show: No issues
+
+# 3. List DAGs (should be empty)
+airflow dags list
+# Should show: No DAGs
+
+# 4. Check Celery configuration
+airflow celery workers
+# May show no workers (that's OK, we haven't set up remote worker yet)
+
+# 5. Check webserver
+curl http://localhost:8080/health
+# Should return: {"metadatabase":{"status":"healthy"},...}</code></pre>
+    </div>
+    
+    <div id="troubleshooting" class="step">
+        <h2>TROUBLESHOOTING</h2>
+        
+        <h3>Problem: "pip: command not found"</h3>
+        <button class="copy-button" onclick="copyToClipboard(&#39;troubleshoot-pip&#39;)">Copy</button>
+        <pre id="troubleshoot-pip"><code>sudo apt install python3-pip -y</code></pre>
+        
+        <h3>Problem: "psql: FATAL: Peer authentication failed"</h3>
+        <button class="copy-button" onclick="copyToClipboard(&#39;troubleshoot-psql&#39;)">Copy</button>
+        <pre id="troubleshoot-psql"><code># Check pg_hba.conf has correct entries
+sudo nano /etc/postgresql/14/main/pg_hba.conf
+# Add the lines from Step 3.2
+sudo systemctl restart postgresql</code></pre>
+        
+        <h3>Problem: "Redis connection refused"</h3>
+        <button class="copy-button" onclick="copyToClipboard(&#39;troubleshoot-redis&#39;)">Copy</button>
+        <pre id="troubleshoot-redis"><code># Check Redis is running
+sudo systemctl status redis-server
+
+# Check Redis password is correct
+redis-cli -a your_password ping
+
+# Check Redis config
+sudo nano /etc/redis/redis.conf
+# Verify requirepass is set</code></pre>
+        
+        <h3>Problem: "Webserver won't start"</h3>
+        <button class="copy-button" onclick="copyToClipboard(&#39;troubleshoot-webserver&#39;)">Copy</button>
+        <pre id="troubleshoot-webserver"><code># Check logs
+cat ~/airflow/logs/scheduler/latest/webserver.log
+
+# Common issue: Port 8080 already in use
+sudo netstat -plnt | grep 8080
+# Kill process using port 8080 or use different port</code></pre>
+        
+        <h3>Problem: "Permission denied" errors</h3>
+        <button class="copy-button" onclick="copyToClipboard(&#39;troubleshoot-permissions&#39;)">Copy</button>
+        <pre id="troubleshoot-permissions"><code># Ensure you're airflow user
+whoami
+# Should show: airflow
+
+# Check directory ownership
+ls -la ~/airflow
+# Should be owned by airflow:airflow
+
+# Fix ownership if needed
+sudo chown -R airflow:airflow /home/airflow/airflow</code></pre>
+    </div>
+    
+    <div id="commands" class="step">
+        <h2>USEFUL COMMANDS FOR ONGOING OPERATIONS</h2>
+        <button class="copy-button" onclick="copyToClipboard(&#39;useful-commands&#39;)">Copy</button>
+        <pre id="useful-commands"><code># Stop services
+airflow webserver --stop
+airflow scheduler --stop
+
+# Start services (foreground - see logs)
+airflow webserver
+airflow scheduler
+
+# Check running processes
+ps aux | grep airflow
+
+# View logs
+tail -f ~/airflow/logs/scheduler/latest/scheduler.log
+tail -f ~/airflow/logs/scheduler/latest/webserver.log
+
+# Reset database (CAREFUL!)
+airflow db reset
+
+# Test configuration
+airflow config get-value core executor
+airflow config get-value core sql_alchemy_conn</code></pre>
+    </div>
+    
+    <div class="note">
+        <h2>NEXT STEPS</h2>
+        <p>Once you've completed all steps above and verified everything works:</p>
+        <p>✅ <strong>Phase 1 Complete!</strong></p>
+        <p>You now have:</p>
+        <ul>
+            <li>✅ Master server with Airflow installed</li>
+            <li>✅ PostgreSQL database configured</li>
+            <li>✅ Redis message broker configured</li>
+            <li>✅ Airflow webserver running</li>
+            <li>✅ Airflow scheduler running</li>
+            <li>✅ CeleryExecutor configured</li>
+        </ul>
+        <p><strong>Ready for Phase 2:</strong> Remote Worker Setup</p>
+    </div>
+
+</body></html>
